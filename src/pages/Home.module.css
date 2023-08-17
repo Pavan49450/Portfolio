@@ -1,0 +1,39 @@
+/* .homeContent {
+  width: 100wh;
+  height: 100vh;
+} */
+
+.homeContent img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -2;
+  opacity: 0.7;
+  width: 100vw;
+  height: 100vh;
+}
+
+.homeContent .title {
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  top: 40%;
+  text-align: center;
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  animation: expand 0.5s;
+}
+
+.title__main {
+  font-size: 70px;
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
