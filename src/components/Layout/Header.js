@@ -1,10 +1,16 @@
 import logo from "../../assets/Logo.png";
 import style from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
+// Import necessary dependencies
+
 const Header = () => {
+  const toggleMobileMenu = () => {
+    const sideNavbar = document.querySelector(`.${style.sideNavbar}`);
+    sideNavbar.classList.toggle(style.show);
+  };
+
   return (
     <div>
-      {/* <h1>Header</h1> */}
       <nav className={style.navbar}>
         <div className={style.navbar__logo}>
           <Link to="/" title="Link to home page">
@@ -49,6 +55,9 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
+        <div className={style.mobileMenuIcon} onClick={toggleMobileMenu}>
+          ☰
+        </div>
       </nav>
     </div>
   );

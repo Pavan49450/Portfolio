@@ -1,0 +1,85 @@
+.imageContainer {
+  margin: 25px;
+}
+
+.image {
+  position: absolute;
+  width: 8vw;
+  height: auto;
+  opacity: 0.7;
+}
+
+.c {
+  top: 15%;
+  left: 10%;
+}
+
+.css {
+  top: 20%;
+  left: 30%;
+}
+
+.git {
+  top: 30%;
+  left: 50%;
+}
+
+.github {
+  top: 40%;
+  left: 70%;
+}
+
+.html {
+  top: 50%;
+  left: 10%;
+}
+
+.java {
+  top: 60%;
+  left: 30%;
+}
+
+.typescript {
+  top: 70%;
+  left: 50%;
+}
+
+.javascript {
+  top: 80%;
+  left: 20%;
+}
+
+.mongodb {
+  top: 90%;
+  left: 90%;
+}
+
+.node {
+  top: 10%;
+  left: 70%;
+}
+
+.python {
+  top: 20%;
+  left: 90%;
+}
+
+.react {
+  top: 30%;
+  left: 10%;
+}
+
+.vscode {
+  top: 40%;
+  left: 30%;
+}
+
+@media (max-width: 768px) {
+  .image {
+    width: 15vw;
+  }
+  .mongodb,
+  .python {
+    left: 60%;
+  }
+}
