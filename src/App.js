@@ -1,14 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Header from "./components/Layout/Header";
-import Footer from "./components/Layout/Footer";
-import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
+import AboutMe from "./pages/AboutMe";
 
 function App() {
   const router = createBrowserRouter([
@@ -24,7 +21,7 @@ function App() {
         },
         {
           path: "/about",
-          element: <About />,
+          element: <AboutMe />,
           errorElement: <ErrorPage />,
         },
         {

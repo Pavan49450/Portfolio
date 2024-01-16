@@ -1,19 +1,3 @@
-/* .homeContent { */
-/* width: 100wh;
-  height: 100vh;
-  overflow: hidden; */
-/* } */
-
-/* .homeContent img {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: -2;
-  opacity: 0.7;
-  width: 100vw;
-  height: 100vh;
-} */
-
 .homeContent .title {
   position: absolute;
   width: 100%;
