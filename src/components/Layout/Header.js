@@ -64,7 +64,7 @@ const Header = () => {
               <NavLink
                 to="/"
                 title="Link to home page"
-                activeClassName={style.active}
+                className={({ isActive }) => isActive && style.active}
               >
                 Home
               </NavLink>
@@ -73,7 +73,7 @@ const Header = () => {
               <NavLink
                 to="about"
                 title="Link to about page"
-                activeClassName={style.active}
+                className={({ isActive }) => isActive && style.active}
               >
                 About me
               </NavLink>
@@ -82,7 +82,7 @@ const Header = () => {
               <NavLink
                 to="projects"
                 title="Link to projects page"
-                activeClassName={style.active}
+                className={({ isActive }) => isActive && style.active}
               >
                 Projects
               </NavLink>
@@ -91,7 +91,7 @@ const Header = () => {
               <NavLink
                 to="skills"
                 title="Link to skills page"
-                activeClassName={style.active}
+                className={({ isActive }) => isActive && style.active}
               >
                 Skills
               </NavLink>
