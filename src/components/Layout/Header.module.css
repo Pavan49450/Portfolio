@@ -7,31 +7,24 @@
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   justify-content: space-between;
-  align-items: center; /* Align items vertically in the center */
+  align-items: center;
   height: 60px;
 }
 
 .navbar__logo a img {
   width: 100px;
-  position: relative;
-  top: 10%;
-  left: 10%;
   transition: all 0.2s ease;
 }
 
 .navbar__logo a img:hover {
   left: 30%;
-  transform: scale(1.5);
+  transform: scale(1.2);
   transition: all 0.2s ease;
 }
 
 .navbar__logo {
   padding: 5px;
 }
-
-/* Header.module.css */
-
-/* ... existing styles ... */
 
 .sideNavbar {
   display: flex;
@@ -47,45 +40,95 @@
   transition: left 0.3s ease;
   z-index: 4;
   padding: 0px;
+  margin: 0;
+  align-items: center;
+}
+
+.sideNavbar_head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .sideNavbar.show {
-  left: 0; /* Slide in the side panel when the 'show' class is applied */
+  left: 0;
 }
 
 .sideNavbar li {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   border-bottom: 1px solid #ccc;
   width: 100%;
   text-align: center;
 }
 
 .sideNavbar li a {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-decoration: none;
   color: black;
+  display: block;
+  width: 100%;
+}
+.sideNavbar li:hover {
+  background-color: #f1f1f1;
 }
 
+.active {
+  background-color: #ccc;
+  color: #fff;
+}
 .mobileMenuIcon {
   display: block;
   font-size: 24px;
   cursor: pointer;
-  z-index: 5;
+  /* z-index: 5; */
   padding: 10px;
 }
 
-/* Media query for smaller screens */
+.closeBtn {
+  background-color: #fff;
+  border: 0px solid;
+  outline: none;
+  font-size: 30px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+.closeBtn:hover,
+.mobileMenuIcon:hover {
+  color: #666666;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  transition: left 0.3s ease;
+}
+
+.show {
+  left: 0;
+}
+
 @media (max-width: 600px) {
   .navbar {
     justify-content: space-between;
   }
 
   .sideNavbar {
-    width: 100%; /* Full width for smaller screens */
-    left: -100%; /* Initially off-screen to the left */
+    width: 100%;
+    left: -100%;
   }
 
   .navbar__logo {
-    display: block; /* Show the logo on smaller screens */
+    display: block;
+  }
+  .navbar__logo a img {
+    width: 50px;
   }
 }
