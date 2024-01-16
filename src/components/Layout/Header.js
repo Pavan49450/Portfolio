@@ -66,6 +66,7 @@ const Header = () => {
         <NavLink
           to="/"
           title="Link to home page"
+          onClick={handleMobileMenuToggle}
           className={({ isActive }) => isActive && style.active}
         >
           Home
@@ -75,6 +76,7 @@ const Header = () => {
         <NavLink
           to="about"
           title="Link to about page"
+          onClick={handleMobileMenuToggle}
           className={({ isActive }) => isActive && style.active}
         >
           About me
@@ -84,6 +86,7 @@ const Header = () => {
         <NavLink
           to="projects"
           title="Link to projects page"
+          onClick={handleMobileMenuToggle}
           className={({ isActive }) => isActive && style.active}
         >
           Projects
@@ -93,6 +96,7 @@ const Header = () => {
         <NavLink
           to="skills"
           title="Link to skills page"
+          onClick={handleMobileMenuToggle}
           className={({ isActive }) => isActive && style.active}
         >
           Skills
