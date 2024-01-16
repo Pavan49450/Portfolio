@@ -75,7 +75,7 @@
 
 .active {
   background-color: #ccc;
-  color: #fff;
+  /* color: #fff; */
 }
 .mobileMenuIcon {
   display: block;
