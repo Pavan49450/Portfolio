@@ -4,4 +4,17 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* transition: transform 0.3s ease-in-out; */
+  position: relative;
+  opacity: 0.9;
+  z-index: 4;
+}
+.overlay {
+  position: fixed;
+  top: 70px;
+  width: 100vw;
+  height: 100%;
 }

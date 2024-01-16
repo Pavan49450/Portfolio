@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Projects.module.css";
 import ProjectItem from "../components/Projects/ProjectItem";
+import BackgroundIcons from "../components/Background/BackgroundIcons";
 
 const Projects = () => {
   const projectsList = [
@@ -37,12 +38,17 @@ const Projects = () => {
   ];
 
   return (
-    <div className={style.container}>
-      <h2>Projects</h2>
-      {projectsList.map((project, index) => (
-        <ProjectItem index={index} project={project} />
-      ))}
-    </div>
+    <>
+      <div className={style.container}>
+        <h2>Projects</h2>
+        {projectsList.map((project, index) => (
+          <ProjectItem index={index} project={project} />
+        ))}
+      </div>
+      <div className={style.overlay}>
+        <BackgroundIcons />
+      </div>
+    </>
   );
 };
 
