@@ -1,4 +1,4 @@
-import backgroundImage from "../assets/backgroubdImage-1.jpg";
+import BackgroundIcons from "../components/Background/BackgroundIcons";
 import style from "./Home.module.css";
 
 const HomePage = () => {
@@ -6,11 +6,11 @@ const HomePage = () => {
     <div className={style.homeContent}>
       <div className={style.title}>
         <span className={style.title__main}>
-          Hi I'm <span style={{ color: "red", fontSize: "100px" }}>Pavan</span>
+          Hi I'm <span className={style.name}>Pavan</span>
         </span>
         <span> I build and design web applications</span>
       </div>
-      <img src={backgroundImage} alt="background"></img>
+      <BackgroundIcons />
     </div>
   );
 };

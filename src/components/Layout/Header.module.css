@@ -1,28 +1,26 @@
+/* Header.module.css */
+
 .navbar {
-  width: 95vw;
   display: flex;
-  margin: auto;
-  /* background-color: #e6e3d3; */
+  margin: 10px;
   box-shadow: 0px 2px 3px #e6e3d3;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   justify-content: space-between;
+  align-items: center; /* Align items vertically in the center */
   height: 60px;
 }
 
 .navbar__logo a img {
   width: 100px;
-  /* height: 80px; */
-  /* border-radius: 50%; */
-  /* box-shadow: 0px 0px 10px grey; */
   position: relative;
   top: 10%;
   left: 10%;
   transition: all 0.2s ease;
 }
+
 .navbar__logo a img:hover {
   left: 30%;
-
   transform: scale(1.5);
   transition: all 0.2s ease;
 }
@@ -31,45 +29,63 @@
   padding: 5px;
 }
 
+/* Header.module.css */
+
+/* ... existing styles ... */
+
 .sideNavbar {
-  padding: 0px;
   display: flex;
   list-style: none;
-  /* margin-right: 2rem; */
-  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  z-index: 4;
+  padding: 0px;
+}
+
+.sideNavbar.show {
+  left: 0; /* Slide in the side panel when the 'show' class is applied */
 }
 
 .sideNavbar li {
-  width: 80px;
-  height: 60px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
   text-align: center;
-  /* box-shadow: -1px 0px 1px #e6e3d3; */
 }
 
 .sideNavbar li a {
   text-decoration: none;
-  display: inline-block;
-  padding-left: 2px;
-  padding-right: 2px;
   color: black;
-  /* width: inherit; */
-  height: 70%;
-  /* margin-right: 2px; */
-  position: relative;
-  top: 30%;
-}
-.sideNavbar li a:hover {
-  transform: scale(1.1);
-  transition: all 0.2s ease;
 }
 
-.active {
-  /* color: white; */
-  /* background-color: green; */
-  /* transform: scale(1.1); */
-  border-bottom: 3px solid transparent; /* Set a transparent border */
-  border-image: linear-gradient(to right, black, black);
-  border-image-slice: 1;
+.mobileMenuIcon {
+  display: block;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 5;
+  padding: 10px;
+}
 
-  transition: all 0.2s ease;
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .sideNavbar {
+    width: 100%; /* Full width for smaller screens */
+    left: -100%; /* Initially off-screen to the left */
+  }
+
+  .navbar__logo {
+    display: block; /* Show the logo on smaller screens */
+  }
 }
