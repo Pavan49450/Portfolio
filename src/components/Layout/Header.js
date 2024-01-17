@@ -106,47 +106,43 @@ const Header = () => {
   );
 
   return (
-    <div>
-      <nav className={style.navbar}>
-        <Logo />
-        {width < breakpoint && (
-          <div
-            className={`${style.overlay} ${isMobileMenuOpen && style.show}`}
-            ref={overlayRef}
+    <nav className={style.navbar}>
+      <Logo />
+      {width < breakpoint && (
+        <div
+          className={`${style.overlay} ${isMobileMenuOpen && style.show}`}
+          ref={overlayRef}
+        >
+          <ul
+            className={`${style.sideNavbar} ${isMobileMenuOpen && style.show}`}
+            ref={sideNavbarRef}
           >
-            <ul
-              className={`${style.sideNavbar} ${
-                isMobileMenuOpen && style.show
-              }`}
-              ref={sideNavbarRef}
-            >
-              <div className={style.sideNavbar_head}>
-                <Logo />
-                <button
-                  className={style.closeBtn}
-                  type="button"
-                  onClick={handleMobileMenuToggle}
-                >
-                  &#x2715;
-                </button>
-              </div>
-              {navElements}
-            </ul>
-          </div>
-        )}
-        {width < breakpoint ? (
-          <div
-            className={style.mobileMenuIcon}
-            onClick={handleMobileMenuToggle}
-            ref={mobileMenuIconRef}
-          >
-            ☰
-          </div>
-        ) : (
-          <div className={style.nav}>{navElements}</div>
-        )}
-      </nav>
-    </div>
+            <div className={style.sideNavbar_head}>
+              <Logo />
+              <button
+                className={style.closeBtn}
+                type="button"
+                onClick={handleMobileMenuToggle}
+              >
+                &#x2715;
+              </button>
+            </div>
+            {navElements}
+          </ul>
+        </div>
+      )}
+      {width < breakpoint ? (
+        <div
+          className={style.mobileMenuIcon}
+          onClick={handleMobileMenuToggle}
+          ref={mobileMenuIconRef}
+        >
+          ☰
+        </div>
+      ) : (
+        <div className={style.nav}>{navElements}</div>
+      )}
+    </nav>
   );
 };
 

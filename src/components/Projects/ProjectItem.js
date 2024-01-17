@@ -5,7 +5,11 @@ export default function ProjectItem({ index, project }) {
     <div key={index} className={style.project}>
       <h3>{project.title}</h3>
       <p>{project.duration}</p>
-      <p>{project.description}</p>
+      {project.description.map((description, index) => (
+        <div key={index}>
+          <p>{description}</p>
+        </div>
+      ))}
     </div>
   );
 }

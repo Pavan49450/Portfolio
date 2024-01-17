@@ -1,4 +1,3 @@
-// BackgroundIcons.js
 import React from "react";
 import style from "./BackgroundIcons.module.css";
 import generateRandomKeyframes from "./MoveImageAnimation";

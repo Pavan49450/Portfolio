@@ -12,26 +12,28 @@ const AboutMe = () => {
           technology for enhanced applications. Skilled in Frontend and Backend
           development.
         </p>
-        {/* <p>
-          Currently based in Hyderabad, India. Feel free to contact me at{" "}
-          <a href="tel:+916301863490">+916301863490</a> or{" "}
-          <a href="mailto:pavan49450@gmail.com">pavan49450@gmail.com</a>.
-        </p> */}
-
         <div className={style.section}>
           <h3>Education</h3>
-          <p>
-            B.Tech in Mechanical Engineering from CMR Institute of Technology,
-            Medchal (Jun 2018 — Sep 2021). Graduated with a CGPA of 8.28.
-          </p>
+          <div className={style.subHeading}>
+            <p style={{ fontWeight: "bold", color: "black" }}>
+              B.Tech in Mechanical Engineering, CMR Institute of Technology,
+            </p>
+            <span>Medchal</span>
+          </div>
+          <span>Jun 2018 — Sep 2021</span>
+          <p>Graduated with a CGPA of 8.28.</p>
         </div>
 
         <div className={style.section}>
           <h3>Experience</h3>
-          <p>
-            Assistant System Engineer at Tata Consultancy Services, Kolkata (Jan
-            2022 — Aug 2023):
-          </p>
+          <div className={style.subHeading}>
+            <p style={{ fontWeight: "bold", color: "black" }}>
+              Assistant System Engineer at Tata Consultancy Services,
+            </p>
+            <span>Kolkata</span>
+          </div>
+          <span>2022 — Aug 2023</span>
+
           <ul>
             <li>
               Spearheaded the development of the payments component in the
@@ -51,7 +53,12 @@ const AboutMe = () => {
 
         <div className={style.section}>
           <h3>Achievements</h3>
-          <p>TCS Training Kolkata (Feb 2022 — Mar 2022):</p>
+          <div className={style.subHeading}>
+            <p style={{ fontWeight: "bold", color: "black" }}>TCS Training</p>
+            <span>Kolkata</span>
+          </div>
+          <span>Feb 2022 — Mar 2022</span>
+
           <ul>
             <li>
               Attained the highest score among peers during TCS training,
@@ -63,7 +70,13 @@ const AboutMe = () => {
             </li>
           </ul>
 
-          <p>Pearlthoughts Internship Chennai (Nov 2023 — Dec 2024):</p>
+          <div className={style.subHeading}>
+            <p style={{ fontWeight: "bold", color: "black" }}>
+              Pearlthoughts Internship
+            </p>
+            <span>Chennai</span>
+          </div>
+          <span>Nov 2023 — Dec 2024</span>
           <ul>
             <li>
               Led and supervised a cohort of interns at PearlThoughts for a
@@ -83,9 +96,7 @@ const AboutMe = () => {
           </ul>
         </div>
       </div>
-      <div className={style.overlay}>
-        <BackgroundIcons />
-      </div>
+      <BackgroundIcons />
     </>
   );
 };
