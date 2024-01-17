@@ -3,20 +3,22 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
   background-color: #f8f8f8;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* transition: transform 0.3s ease-in-out; */
   position: relative;
   opacity: 0.9;
   z-index: 4;
+  padding-bottom: 20px;
 }
 
 h2 {
   color: #333;
   font-size: 2em;
   margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid;
+  padding: 10px;
 }
 
 p {
@@ -31,6 +33,8 @@ a {
 
 .section {
   margin-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .section h3 {
@@ -60,4 +64,15 @@ a {
   justify-content: space-between;
   height: 40px;
 }
-/* Add additional styling as needed */
+
+@media (max-width: 600px) {
+  .subHeading {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .subHeading p {
+    margin: 0;
+  }
+}

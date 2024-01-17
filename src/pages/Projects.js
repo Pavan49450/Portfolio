@@ -34,7 +34,7 @@ const Projects = () => {
       title: "Unistock",
       duration: "Nov 2024 — Jan 2024",
       description: [
-        'Led the development of login and signup pages for "niStock," an Android-based E-Commerce application tailored for the pharmaceutical industry.',
+        'Led the development of login and signup pages for "UniStock," an Android-based E-Commerce application tailored for the pharmaceutical industry.',
         "Played a key role as a contributor, embracing a systematic Scrum methodology and utilizing Jira for efficient project management.",
       ],
     },
@@ -52,9 +52,11 @@ const Projects = () => {
     <>
       <div className={style.container}>
         <h2>Projects</h2>
-        {projectsList.map((project, index) => (
-          <ProjectItem index={index} project={project} />
-        ))}
+        <div className={style.projects}>
+          {projectsList.map((project, index) => (
+            <ProjectItem index={index} project={project} />
+          ))}
+        </div>
       </div>
       <BackgroundIcons />
     </>

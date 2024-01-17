@@ -7,7 +7,12 @@ const AboutMe = () => {
     <>
       <div className={style.container}>
         <h2>About Me</h2>
-        <p>
+        <p
+          style={{
+            paddingLeft: "20px",
+            paddingRight: "20px",
+          }}
+        >
           Results-driven software professional dedicated to leveraging
           technology for enhanced applications. Skilled in Frontend and Backend
           development.
