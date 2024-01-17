@@ -1,14 +1,16 @@
-.homeContent .title {
-  position: absolute;
+.homeContent {
   width: 100%;
-  left: 0%;
-  top: 20%;
+  height: 740px;
+}
+.homeContent .title {
   text-align: center;
   font-size: 50px;
   display: flex;
   flex-direction: column;
-  animation: expand 0.5s;
-  z-index: 3;
+  animation: Home_expand__k8Vdw 0.5s;
+  position: relative;
+  z-index: 4;
+  top: 10%;
 }
 
 .title__main {

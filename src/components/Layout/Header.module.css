@@ -1,17 +1,27 @@
+@import "../../assets/color.css";
+
 .navbar {
   display: flex;
-  box-shadow: 0px 0px 3px #8b8b8b2e;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
+  /* box-shadow: 0px 0px 3px #575757; */
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  position: relative;
+  height: 65px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--indigo);
   z-index: 6;
+  opacity: 0.9;
 }
 
 .navbar__logo a img {
-  width: 100px;
+  position: relative;
+  right: 13px;
+  width: 70px;
+  bottom: 5px;
 }
 
 .navbar__logo a img:hover {
@@ -21,6 +31,11 @@
 
 .navbar__logo {
   padding: 5px;
+  width: 51px;
+  height: 51px;
+  background-color: var(--whiteText);
+  border-radius: 50%;
+  margin: 10px;
 }
 
 .sideNavbar {
@@ -62,7 +77,7 @@
   display: inline-block;
   padding-left: 2px;
   padding-right: 2px;
-  color: black;
+  color: var(--whiteText);
   height: 70%;
   position: relative;
   top: 30%;
@@ -93,7 +108,7 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-decoration: none;
-  color: black;
+  color: var(--whiteText);
   display: block;
   width: 100%;
 }
@@ -105,8 +120,11 @@
   display: block;
   font-size: 24px;
   cursor: pointer;
-  /* z-index: 5; */
-  padding: 10px;
+  color: var(--whiteText);
+  margin-left: 10px;
+  /* position: absolute;
+  top: 15px;
+  left: 15px; */
 }
 
 .closeBtn {
@@ -140,8 +158,8 @@
 }
 @media (min-width: 600px) {
   .active {
-    border-bottom: 3px solid transparent;
-    border-image: linear-gradient(to right, black, black);
+    border-bottom: 3px solid var(--whiteText);
+    border-image: linear-gradient(to right, var(--whiteText), var(--whiteText));
     border-image-slice: 1;
 
     transition: all 0.2s ease;
@@ -151,18 +169,24 @@
 @media (max-width: 600px) {
   .navbar {
     justify-content: space-between;
+    opacity: 1;
   }
 
   .sideNavbar {
     width: 80%;
     left: -100%;
   }
+  .sideNavbar li a {
+    color: var(--blackText);
+  }
 
   .navbar__logo {
     display: block;
+    /* width: 100%; */
+    text-align: center;
   }
   .navbar__logo a img {
-    width: 50px;
+    /* width: 50px; */
   }
   .active {
     background-color: #ccc;

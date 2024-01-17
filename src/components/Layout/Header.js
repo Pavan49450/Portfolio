@@ -107,6 +107,17 @@ const Header = () => {
 
   return (
     <nav className={style.navbar}>
+      {width < breakpoint ? (
+        <div
+          className={style.mobileMenuIcon}
+          onClick={handleMobileMenuToggle}
+          ref={mobileMenuIconRef}
+        >
+          ☰
+        </div>
+      ) : (
+        <div className={style.nav}>{navElements}</div>
+      )}
       <Logo />
       {width < breakpoint && (
         <div
@@ -134,17 +145,6 @@ const Header = () => {
             {navElements}
           </ul>
         </div>
-      )}
-      {width < breakpoint ? (
-        <div
-          className={style.mobileMenuIcon}
-          onClick={handleMobileMenuToggle}
-          ref={mobileMenuIconRef}
-        >
-          ☰
-        </div>
-      ) : (
-        <div className={style.nav}>{navElements}</div>
       )}
     </nav>
   );

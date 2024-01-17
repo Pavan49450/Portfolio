@@ -8,6 +8,7 @@
   opacity: 0.9;
   z-index: 4;
   padding-bottom: 20px;
+  min-height: 727px;
 }
 
 .container h2 {
