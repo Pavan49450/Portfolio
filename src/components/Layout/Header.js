@@ -67,7 +67,7 @@ const Header = () => {
           to="/"
           title="Link to home page"
           onClick={handleMobileMenuToggle}
-          className={({ isActive }) => isActive && style.active}
+          className={({ isActive }) => (isActive ? style.active : undefined)}
         >
           Home
         </NavLink>
@@ -77,7 +77,7 @@ const Header = () => {
           to="about"
           title="Link to about page"
           onClick={handleMobileMenuToggle}
-          className={({ isActive }) => isActive && style.active}
+          className={({ isActive }) => (isActive ? style.active : undefined)}
         >
           About me
         </NavLink>
@@ -87,7 +87,7 @@ const Header = () => {
           to="projects"
           title="Link to projects page"
           onClick={handleMobileMenuToggle}
-          className={({ isActive }) => isActive && style.active}
+          className={({ isActive }) => (isActive ? style.active : undefined)}
         >
           Projects
         </NavLink>
@@ -97,7 +97,7 @@ const Header = () => {
           to="skills"
           title="Link to skills page"
           onClick={handleMobileMenuToggle}
-          className={({ isActive }) => isActive && style.active}
+          className={({ isActive }) => (isActive ? style.active : undefined)}
         >
           Skills
         </NavLink>
@@ -110,11 +110,15 @@ const Header = () => {
       <Logo />
       {width < breakpoint && (
         <div
-          className={`${style.overlay} ${isMobileMenuOpen && style.show}`}
+          className={`${style.overlay} ${
+            isMobileMenuOpen ? style.show : undefined
+          }`}
           ref={overlayRef}
         >
           <ul
-            className={`${style.sideNavbar} ${isMobileMenuOpen && style.show}`}
+            className={`${style.sideNavbar} ${
+              isMobileMenuOpen ? style.show : undefined
+            }`}
             ref={sideNavbarRef}
           >
             <div className={style.sideNavbar_head}>

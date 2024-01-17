@@ -1,9 +1,6 @@
-/* projects.module.css */
-
 .container {
   max-width: 800px;
   margin: 0 auto;
-  /* padding: 20px; */
   background-color: #f8f8f8;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -16,7 +13,7 @@
   text-align: center;
   margin: 0;
   padding: 10px;
-  border-bottom: 1px solid;
+  border-bottom: 3px solid;
   margin-bottom: 1.5rem;
 }
 
@@ -24,6 +21,6 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  /* gap: 1rem; */
   flex-direction: column;
+  padding-bottom: 20px;
 }
