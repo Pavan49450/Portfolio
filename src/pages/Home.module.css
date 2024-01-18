@@ -10,14 +10,14 @@
   animation: Home_expand__k8Vdw 0.5s;
   position: relative;
   z-index: 4;
-  top: 10%;
+  top: 25%;
 }
 
 .title__main {
   font-size: 70px;
 }
 .name {
-  color: red;
+  color: var(--gold);
   font-size: 100px;
 }
 
@@ -34,8 +34,10 @@
   .homeContent .title {
     font-size: 25px;
   }
-  .title__main,
-  .name {
+  .title__main {
     font-size: 30px;
+  }
+  .name {
+    font-size: 35px;
   }
 }

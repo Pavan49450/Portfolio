@@ -13,7 +13,7 @@
   text-align: center;
   margin: 0;
   padding: 10px;
-  border-bottom: 3px solid;
+  border-bottom: 3px solid var(--amethyst);
   margin-bottom: 1.5rem;
 }
 

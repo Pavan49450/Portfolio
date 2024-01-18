@@ -1,10 +1,10 @@
 .footer {
-  background-color: #9966cc;
+  background: linear-gradient(45deg, var(--gold), var(--yellow));
   padding: 20px 0;
   width: 100%;
   height: fit-content;
   text-align: center;
-  z-index: 6;
+  z-index: 5;
   position: relative;
   border-radius: 5px;
   opacity: 0.9;
@@ -17,24 +17,30 @@
 }
 
 .socialIcons {
-  /* width: 100%; */
   margin-bottom: 10px;
   display: flex;
-  /* justify-content: space-around; */
   align-items: center;
 }
 
 .socialIcons a {
-  font-size: 24px;
+  font-size: 15px;
   margin: 0 10px;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .link {
   display: flex;
   align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: var(--whiteText);
+  border-radius: 50%;
+  margin: 0 10px;
 }
 
 p {
-  margin: 0;
+  margin: 10px;
   color: var(--whiteText);
 }

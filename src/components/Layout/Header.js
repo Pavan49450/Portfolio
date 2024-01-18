@@ -69,7 +69,7 @@ const Header = () => {
           onClick={handleMobileMenuToggle}
           className={({ isActive }) => (isActive ? style.active : undefined)}
         >
-          Home
+          HOME
         </NavLink>
       </li>
       <li>
@@ -79,7 +79,7 @@ const Header = () => {
           onClick={handleMobileMenuToggle}
           className={({ isActive }) => (isActive ? style.active : undefined)}
         >
-          About me
+          ABOUT ME
         </NavLink>
       </li>
       <li>
@@ -89,7 +89,7 @@ const Header = () => {
           onClick={handleMobileMenuToggle}
           className={({ isActive }) => (isActive ? style.active : undefined)}
         >
-          Projects
+          PROJECTS
         </NavLink>
       </li>
       <li>
@@ -99,7 +99,7 @@ const Header = () => {
           onClick={handleMobileMenuToggle}
           className={({ isActive }) => (isActive ? style.active : undefined)}
         >
-          Skills
+          SKILLS
         </NavLink>
       </li>
     </>

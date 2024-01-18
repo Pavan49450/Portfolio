@@ -6,7 +6,7 @@ const Footer = () => {
     {
       name: "Git",
       address: "https://github.com/pavan49450",
-      imageURL: "https://img.icons8.com/ios-filled/100/git.png",
+      imageURL: "https://img.icons8.com/ios-glyphs/90/github.png",
     },
     {
       name: "Linkedin",
@@ -37,7 +37,6 @@ const Footer = () => {
                   alt={link.name}
                   style={{ borderRadius: "50%", width: "35px", height: "35px" }}
                 />
-                {/* <p>{link.name}</p> */}
               </div>
             </a>
           ))}

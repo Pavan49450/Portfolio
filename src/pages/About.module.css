@@ -16,13 +16,14 @@
 .summary {
   padding-left: 20px;
   padding-right: 20px;
+  color: #333;
 }
 
 .container h2 {
   color: #333;
   margin-bottom: 20px;
   text-align: center;
-  border-bottom: 3px solid;
+  border-bottom: 3px solid var(--amethyst);
   padding: 10px;
 }
 

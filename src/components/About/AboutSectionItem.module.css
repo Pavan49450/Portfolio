@@ -2,7 +2,7 @@
   margin-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--amethyst);
 }
 .section:last-child {
   border-bottom: none;
