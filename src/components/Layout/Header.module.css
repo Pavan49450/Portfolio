@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   height: 65px;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -162,8 +162,7 @@
 }
 @media (min-width: 600px) {
   .active {
-    border-bottom: 3px solid var(--whiteText);
-    border-image: linear-gradient(to right, var(--whiteText), var(--whiteText));
+    border-bottom: 3px solid var(--blackText);
     border-image-slice: 1;
 
     transition: all 0.2s ease;
