@@ -13,7 +13,7 @@
 
 .container h2 {
   color: #333;
-  margin-bottom: 20px;
+  margin: 0 0 1.5rem;
   text-align: center;
   border-bottom: 3px solid var(--amethyst);
   padding: 10px;

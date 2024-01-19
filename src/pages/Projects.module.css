@@ -11,10 +11,9 @@
 
 .container h2 {
   text-align: center;
-  margin: 0;
   padding: 10px;
   border-bottom: 3px solid var(--amethyst);
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.5rem;
 }
 
 .projects {
