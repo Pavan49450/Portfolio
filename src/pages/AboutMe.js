@@ -38,7 +38,7 @@ const AboutMe = () => {
           period: "Sep 2023 — Jan 2024",
           content: [
             "Led the development of the Schedula-web project at PearlThoughts, leveraging Next.js and Nest.js to create a sophisticated web application. This innovative solution facilitated seamless appointment scheduling between patients and doctors, showcasing a commitment to cutting-edge technologies and enhancing the overall user experience.",
-            "Contributed significantly to the 'niStock project by leading the development of login and signup pages for an Android-based E-Commerce application tailored to the pharmaceutical industry. Played a key role as a contributor, embracing a systematic Scrum methodology and utilizing Jira for efficient project management, ensuring the successful implementation of crucial features.",
+            "Contributed significantly to the UniStock project by leading the development of login and signup pages for an Android-based E-Commerce application tailored to the pharmaceutical industry. Played a key role as a contributor, embracing a systematic Scrum methodology and utilizing Jira for efficient project management, ensuring the successful implementation of crucial features.",
             "Played a crucial role in the Zoggy Foods project, focusing on the development of an online food ordering app. Streamlined the food ordering process, providing users with a convenient and efficient platform for satisfying culinary cravings. Demonstrated expertise in user-centric design and project execution, contributing to the overall success of the application.",
           ],
           logo: "pearlthoughts-logo.jpeg",
@@ -76,7 +76,7 @@ const AboutMe = () => {
   return (
     <>
       <div className={style.container}>
-        <h2>About Me</h2>
+        <h2>ABOUT ME</h2>
         <p className={style.summary}>
           Results-driven software professional dedicated to leveraging
           technology for enhanced applications. Skilled in Frontend and Backend

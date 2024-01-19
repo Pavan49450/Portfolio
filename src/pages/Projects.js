@@ -51,7 +51,7 @@ const Projects = () => {
   return (
     <>
       <div className={style.container}>
-        <h2>Projects</h2>
+        <h2>PROJECTS</h2>
         <div className={style.projects}>
           {projectsList.map((project, index) => (
             <ProjectItem index={index} project={project} />

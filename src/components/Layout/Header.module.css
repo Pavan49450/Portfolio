@@ -18,7 +18,8 @@
 
 .navbar__logo a img {
   position: relative;
-  right: 2px;
+  right: 5px;
+  top: 2px;
   width: 60px;
 }
 

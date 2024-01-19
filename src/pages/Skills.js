@@ -28,7 +28,7 @@ const Skills = () => {
   return (
     <>
       <div className={style.container}>
-        <h2>Skills</h2>
+        <h2>SKILLS</h2>
         <h3 style={{ margin: "0", marginLeft: "2rem" }}>Technical Skills</h3>
         <ul className={style.skills}>
           {skillsList.technicalSkills.map((skill, index) => (

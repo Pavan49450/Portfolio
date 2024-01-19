@@ -5,9 +5,18 @@ import { Link, NavLink } from "react-router-dom";
 
 const Logo = () => (
   <div className={style.navbar__logo}>
-    <Link to="/" title="Link to home page">
-      <img src={logo} alt="logo" title="logo"></img>
-    </Link>
+    <div
+      style={{
+        width: "100%",
+        border: "1px solid #ccc",
+        borderRadius: "50%",
+        height: "100%",
+      }}
+    >
+      <Link to="/" title="Link to home page">
+        <img src={logo} alt="logo" title="logo"></img>
+      </Link>
+    </div>
   </div>
 );
 
