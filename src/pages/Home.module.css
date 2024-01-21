@@ -13,7 +13,7 @@
   font-size: 50px;
   display: flex;
   flex-direction: column;
-  animation: Home_Home_expand__k8Vdw__NU0CF 0.5s;
+  animation: expand 0.5s ease;
   justify-content: center;
 }
 
