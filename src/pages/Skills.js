@@ -6,6 +6,8 @@ const Skills = () => {
     technicalSkills: [
       { address: "react.png", name: "React", skillLevel: 5 },
       { address: "node-js.png", name: "Node", skillLevel: 4 },
+      { address: "sql.png", name: "SQL", skillLevel: 4 },
+      { address: "Azure.png", name: "Azure", skillLevel: 4 },
       { address: "mongodb.png", name: "Mongodb", skillLevel: 4 },
       { address: "react.png", name: "React Native", skillLevel: 4 },
       { address: "css3.png", name: "CSS", skillLevel: 4 },

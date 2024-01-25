@@ -16,6 +16,8 @@ const images = [
   { address: "python.png", name: "python" },
   { address: "react.png", name: "react" },
   { address: "visual-studio-code.png", name: "vscode" },
+  { address: "sql.png", name: "sql" },
+  { address: "Azure.png", name: "azure" },
 ];
 
 const duration = 20;

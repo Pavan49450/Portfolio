@@ -23,6 +23,7 @@
 .name {
   color: var(--gold);
   font-size: 100px;
+  text-shadow: 4px 4px 4px #000;
 }
 
 @keyframes expand {

@@ -23,12 +23,12 @@
   left: 20%;
 }
 
-.git {
+.typescript {
   top: 30%;
   left: 40%;
 }
 
-.github {
+.mongodb {
   top: 40%;
   left: 60%;
 }
@@ -43,7 +43,7 @@
   left: 15%;
 }
 
-.typescript {
+.git {
   top: 70%;
   left: 40%;
 }
@@ -53,7 +53,7 @@
   left: 15%;
 }
 
-.mongodb {
+.github {
   top: 70%;
   left: 70%;
 }
@@ -76,6 +76,16 @@
 .vscode {
   top: 40%;
   left: 25%;
+}
+
+.sql {
+  top: 40%;
+  right: 10%;
+}
+
+.azure {
+  bottom: 10%;
+  right: 40%;
 }
 
 @media (max-width: 768px) {
