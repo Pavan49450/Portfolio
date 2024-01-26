@@ -8,7 +8,7 @@ const HomePage = () => {
         <span className={style.title__main}>
           Hi I'm <span className={style.name}>Kattula Pavan Kumar</span>
         </span>
-        <span> I build and design web applications</span>
+        <span> I build and design Web applications</span>
       </div>
       <BackgroundIcons />
     </div>
