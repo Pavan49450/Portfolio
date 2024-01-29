@@ -1,27 +1,71 @@
 .project {
-  padding-left: 20px;
-  padding-right: 20px;
-  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(146, 146, 146, 0.2),
+    0 6px 10px 0 rgba(131, 131, 131, 0.19);
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  width: 250px;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
 }
+
 .project:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
-.project h2 {
-  color: #333;
+.project:hover {
+  box-shadow: 0 4px 6px 0 rgba(124, 124, 124, 0.24),
+    0 6px 10px 0 rgba(134, 134, 134, 0.23);
+  background-color: #e8e8e8; /* Dark grey */
+  transform: scale(1.05);
 }
 
-.project h3 {
-  color: #007bff;
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This property prevents stretching and maintains aspect ratio */
+  border-radius: 5px; /* You can adjust the border-radius as needed */
 }
 
-.project p {
-  color: #4b4b4b;
-  line-height: 1.6;
-}
 .subHeading {
+  position: absolute;
+  bottom: 0;
   display: flex;
+  gap: 10px;
+  width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  background: linear-gradient(45deg, var(--yellow), var(--gold));
   height: 40px;
+}
+.subHeading h3,
+p {
+  margin: 0;
+  color: black;
+}
+.subHeading h3 {
+  font-size: 14px;
+}
+.subHeading p {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #db5b34; /* Orange */
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  color: #6e34db; /* Purple */
 }

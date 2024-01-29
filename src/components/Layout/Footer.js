@@ -41,7 +41,9 @@ const Footer = () => {
             </a>
           ))}
         </div>
-        <p>&copy; 2024 Kattula Pavan Kumar. All Rights Reserved.</p>
+        <p className={styles.copyRights}>
+          &copy; 2024 Kattula Pavan Kumar. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );

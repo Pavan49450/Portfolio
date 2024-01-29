@@ -42,7 +42,7 @@
   margin: 0 10px;
 }
 
-p {
+.copyRights {
   margin: 10px;
   color: var(--blackText);
 }

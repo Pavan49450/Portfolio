@@ -10,7 +10,7 @@
   min-height: 90vh;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .main {
     margin-bottom: 0;
     margin-top: 0px;

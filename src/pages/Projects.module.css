@@ -1,12 +1,13 @@
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   background-color: #f8f8f8;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding: 1rem;
+  padding: 2rem;
   z-index: 4;
+  min-height: 80vh;
 }
 
 .container h2 {
@@ -18,8 +19,8 @@
 
 .projects {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
-  flex-direction: column;
-  padding-bottom: 20px;
+  flex-direction: row;
+  gap: 1rem;
 }
