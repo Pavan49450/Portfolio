@@ -29,8 +29,8 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <div className={styles.socialIcons}>
-          {links.map((link) => (
-            <a href={link.address} title={link.name}>
+          {links.map((link, index) => (
+            <a href={link.address} title={link.name} key={index}>
               <div className={styles.link}>
                 <img
                   src={link.imageURL}
