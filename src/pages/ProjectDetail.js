@@ -6,6 +6,8 @@ import URL from "../constants/url";
 import AcrobaticLoader from "../animations/AcrobaticLoader";
 import style from "./ProjectDetail.module.css";
 import CustomImage from "../UI/Image/Image";
+import Container from "../UI/Container/Container";
+import Title from "../UI/Title/Title";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -78,67 +80,70 @@ const ProjectDetail = () => {
       {isLoading ? (
         <AcrobaticLoader />
       ) : (
-        <div className={style.container}>
-          <div className={style.detailsHead}>
-            <div className={style.titleHead}>
-              <h2 className={style.title}>{project && project.title}</h2>
-              <p className={style.background}>
-                ({project && project.projectBackground})
-              </p>
+        <Container>
+          <Title title={"Project Details"} />
+          <div className={style.container}>
+            <div className={style.detailsHead}>
+              <div className={style.titleHead}>
+                <h2 className={style.title}>{project && project.title}</h2>
+                <p className={style.background}>
+                  ({project && project.projectBackground})
+                </p>
+              </div>
+              <div className={style.links}>
+                {project && project.websiteLink && (
+                  <a
+                    href={project.websiteLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="Website Link"
+                  >
+                    <CustomImage
+                      src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
+                      alt="website"
+                      style={{ width: "30px" }}
+                    />
+                  </a>
+                )}
+                {project && project.gitLink && (
+                  <a
+                    href={project.gitLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    title="GitHub Link"
+                  >
+                    <CustomImage
+                      src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
+                      alt="github"
+                      style={{ width: "30px" }}
+                    />
+                  </a>
+                )}
+              </div>
             </div>
-            <div className={style.links}>
-              {project && project.websiteLink && (
-                <a
-                  href={project.websiteLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Website Link"
-                >
-                  <CustomImage
-                    src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
-                    alt="website"
-                    style={{ width: "30px" }}
-                  />
-                </a>
-              )}
-              {project && project.gitLink && (
-                <a
-                  href={project.gitLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  title="GitHub Link"
-                >
-                  <CustomImage
-                    src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
-                    alt="github"
-                    style={{ width: "30px" }}
-                  />
-                </a>
-              )}
+            {project && (
+              <div className={style.thumbnailContainer}>
+                {previousButton}
+                <CustomImage
+                  src={project.images[currentImage]}
+                  alt={project.title}
+                  className={style.thumbnail}
+                  onClick={() => openOverlay(currentImage)}
+                />
+                {nextButton}
+                {/* {ActionsButtons} */}
+              </div>
+            )}
+            {/* <div className={style.details}> */}
+            <div className={style.description}>
+              {project &&
+                project.description.map((description, index) => (
+                  <p key={index}>{description}</p>
+                ))}
             </div>
+            {/* </div> */}
           </div>
-          {project && (
-            <div className={style.thumbnailContainer}>
-              {previousButton}
-              <CustomImage
-                src={project.images[currentImage]}
-                alt={project.title}
-                className={style.thumbnail}
-                onClick={() => openOverlay(currentImage)}
-              />
-              {nextButton}
-              {/* {ActionsButtons} */}
-            </div>
-          )}
-          {/* <div className={style.details}> */}
-          <div className={style.description}>
-            {project &&
-              project.description.map((description, index) => (
-                <p key={index}>{description}</p>
-              ))}
-          </div>
-          {/* </div> */}
-        </div>
+        </Container>
       )}
       {showOverlay && (
         <>

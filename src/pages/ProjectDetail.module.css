@@ -18,9 +18,8 @@
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  background-color: #f8f8f8;
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   padding: 2rem;
   z-index: 4;
@@ -28,6 +27,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: 0;
 }
 
 .titleHead {

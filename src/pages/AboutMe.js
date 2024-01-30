@@ -6,6 +6,8 @@ import AboutSectionItem from "../components/About/AboutSectionItem";
 import useHttps from "../hooks/use-https";
 import URL from "../constants/url";
 import AcrobaticLoader from "../animations/AcrobaticLoader";
+import Title from "../UI/Title/Title";
+import Container from "../UI/Container/Container";
 
 const AboutMe = () => {
   const [sections, setSections] = useState([]);
@@ -26,8 +28,8 @@ const AboutMe = () => {
 
   return (
     <>
-      <div className={style.container}>
-        <h2>ABOUT ME</h2>
+      <Container className={style.container}>
+        <Title title={"ABOUT ME"} />
 
         {!isLoading ? (
           <>
@@ -43,7 +45,7 @@ const AboutMe = () => {
         ) : (
           <AcrobaticLoader />
         )}
-      </div>
+      </Container>
       <BackgroundIcons />
     </>
   );

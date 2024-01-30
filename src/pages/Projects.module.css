@@ -5,17 +5,17 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding: 2rem;
   z-index: 4;
+  padding-bottom: 20px;
   min-height: 80vh;
 }
 
-.container h2 {
+/* .container h2 {
   text-align: center;
   padding: 10px;
   border-bottom: 3px solid var(--amethyst);
   margin: 0 0 1.5rem;
-}
+} */
 
 .projects {
   display: flex;

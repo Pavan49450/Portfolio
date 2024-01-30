@@ -5,6 +5,8 @@ import BackgroundIcons from "../components/Background/BackgroundIcons";
 import useHttps from "../hooks/use-https";
 import URL from "../constants/url";
 import AcrobaticLoader from "../animations/AcrobaticLoader";
+import Title from "../UI/Title/Title";
+import Container from "../UI/Container/Container";
 
 const Projects = () => {
   const { isLoading, sendRequest, error } = useHttps();
@@ -25,8 +27,8 @@ const Projects = () => {
   }
   return (
     <>
-      <div className={style.container}>
-        <h2>PROJECTS</h2>
+      <Container className={style.container}>
+        <Title title={"PROJECTS"} />
         {isLoading ? (
           <AcrobaticLoader />
         ) : (
@@ -36,7 +38,7 @@ const Projects = () => {
             ))}
           </div>
         )}
-      </div>
+      </Container>
       <BackgroundIcons />
     </>
   );

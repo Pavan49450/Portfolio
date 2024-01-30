@@ -38,20 +38,21 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(45deg, var(--yellow), var(--gold));
+  background: #3882f1;
   height: 40px;
 }
 .subHeading h3,
 p {
   margin: 0;
-  color: black;
 }
 .subHeading h3 {
+  color: #fff;
   font-size: 14px;
 }
 .subHeading p {
   font-size: 13px;
   font-style: italic;
+  color: #ccc;
 }
 
 .links {
