@@ -16,10 +16,14 @@ const ProjectDetail = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [showOverlay, setShowOverlay] = useState(false);
 
+  const fetchData = (data) => {
+    setProject(data);
+  };
+
   useEffect(() => {
     // Fetch project details only if id is not null
     if (id) {
-      sendRequest({ url: `${URL.backendUrl}/projects/${id}` }, setProject);
+      sendRequest({ url: `${URL.backendUrl}/projects/${id}` }, fetchData);
     }
   }, [id, sendRequest]);
 

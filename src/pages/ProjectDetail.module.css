@@ -143,6 +143,14 @@
   align-items: center;
 }
 
+.description p {
+  margin-bottom: 1rem;
+  text-align: justify; /* Adjust text alignment as needed */
+  font-size: 16px; /* Adjust font size as needed */
+  line-height: 1.5; /* Adjust line height as needed for better readability */
+  color: #333; /* Adjust text color as needed */
+}
+
 .modalButtons button {
   background-color: #3498db;
   color: #fff;
@@ -180,5 +188,8 @@
   }
   .container {
     padding: 1rem;
+  }
+  .description {
+    margin: 0;
   }
 }
