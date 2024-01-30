@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import logo from "../../assets/Logo.png";
 import style from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
+import CustomImage from "../../UI/Image/Image";
 
 const Logo = () => (
   <div className={style.navbar__logo}>
@@ -14,7 +15,7 @@ const Logo = () => (
       }}
     >
       <Link to="/" title="Link to home page">
-        <img src={logo} alt="logo" title="logo"></img>
+        <CustomImage src={logo} alt="logo" title="logo" />
       </Link>
     </div>
   </div>

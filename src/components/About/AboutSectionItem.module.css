@@ -62,4 +62,7 @@
   .subHeading p {
     margin: 0;
   }
+  .section {
+    padding: 0.5rem;
+  }
 }

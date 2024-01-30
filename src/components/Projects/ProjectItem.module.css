@@ -69,3 +69,8 @@ p {
 .links a:hover {
   color: #6e34db; /* Purple */
 }
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}

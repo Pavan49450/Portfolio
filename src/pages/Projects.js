@@ -18,10 +18,11 @@ const Projects = () => {
 
   useEffect(() => {
     sendRequest({ url: URL.backendUrl + "/projects" }, fetchProjectsData);
-  }, []);
+  }, [sendRequest]);
 
-  // Rest of your component
-
+  if (error) {
+    return <p>{error}</p>;
+  }
   return (
     <>
       <div className={style.container}>

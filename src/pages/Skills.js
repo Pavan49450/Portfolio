@@ -16,7 +16,11 @@ const Skills = () => {
 
   useEffect(() => {
     sendRequest({ url: URL.backendUrl + "/skills" }, fetchSkillsData);
-  }, []);
+  }, [sendRequest]);
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <>

@@ -18,9 +18,11 @@ const AboutMe = () => {
   };
   useEffect(() => {
     sendRequest({ url: URL.backendUrl + "/aboutme" }, fetchMeData);
-    console.log(sections);
-    console.log(error);
-  }, []);
+  }, [sendRequest]);
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <>

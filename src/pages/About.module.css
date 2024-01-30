@@ -26,3 +26,12 @@
   border-bottom: 3px solid var(--amethyst);
   padding: 10px;
 }
+
+@media (max-width: 600px) {
+  .container {
+    padding: 5px;
+  }
+  .summary {
+    padding: 0 10px;
+  }
+}
