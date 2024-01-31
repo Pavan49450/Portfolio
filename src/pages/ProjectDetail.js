@@ -1,6 +1,6 @@
 // ProjectDetail.js
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useHttps from "../hooks/use-https";
 import URL from "../constants/url";
 import AcrobaticLoader from "../animations/AcrobaticLoader";
@@ -52,9 +52,9 @@ const ProjectDetail = () => {
       className={style.previousButton}
       style={{
         display: (project && project.images.length) <= 1 ? "none" : "block",
-        left: !showOverlay && "0",
-        height: !showOverlay && "100%",
-        top: !showOverlay && "0",
+        // left: !showOverlay && "0",
+        // height: !showOverlay && "100%",
+        // top: !showOverlay && "0",
       }}
       onClick={() => navigateImage(-1)}
     >
@@ -75,9 +75,9 @@ const ProjectDetail = () => {
       onClick={() => navigateImage(1)}
       style={{
         display: (project && project.images.length) <= 1 ? "none" : "block",
-        right: !showOverlay && "0",
-        height: !showOverlay && "100%",
-        top: !showOverlay && "0",
+        // right: !showOverlay && "0",
+        // height: !showOverlay && "100%",
+        // top: !showOverlay && "0",
       }}
     >
       <CustomImage
@@ -128,6 +128,21 @@ const ProjectDetail = () => {
       ) : (
         <Container>
           <Title title={"Project Details"} />
+          <div
+            style={{
+              paddingLeft: "2rem",
+            }}
+          >
+            <Link
+              to={"/projects"}
+              style={{
+                fontSize: "40px",
+                textDecoration: "none",
+              }}
+            >
+              &larr;
+            </Link>
+          </div>
           <div className={style.container}>
             <div className={style.detailsHead}>
               {projectLinks}
