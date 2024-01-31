@@ -6,10 +6,10 @@ export default function ProjectItem({ index, project }) {
   return (
     <div key={index} className={style.project}>
       <Link to={`/projects/${project._id}`} style={{ textDecoration: "none" }}>
-        <div className={style.subHeading}>
+        {/* <div className={style.subHeading}>
           <h3>{project.title}</h3>
           <p>({project.projectBackground})</p>
-        </div>
+        </div> */}
         {project.images && (
           <CustomImage
             src={project.images[0]}
