@@ -1,5 +1,5 @@
 .project {
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 4px 0 rgba(146, 146, 146, 0.2),
@@ -10,6 +10,7 @@
   height: 250px;
   position: relative;
   overflow: hidden;
+  margin: auto;
 }
 
 .project:last-child {
