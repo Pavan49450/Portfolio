@@ -30,8 +30,11 @@ const ProjectDetail = () => {
   const openOverlay = (index) => {
     setCurrentImage(index);
     setShowOverlay(true);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional: Adds smooth scrolling effect
+    });
   };
-
   const closeOverlay = (e) => {
     if (e.target.classList.contains(style.overlay)) {
       setShowOverlay(false);
@@ -50,7 +53,10 @@ const ProjectDetail = () => {
       style={{
         display: (project && project.images.length) <= 1 ? "none" : "block",
         left: !showOverlay && "0",
+        height: !showOverlay && "100%",
+        top: !showOverlay && "0",
       }}
+      onClick={() => navigateImage(-1)}
     >
       <CustomImage
         src="https://cdn-icons-png.flaticon.com/512/11181/11181468.png"
@@ -58,7 +64,7 @@ const ProjectDetail = () => {
         style={{
           transform: "rotate(180deg)",
         }}
-        onClick={() => navigateImage(-1)}
+        classForDiv={style.btnCenter}
       />
     </div>
   );
@@ -66,16 +72,52 @@ const ProjectDetail = () => {
   const previousButton = (
     <div
       className={style.nextButton}
+      onClick={() => navigateImage(1)}
       style={{
         display: (project && project.images.length) <= 1 ? "none" : "block",
         right: !showOverlay && "0",
+        height: !showOverlay && "100%",
+        top: !showOverlay && "0",
       }}
     >
       <CustomImage
         src="https://cdn-icons-png.flaticon.com/512/11181/11181468.png"
         alt="next"
-        onClick={() => navigateImage(1)}
+        classForDiv={style.btnCenter}
       />
+    </div>
+  );
+
+  const projectLinks = (
+    <div className={style.links}>
+      {project && project.websiteLink && (
+        <a
+          href={project.websiteLink}
+          target="_blank"
+          rel="noreferrer"
+          title="Website Link"
+        >
+          <CustomImage
+            src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
+            alt="website"
+            style={{ width: "30px" }}
+          />
+        </a>
+      )}
+      {project && project.gitLink && (
+        <a
+          href={project.gitLink}
+          target="_blank"
+          rel="noreferrer"
+          title="GitHub Link"
+        >
+          <CustomImage
+            src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
+            alt="github"
+            style={{ width: "30px" }}
+          />
+        </a>
+      )}
     </div>
   );
 
@@ -88,41 +130,12 @@ const ProjectDetail = () => {
           <Title title={"Project Details"} />
           <div className={style.container}>
             <div className={style.detailsHead}>
+              {projectLinks}
               <div className={style.titleHead}>
                 <h2 className={style.title}>{project && project.title}</h2>
                 <p className={style.background}>
                   ({project && project.projectBackground})
                 </p>
-              </div>
-              <div className={style.links}>
-                {project && project.websiteLink && (
-                  <a
-                    href={project.websiteLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    title="Website Link"
-                  >
-                    <CustomImage
-                      src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
-                      alt="website"
-                      style={{ width: "30px" }}
-                    />
-                  </a>
-                )}
-                {project && project.gitLink && (
-                  <a
-                    href={project.gitLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    title="GitHub Link"
-                  >
-                    <CustomImage
-                      src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
-                      alt="github"
-                      style={{ width: "30px" }}
-                    />
-                  </a>
-                )}
               </div>
             </div>
             {project && (

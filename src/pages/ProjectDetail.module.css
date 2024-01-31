@@ -3,16 +3,47 @@
   top: 50%;
   right: 5%;
   z-index: 4;
+  height: auto;
+  width: 40px;
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  background-color: #e1e1e152;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 3px;
 }
 .previousButton {
   position: absolute;
   top: 50%;
   left: 5%;
+  z-index: 4;
+  height: auto;
+  width: 40px;
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  background-color: #e1e1e152;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 3px;
 }
 .nextButton img,
 .previousButton img {
   width: 30px;
   cursor: pointer;
+}
+
+.nextButton:hover,
+.previousButton:hover {
+  opacity: 0.7;
+}
+
+.btnCenter {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -57,6 +88,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .detailsHead a {
@@ -76,6 +108,8 @@
 .links {
   display: flex;
   gap: 1rem;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .thumbnailContainer {
@@ -84,16 +118,19 @@
   flex-wrap: wrap;
   gap: 10px;
   border-radius: 10px;
-  padding: 0 2rem;
+  /* padding: 0 2rem; */
   justify-content: center;
 }
 
 .thumbnail:hover {
-  transform: scale(1.04);
+  /* transform: scale(1.04);
+   */
+  /* opacity: 0.7; */
+  border: 1px solid;
 }
 
 .thumbnail {
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   max-width: 900px;
   box-shadow: 1px 2px 4px #555;
