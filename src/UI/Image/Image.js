@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import AcrobaticLoader from "../../animations/AcrobaticLoader";
 import "./Image.css";
 import CircularLoader from "../../animations/CircularLoader";
+import GhostLoading from "../../animations/GhostLoading";
 
 const CustomImage = ({
   src,
@@ -21,7 +22,7 @@ const CustomImage = ({
 
   return (
     <div className={`custom-image-wrapper ${classForDiv}`}>
-      {loading && <CircularLoader />}
+      {loading && <GhostLoading count={1} />}
       <img
         src={src}
         alt={alt}

@@ -1,54 +1,75 @@
+/* ProjectItem.module.css */
 .project {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(146, 146, 146, 0.2),
-    0 6px 10px 0 rgba(131, 131, 131, 0.19);
-  transition: all 0.3s ease;
-  background-color: #f9f9f9;
-  height: 250px;
   position: relative;
-  overflow: hidden;
-  margin: auto;
-}
-
-.project:last-child {
-  margin-bottom: 0;
+  width: 100%;
+  height: 250px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .project:hover {
-  box-shadow: 0 4px 6px 0 rgba(124, 124, 124, 0.24),
-    0 6px 10px 0 rgba(134, 134, 134, 0.23);
-  background-color: #e8e8e8;
-  transform: scale(1.05);
+  transform: rotateY(180deg);
 }
 
-.image {
+.flipper {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* backface-visibility: hidden; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.front .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
 
+.back {
+  transform: rotateY(180deg);
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project:hover .back {
+  opacity: 1;
+}
+
 .subHeading {
-  /* position: absolute; */
-  bottom: 0;
   display: flex;
   gap: 10px;
   width: 100%;
   align-items: center;
   justify-content: center;
-  /* background: #3882f1; */
   height: 40px;
+  position: absolute;
+  bottom: 0;
   z-index: 3;
 }
+
 .subHeading h3,
-p {
+.subHeading p {
   margin: 0;
 }
+
 .subHeading h3 {
-  /* color: #fff; */
   font-size: 14px;
 }
+
 .subHeading p {
   font-size: 13px;
   font-style: italic;
@@ -62,13 +83,13 @@ p {
 .links a {
   display: inline-block;
   margin-right: 10px;
-  color: #db5b34; /* Orange */
+  color: #db5b34;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .links a:hover {
-  color: #6e34db; /* Purple */
+  color: #6e34db;
 }
 
 .wrapper {

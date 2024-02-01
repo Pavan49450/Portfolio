@@ -18,4 +18,7 @@
     margin-top: 0px;
     /* min-height: 0vh; */
   }
+  .root {
+    overflow: hidden;
+  }
 }

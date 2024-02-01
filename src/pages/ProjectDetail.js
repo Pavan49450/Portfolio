@@ -1,4 +1,3 @@
-// ProjectDetail.js
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useHttps from "../hooks/use-https";
@@ -21,7 +20,6 @@ const ProjectDetail = () => {
   };
 
   useEffect(() => {
-    // Fetch project details only if id is not null
     if (id) {
       sendRequest({ url: `${URL.backendUrl}/projects/${id}` }, fetchData);
     }
@@ -32,7 +30,7 @@ const ProjectDetail = () => {
     setShowOverlay(true);
     window.scrollTo({
       top: 0,
-      behavior: "smooth", // Optional: Adds smooth scrolling effect
+      behavior: "smooth",
     });
   };
   const closeOverlay = (e) => {
@@ -52,9 +50,6 @@ const ProjectDetail = () => {
       className={style.previousButton}
       style={{
         display: (project && project.images.length) <= 1 ? "none" : "block",
-        // left: !showOverlay && "0",
-        // height: !showOverlay && "100%",
-        // top: !showOverlay && "0",
       }}
       onClick={() => navigateImage(-1)}
     >
@@ -75,9 +70,6 @@ const ProjectDetail = () => {
       onClick={() => navigateImage(1)}
       style={{
         display: (project && project.images.length) <= 1 ? "none" : "block",
-        // right: !showOverlay && "0",
-        // height: !showOverlay && "100%",
-        // top: !showOverlay && "0",
       }}
     >
       <CustomImage
@@ -163,17 +155,14 @@ const ProjectDetail = () => {
                   onClick={() => openOverlay(currentImage)}
                 />
                 {nextButton}
-                {/* {ActionsButtons} */}
               </div>
             )}
-            {/* <div className={style.details}> */}
             <div className={style.description}>
               {project &&
                 project.description.map((description, index) => (
                   <p key={index}>{description}</p>
                 ))}
             </div>
-            {/* </div> */}
           </div>
         </Container>
       )}

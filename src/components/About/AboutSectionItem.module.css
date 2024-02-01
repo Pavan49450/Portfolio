@@ -1,8 +1,11 @@
+/* AboutSectionItem.module.css */
 .section {
-  margin-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 30px;
+  padding: 1rem;
   border-bottom: 1px solid var(--amethyst);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #fff;
 }
 .section:last-child {
   border-bottom: none;
@@ -12,7 +15,19 @@
   color: #333;
   font-size: 1.5em;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+.section a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: block;
+  margin: 10px 0;
+}
+
+.section a:hover {
+  color: #0056b3;
 }
 
 .section p {
@@ -52,6 +67,16 @@
   height: 40px;
 }
 
+.subHeading a {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.subHeading a:hover {
+  color: #0056b3; /* Hover color */
+}
+
 @media (max-width: 600px) {
   .subHeading {
     flex-direction: column;
@@ -63,6 +88,15 @@
     margin: 0;
   }
   .section {
-    padding: 0.5rem;
+    /* padding: 1rem; */
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+  .details {
+    align-items: center;
+    flex-direction: column;
+  }
+  .section h3 {
+    margin: 10px 0;
   }
 }
