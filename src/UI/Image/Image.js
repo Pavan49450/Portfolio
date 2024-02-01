@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import AcrobaticLoader from "../../animations/AcrobaticLoader";
 import "./Image.css";
-import CircularLoader from "../../animations/CircularLoader";
 import GhostLoading from "../../animations/GhostLoading";
 
 const CustomImage = ({

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import logo from "../../assets/Logo.png";
 import style from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import CustomImage from "../../UI/Image/Image";
@@ -15,7 +14,11 @@ const Logo = () => (
       }}
     >
       <Link to="/" title="Link to home page">
-        <CustomImage src={logo} alt="logo" title="logo" />
+        <CustomImage
+          src={"https://kpk-portfolio-backend.azurewebsites.net/image/logo.png"}
+          alt="logo"
+          title="logo"
+        />
       </Link>
     </div>
   </div>
