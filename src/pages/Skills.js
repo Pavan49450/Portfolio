@@ -37,7 +37,7 @@ const Skills = () => {
               <div className={style.skill} key={index}>
                 <li>{skill.name}</li>
                 <img
-                  src={require(`../assets/${skill.address}`)}
+                  src={skill.address}
                   alt={skill.name}
                   className={style.skillIcons}
                 />
