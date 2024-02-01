@@ -26,13 +26,12 @@ const Skills = () => {
 
   return (
     <>
+      {isLoading && <AcrobaticLoader />}
       <Container className={style.container}>
         <Title title={"SKILLS"} />
         <h3 style={{ margin: "0", marginLeft: "2rem" }}>Technical Skills</h3>
         <ul className={style.skills}>
-          {isLoading ? (
-            <AcrobaticLoader />
-          ) : (
+          {!isLoading &&
             skillsList.map((skill, index) => (
               <div className={style.skill} key={index}>
                 <li>{skill.name}</li>
@@ -45,8 +44,7 @@ const Skills = () => {
                   className={style.tooltip}
                 >{`Skill Level - ${skill.skillLevel}`}</div>
               </div>
-            ))
-          )}
+            ))}
         </ul>
       </Container>
       <BackgroundIcons />

@@ -28,10 +28,11 @@ const AboutMe = () => {
 
   return (
     <>
+      {isLoading && AcrobaticLoader}
       <Container className={style.container}>
         <Title title={"ABOUT ME"} />
 
-        {!isLoading ? (
+        {!isLoading && (
           <>
             <p className={style.summary}>
               Results-driven software professional dedicated to leveraging
@@ -42,8 +43,6 @@ const AboutMe = () => {
               <AboutSectionItem key={index} {...section} />
             ))}
           </>
-        ) : (
-          <AcrobaticLoader />
         )}
       </Container>
       <BackgroundIcons />

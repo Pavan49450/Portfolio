@@ -1,56 +1,93 @@
 .loader {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 90px;
+  height: 90px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 4;
 }
 
-.loader div {
+.loader .box {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  animation: rotate 3s linear infinite;
+  background-color: var(--yellow);
+  border: 2px solid var(--gold);
+}
+
+.loader .box div {
   box-sizing: border-box;
   position: absolute;
-  width: 10px;
-  height: 10px;
-
-  animation: sk-bounce 1.4s infinite ease-in-out both;
+  width: 20px;
+  height: 20px;
+  animation: sk-bounce 1s infinite ease-in-out both;
   opacity: 0;
 }
 
+.loader .box div:nth-child(odd) {
+  /* top: 5px; */
+  background-color: var(--gold);
+  border: 2px solid var(--yellow);
+}
+
+.loader .box div:nth-child(even) {
+  /* top: 70px; */
+  background-color: var(--gold);
+  border: 2px solid var(--yellow);
+}
+
 .loader div:nth-child(1) {
-  top: 0;
-  left: 0;
-  animation-delay: 0.4s;
-  background-color: var(--yellow);
-  border: 2px solid var(--gold);
+  top: 5px;
+  left: 5px;
+}
+.loader .box div:nth-child(2) {
+  top: 5px;
+  left: 35px;
 }
 
-.loader div:nth-child(2) {
-  top: 0;
-  left: 30px;
-  animation-delay: 0.8s;
-  background-color: var(--gold);
-  border: 2px solid var(--yellow);
+.loader .box div:nth-child(3) {
+  top: 5px;
+  left: 65px;
+}
+.loader .box div:nth-child(4) {
+  top: 35px;
+  right: 5px;
 }
 
-.loader div:nth-child(3) {
-  top: 30px;
-  left: 30px;
-  animation-delay: 1.2s;
-  background-color: var(--yellow);
-  border: 2px solid var(--gold);
+.loader .box div:nth-child(5) {
+  top: 70px;
+  left: 65px;
+}
+.loader .box div:nth-child(6) {
+  top: 70px;
+  left: 35px;
 }
 
-.loader div:nth-child(4) {
-  top: 30px;
-  left: 0px;
-  animation-delay: 1.6s;
-  background-color: var(--gold);
-  border: 2px solid var(--yellow);
+.loader .box div:nth-child(7) {
+  top: 70px;
+  left: 5px;
 }
+.loader .center div:nth-child(8) {
+  left: 5px;
+  top: 35px;
+}
+
+/* @keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
 
 @keyframes sk-bounce {
   0%,
+  20%,
+  50%,
   80%,
   100% {
     transform: scale(0);

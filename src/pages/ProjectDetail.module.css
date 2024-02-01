@@ -57,8 +57,6 @@
   min-height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-top: 0;
 }
 
 .titleHead {
@@ -176,15 +174,17 @@
 .description {
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
   margin: 2rem;
-  align-items: center;
+  gap: 1rem;
+  list-style-image: url("../assets/star16.png");
 }
 
-.description p {
-  margin-bottom: 1rem;
+.description li {
+  margin: 0;
   font-size: 16px;
-  line-height: 1.5;
   color: #333;
+  vertical-align: middle; /* Add this line */
 }
 
 .modalButtons button {
@@ -223,9 +223,9 @@
     left: 5px;
   }
   .container {
-    padding: 1rem;
+    padding: 0;
   }
   .description {
-    margin: 0;
+    margin: 1.5rem 0;
   }
 }

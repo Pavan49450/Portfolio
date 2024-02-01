@@ -29,16 +29,16 @@ function AboutSectionItem({ title, details }) {
             {/* Check if link is present before rendering */}
             {detail.link ? (
               <a href={detail.link} target="_blank" rel="noreferrer">
-                Certificate Link
+                Certificate Link 🔗
               </a>
             ) : null}
 
             {detail.content && (
-              <ol>
+              <ul>
                 {detail.content.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
-              </ol>
+              </ul>
             )}
           </div>
         </div>

@@ -10,6 +10,7 @@ const duration = 20;
 const BackgroundIcons = () => {
   const { isLoading, sendRequest, error } = useHttps();
   const [skillsList, setSkillsList] = useState([]);
+  const [imageLoading, setImageLoading] = useState(true);
 
   const fetchSkillsData = (data) => {
     setSkillsList(data);
@@ -23,16 +24,23 @@ const BackgroundIcons = () => {
   if (error) {
     return <p>{error}</p>;
   }
+
   const dynamicStyles = Array.from({ length: skillsList.length }, (_, index) =>
     generateRandomKeyframes(index)
   ).join("\n");
 
+  const handleImageLoad = () => {
+    console.log("hey");
+    setImageLoading(false);
+  };
+
   return (
     <>
       {isLoading ? (
-        AcrobaticLoader
+        <AcrobaticLoader />
       ) : (
         <>
+          {imageLoading && <AcrobaticLoader />}
           <style>{dynamicStyles}</style>
           <div className={style.imageContainer}>
             {skillsList.map((image, index) => (
@@ -45,7 +53,11 @@ const BackgroundIcons = () => {
                 }`}
                 style={{
                   animation: `moveImage${index} ${duration}s ease-in-out infinite`,
+                  visibility: imageLoading && "hidden",
                 }}
+                onLoad={
+                  index === skillsList.length - 1 ? handleImageLoad : null
+                }
               />
             ))}
           </div>

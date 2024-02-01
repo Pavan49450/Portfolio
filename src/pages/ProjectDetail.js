@@ -80,38 +80,38 @@ const ProjectDetail = () => {
     </div>
   );
 
-  const projectLinks = (
-    <div className={style.links}>
-      {project && project.websiteLink && (
-        <a
-          href={project.websiteLink}
-          target="_blank"
-          rel="noreferrer"
-          title="Website Link"
-        >
-          <CustomImage
-            src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
-            alt="website"
-            style={{ width: "30px" }}
-          />
-        </a>
-      )}
-      {project && project.gitLink && (
-        <a
-          href={project.gitLink}
-          target="_blank"
-          rel="noreferrer"
-          title="GitHub Link"
-        >
-          <CustomImage
-            src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
-            alt="github"
-            style={{ width: "30px" }}
-          />
-        </a>
-      )}
-    </div>
-  );
+  // const projectLinks = (
+  //   <div className={style.links}>
+  //     {project && project.websiteLink && (
+  //       <a
+  //         href={project.websiteLink}
+  //         target="_blank"
+  //         rel="noreferrer"
+  //         title="Website Link"
+  //       >
+  //         <CustomImage
+  //           src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
+  //           alt="website"
+  //           style={{ width: "30px" }}
+  //         />
+  //       </a>
+  //     )}
+  //     {project && project.gitLink && (
+  //       <a
+  //         href={project.gitLink}
+  //         target="_blank"
+  //         rel="noreferrer"
+  //         title="GitHub Link"
+  //       >
+  //         <CustomImage
+  //           src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
+  //           alt="github"
+  //           style={{ width: "30px" }}
+  //         />
+  //       </a>
+  //     )}
+  //   </div>
+  // );
 
   return (
     <>
@@ -119,26 +119,29 @@ const ProjectDetail = () => {
         <AcrobaticLoader />
       ) : (
         <Container>
-          <Title title={"Project Details"} />
-          <div
-            style={{
-              paddingLeft: "2rem",
-            }}
-          >
-            <Link
-              to={"/projects"}
-              style={{
-                fontSize: "40px",
-                textDecoration: "none",
-              }}
-            >
-              &larr;
-            </Link>
-          </div>
+          <Title
+            title={"Project Details"}
+            websiteLink={project && project.websiteLink}
+            gitLink={project && project.gitLink}
+          />
+
           <div className={style.container}>
             <div className={style.detailsHead}>
-              {projectLinks}
+              {/* {projectLinks} */}
               <div className={style.titleHead}>
+                <Link
+                  to={"/projects"}
+                  style={{
+                    fontSize: "40px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <img
+                    src="https://static.vecteezy.com/system/resources/previews/000/589/654/non_2x/vector-back-icon.jpg"
+                    alt="Back Arrow"
+                    style={{ width: "40px" }}
+                  ></img>
+                </Link>
                 <h2 className={style.title}>{project && project.title}</h2>
                 <p className={style.background}>
                   ({project && project.projectBackground})
@@ -157,12 +160,12 @@ const ProjectDetail = () => {
                 {nextButton}
               </div>
             )}
-            <div className={style.description}>
+            <ul className={style.description}>
               {project &&
                 project.description.map((description, index) => (
-                  <p key={index}>{description}</p>
+                  <li key={index}>{description}</li>
                 ))}
-            </div>
+            </ul>
           </div>
         </Container>
       )}

@@ -27,11 +27,10 @@ const Projects = () => {
   }
   return (
     <>
+      {isLoading && <AcrobaticLoader />}
       <Container className={style.container}>
         <Title title={"PROJECTS"} />
-        {isLoading ? (
-          <AcrobaticLoader />
-        ) : (
+        {!isLoading && (
           <div className={style.projects}>
             {projectsList.map((project, index) => (
               <ProjectItem index={index} project={project} key={index} />

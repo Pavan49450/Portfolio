@@ -24,12 +24,60 @@
   font-size: 18px;
 }
 
+.links {
+  display: flex;
+  /* gap: 1rem; */
+  width: 100%;
+  justify-content: flex-end;
+  height: 100%;
+  align-items: center;
+}
+
+.links a {
+  margin-right: 1rem;
+  width: 30px;
+  height: 30px;
+}
+.links a:hover {
+  opacity: 0.6;
+}
+
+.dot1,
+.dot2,
+.dot3,
+.dot4 {
+  width: 5px;
+  height: 5px;
+  background-color: purple;
+  position: absolute;
+  border-radius: 50%;
+}
+.dot1 {
+  left: 2px;
+  top: 2px;
+}
+.dot2 {
+  bottom: 2px;
+  left: 2px;
+}
+.dot3 {
+  right: 2px;
+  top: 2px;
+}
+.dot4 {
+  right: 2px;
+  bottom: 2px;
+}
+
 @media (max-width: 1050px) {
-  .wrapper {
-    height: 30px;
-  }
   .title {
     height: 60px;
-    top: -18px;
+    top: -12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    margin-bottom: 2rem;
   }
 }
