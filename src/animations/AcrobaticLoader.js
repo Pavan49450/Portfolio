@@ -11,7 +11,7 @@ const AcrobaticLoader = () => {
             key={index}
             className={style["loader div"]}
             style={{
-              animationDelay: `${index+(0.2)}s`,
+              animationDelay: `${index*(0.2)}s`,
             }}
           ></div>
         ))}
