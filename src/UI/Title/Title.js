@@ -36,7 +36,7 @@ const Title = ({ title, gitLink, websiteLink }) => {
   );
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className={style.container}>
       <h1 className={style.title}>{title}</h1>
       {Links}
     </div>
