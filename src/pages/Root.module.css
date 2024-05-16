@@ -10,6 +10,7 @@
   min-height: 90vh;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 @media (max-width: 1000px) {

@@ -37,7 +37,7 @@ const ImageOverlay = ({
         {/* {nextButton} */}
 
         <img
-          src={require("../../../assets/collapse.png")}
+          src={require("../../../assets/icons/collapse.png")}
           alt=""
           onClick={closeOverlay}
           className={style.closeButton}

@@ -40,7 +40,7 @@
 .section ul {
   padding-left: 20px;
   margin-bottom: 20px;
-  list-style-image: url("../../assets/star16.png");
+  list-style-image: url("../../assets/icons/star16.png");
 }
 
 .section li {

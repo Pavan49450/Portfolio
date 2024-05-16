@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
+import axios from "axios";
 
-const useHttps = () => {
+const useHttpsAxios = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [statusCode, setStatusCode] = useState(null);
@@ -9,22 +10,25 @@ const useHttps = () => {
   const sendRequest = useCallback(async (requestConfig) => {
     setIsLoading(true);
     setError(null);
-
+    setStatusCode(null);
+    setResponseData(null);
+    // for (const entry of requestConfig.body.entries()) {
+    //   console.log(entry);
+    // }
     try {
-      const response = await fetch(requestConfig.url, {
+      const response = await axios({
         method: requestConfig.method ? requestConfig.method : "GET",
+        url: requestConfig.url,
         headers: requestConfig.headers ? requestConfig.headers : {},
-        body: JSON.stringify(requestConfig.body) || null,
+        data: requestConfig.body || null,
       });
 
-      if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-      }
+      setStatusCode(await response.status);
+      setResponseData(await response.data);
 
-      const responseData = await response.json();
-      // applyData(data);
-      setStatusCode(await responseData.status);
-      setResponseData(await responseData.data);
+      if (!response.status.toString().startsWith("2")) {
+        setError(`Request failed with status ${response.status}`);
+      }
     } catch (err) {
       setStatusCode(err.response?.status);
       setError(err);
@@ -42,4 +46,4 @@ const useHttps = () => {
   };
 };
 
-export default useHttps;
+export default useHttpsAxios;

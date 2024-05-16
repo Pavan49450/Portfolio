@@ -1,10 +1,12 @@
 /* colors.css */
 
 :root {
-  --primary: #3498db;
-  --secondary: #2ecc71;
+  --primary: #ffa500;
+  --secondary: #ffd700;
   --whiteText: #fff;
   --blackText: #000000;
+
+  --darkInvalidColor: #cb0000;
 
   --gold: #ffa500;
   --yellow: #ffd700;

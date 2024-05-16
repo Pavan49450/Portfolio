@@ -31,7 +31,7 @@
   margin-top: 1rem;
   margin: 2rem;
   gap: 1rem;
-  list-style-image: url("../assets/star16.png");
+  list-style-image: url("../assets/icons/star16.png");
 }
 
 .description li {

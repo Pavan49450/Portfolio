@@ -31,7 +31,7 @@ const Thumbnail = ({
         />
         {loading && <CircularLoader />}
         <CustomImage
-          src={require(`../../../assets/expand.png`)}
+          src={require(`../../../assets/icons/expand.png`)}
           alt={`expand icon`}
           className={style.expand}
           classForDiv={style.expandContainer}
