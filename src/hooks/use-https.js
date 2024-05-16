@@ -3,10 +3,8 @@ import { useState, useCallback } from "react";
 const useHttps = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [statusCode, setStatusCode] = useState(null);
-  const [responseData, setResponseData] = useState(null);
 
-  const sendRequest = useCallback(async (requestConfig) => {
+  const sendRequest = useCallback(async (requestConfig, applyData) => {
     setIsLoading(true);
     setError(null);
 
@@ -18,17 +16,14 @@ const useHttps = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
+        throw new Error("Request failed!");
       }
 
-      const responseData = await response.json();
-      // applyData(data);
-      setStatusCode(await responseData.status);
-      setResponseData(await responseData.data);
+      const data = await response.json();
+      applyData(data);
     } catch (err) {
-      setStatusCode(err.response?.status);
-      setError(err);
-      setResponseData(err);
+      alert("Please give proper breed");
+      setError(err.message || "Something went wrong!");
     }
     setIsLoading(false);
   }, []);
@@ -37,8 +32,6 @@ const useHttps = () => {
     isLoading,
     sendRequest,
     error,
-    statusCode,
-    responseData,
   };
 };
 
