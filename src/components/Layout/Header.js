@@ -16,7 +16,7 @@ const Logo = () => (
     >
       <Link to="/" title="Link to home page">
         <CustomImage
-          src={`${URL.backendUrl}/image/logo.png`}
+          src={`${URL.backendUrl}/image/Logo.png`}
           alt="logo"
           title="logo"
         />
