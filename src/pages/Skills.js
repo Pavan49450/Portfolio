@@ -14,7 +14,7 @@ const Skills = () => {
 
   const fetchSkillsData = (data) => {
     setSkillsList(data);
-    console.log(data);
+    // console.log(data);
   };
 
   useEffect(() => {

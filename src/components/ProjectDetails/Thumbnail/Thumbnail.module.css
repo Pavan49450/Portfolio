@@ -1,0 +1,46 @@
+.thumbnailContainer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.thumbnail {
+  border-radius: 5px;
+  max-width: 900px;
+  border: 1px solid #cccccc8f;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.expandContainer {
+  position: absolute;
+  bottom: 1rem;
+  right: 0.5rem;
+  width: 30px;
+  height: 30px;
+  background-color: var(--yellow);
+  /* border: 3px solid var(--gold); */
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.expand {
+  width: 30px;
+  height: 30px;
+}
+.expandContainer:hover {
+  animation: expandInfinite 0.5s infinite ease;
+}
+
+@keyframes expandInfinite {
+  0% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

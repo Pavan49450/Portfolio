@@ -16,7 +16,7 @@ const AboutMe = () => {
 
   const fetchMeData = (data) => {
     setSections(data);
-    console.log(data);
+    // console.log(data);
   };
   useEffect(() => {
     sendRequest({ url: URL.backendUrl + "/aboutme" }, fetchMeData);

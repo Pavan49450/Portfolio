@@ -1,0 +1,43 @@
+.titleHead {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.title {
+  font-size: 28px;
+  color: #333;
+}
+
+.detailsHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.detailsHead a {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+}
+.detailsHead a:hover {
+  opacity: 0.8;
+}
+
+.background {
+  font-style: italic;
+  color: #555;
+}
+
+@media (max-width: 650px) {
+  .title {
+    font-size: 1.2rem;
+  }
+}

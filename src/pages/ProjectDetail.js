@@ -7,6 +7,14 @@ import style from "./ProjectDetail.module.css";
 import CustomImage from "../UI/Image/Image";
 import Container from "../UI/Container/Container";
 import Title from "../UI/Title/Title";
+import CircularLoader from "../animations/CircularLoader";
+import ImageOverlay from "../components/ProjectDetails/ImageOverlay/ImageOverlay";
+import {
+  NextButton,
+  PreviousButton,
+} from "../components/ProjectDetails/ImageButtons/ImageButtons";
+import Thumbnail from "../components/ProjectDetails/Thumbnail/Thumbnail";
+import DetailsHead from "../components/ProjectDetails/DetailsHead/DetailsHead";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -35,8 +43,8 @@ const ProjectDetail = () => {
   };
   const closeOverlay = (e) => {
     if (e.target.classList.contains(style.overlay)) {
-      setShowOverlay(false);
     }
+    setShowOverlay(false);
   };
 
   const navigateImage = (step) => {
@@ -45,73 +53,47 @@ const ProjectDetail = () => {
     );
   };
 
-  const nextButton = (
-    <div
-      className={style.previousButton}
-      style={{
-        display: (project && project.images.length) <= 1 ? "none" : "block",
-      }}
-      onClick={() => navigateImage(-1)}
-    >
-      <CustomImage
-        src="https://cdn-icons-png.flaticon.com/512/11181/11181468.png"
-        alt="previous"
-        style={{
-          transform: "rotate(180deg)",
-        }}
-        classForDiv={style.btnCenter}
-      />
-    </div>
-  );
+  useEffect(() => {
+    console.log(currentImage);
+  }, [currentImage]);
 
-  const previousButton = (
-    <div
-      className={style.nextButton}
-      onClick={() => navigateImage(1)}
-      style={{
-        display: (project && project.images.length) <= 1 ? "none" : "block",
-      }}
-    >
-      <CustomImage
-        src="https://cdn-icons-png.flaticon.com/512/11181/11181468.png"
-        alt="next"
-        classForDiv={style.btnCenter}
-      />
-    </div>
-  );
+  const [loading, setLoading] = useState(true);
 
-  // const projectLinks = (
-  //   <div className={style.links}>
-  //     {project && project.websiteLink && (
-  //       <a
-  //         href={project.websiteLink}
-  //         target="_blank"
-  //         rel="noreferrer"
-  //         title="Website Link"
-  //       >
-  //         <CustomImage
-  //           src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
-  //           alt="website"
-  //           style={{ width: "30px" }}
-  //         />
-  //       </a>
-  //     )}
-  //     {project && project.gitLink && (
-  //       <a
-  //         href={project.gitLink}
-  //         target="_blank"
-  //         rel="noreferrer"
-  //         title="GitHub Link"
-  //       >
-  //         <CustomImage
-  //           src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
-  //           alt="github"
-  //           style={{ width: "30px" }}
-  //         />
-  //       </a>
-  //     )}
-  //   </div>
-  // );
+  const handleImageLoaded = () => {
+    setLoading(false);
+  };
+  const overlay = (
+    <>
+      <style>{"body{ overflow:hidden; height:100vh}"}</style>
+      <div className={style.overlay} onClick={closeOverlay}>
+        <div className={style.modal}>
+          {/* {previousButton}
+           */}
+          <PreviousButton
+            setLoading={setLoading}
+            project={project}
+            navigateImage={navigateImage}
+          />
+          <img
+            src={
+              project &&
+              `${URL.backendUrl}/image/${project.images[currentImage]}`
+            }
+            alt={project && project.title}
+            className={style.modalImage}
+            onLoad={handleImageLoaded}
+          />
+          {loading && <CircularLoader />}
+          {/* {nextButton} */}
+          <NextButton
+            setLoading={setLoading}
+            project={project}
+            navigateImage={navigateImage}
+          />
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <>
@@ -126,42 +108,18 @@ const ProjectDetail = () => {
           />
 
           <div className={style.container}>
-            <div className={style.detailsHead}>
-              {/* {projectLinks} */}
-              <div className={style.titleHead}>
-                <Link
-                  to={"/projects"}
-                  style={{
-                    fontSize: "40px",
-                    textDecoration: "none",
-                  }}
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                >
-                  <img
-                    src="https://static.vecteezy.com/system/resources/previews/000/589/654/non_2x/vector-back-icon.jpg"
-                    alt="Back Arrow"
-                    style={{ width: "40px" }}
-                  ></img>
-                </Link>
-                <h2 className={style.title}>{project && project.title}</h2>
-                <p className={style.background}>
-                  ({project && project.projectBackground})
-                </p>
-              </div>
-            </div>
+            <DetailsHead project={project} />
             {project && (
-              <div className={style.thumbnailContainer}>
-                {previousButton}
-                <CustomImage
-                  src={`${URL.backendUrl}/image/${project.images[currentImage]}`}
-                  alt={project.title}
-                  className={style.thumbnail}
-                  onClick={() => openOverlay(currentImage)}
-                />
-                {nextButton}
-              </div>
+              <Thumbnail
+                closeOverlay={closeOverlay}
+                currentImage={currentImage}
+                project={project}
+                handleImageLoaded={handleImageLoaded}
+                loading={loading}
+                setLoading={setLoading}
+                navigateImage={navigateImage}
+                openOverlay={openOverlay}
+              />
             )}
             <ul className={style.description}>
               {project &&
@@ -172,25 +130,20 @@ const ProjectDetail = () => {
           </div>
         </Container>
       )}
-      {showOverlay && (
-        <>
-          <style>{"body{ overflow:hidden; height:100vh}"}</style>
-          <div className={style.overlay} onClick={closeOverlay}>
-            <div className={style.modal}>
-              {previousButton}
-              <CustomImage
-                src={
-                  project &&
-                  `${URL.backendUrl}/image/${project.images[currentImage]}`
-                }
-                alt={project && project.title}
-                className={style.modalImage}
-              />
-              {nextButton}
-            </div>
-          </div>
-        </>
-      )}
+      {
+        showOverlay && (
+          <ImageOverlay
+            closeOverlay={closeOverlay}
+            currentImage={currentImage}
+            project={project}
+            handleImageLoaded={handleImageLoaded}
+            loading={loading}
+            setLoading={setLoading}
+            navigateImage={navigateImage}
+          />
+        )
+        // { overlay }
+      }
     </>
   );
 };

@@ -14,7 +14,7 @@ const BackgroundIcons = () => {
 
   const fetchSkillsData = (data) => {
     setSkillsList(data);
-    console.log(data);
+    // console.log(data);
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const BackgroundIcons = () => {
   ).join("\n");
 
   const handleImageLoad = () => {
-    console.log("hey");
+    // console.log("hey");
     setImageLoading(false);
   };
 

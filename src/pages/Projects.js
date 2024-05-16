@@ -15,7 +15,7 @@ const Projects = () => {
   const fetchProjectsData = (data) => {
     // Handle the fetched data here
     setProjectList(data);
-    console.log(data);
+    // console.log(data);
   };
 
   useEffect(() => {

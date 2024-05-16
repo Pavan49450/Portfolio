@@ -1,12 +1,11 @@
-import { useEffect } from "react";
 import style from "./AboutSectionItem.module.css";
 import CustomImage from "../../UI/Image/Image";
 import URL from "../../constants/url";
 
 function AboutSectionItem({ title, details }) {
-  useEffect(() => {
-    console.log(details);
-  });
+  // useEffect(() => {
+  //   console.log(details);
+  // });
 
   return (
     <div className={style.section}>

@@ -47,8 +47,10 @@
   left: 0.5rem;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   .projects {
     margin: 0 auto;
+    padding: 0.5rem;
+    padding-top: 2rem;
   }
 }

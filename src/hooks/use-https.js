@@ -19,11 +19,11 @@ const useHttps = () => {
         throw new Error(`Request failed with status ${response.status}`);
       }
 
-      console.log(response);
+      // console.log(response);
       const data = await response.json();
       applyData(data);
     } catch (err) {
-      console.error(err); // Log the actual error to the console
+      // console.error(err); // Log the actual error to the console
       setError(err.message || "An unknown error occurred");
     }
     setIsLoading(false);
