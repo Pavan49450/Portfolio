@@ -135,6 +135,9 @@ const ProjectDetail = () => {
                     fontSize: "40px",
                     textDecoration: "none",
                   }}
+                  onClick={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                 >
                   <img
                     src="https://static.vecteezy.com/system/resources/previews/000/589/654/non_2x/vector-back-icon.jpg"
@@ -152,7 +155,7 @@ const ProjectDetail = () => {
               <div className={style.thumbnailContainer}>
                 {previousButton}
                 <CustomImage
-                  src={project.images[currentImage]}
+                  src={`${URL.backendUrl}/image/${project.images[currentImage]}`}
                   alt={project.title}
                   className={style.thumbnail}
                   onClick={() => openOverlay(currentImage)}
@@ -176,7 +179,10 @@ const ProjectDetail = () => {
             <div className={style.modal}>
               {previousButton}
               <CustomImage
-                src={project && project.images[currentImage]}
+                src={
+                  project &&
+                  `${URL.backendUrl}/image/${project.images[currentImage]}`
+                }
                 alt={project && project.title}
                 className={style.modalImage}
               />

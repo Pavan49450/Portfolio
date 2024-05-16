@@ -4,28 +4,41 @@
   width: 100%;
   height: 250px;
   perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
+  /* transform-style: preserve-3d; */
+  transition: transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .project:hover {
-  transform: rotateY(180deg);
+  /* transform: rotateY(180deg); */
+  transform: scale(1.1);
 }
 
-.flipper {
+.back {
+  transform: rotateY(180deg);
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.project:hover .back {
+  opacity: 1;
+}
+
+/* .flipper {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 1s;
-}
+  transition: transform 0.5s ease;
+} */
 
 .front,
 .back {
   width: 100%;
   height: 100%;
   position: absolute;
-  /* backface-visibility: hidden; */
+  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,17 +51,6 @@
   border-radius: 5px;
 }
 
-.back {
-  transform: rotateY(180deg);
-  background-color: rgba(255, 255, 255, 0.9);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project:hover .back {
-  opacity: 1;
-}
-
 .subHeading {
   display: flex;
   gap: 10px;
@@ -59,6 +61,10 @@
   position: absolute;
   bottom: 0;
   z-index: 3;
+  margin: 0;
+  background-color: var(--yellow);
+  font-size: 1rem;
+  /* box-shadow: inset 0px 0px 4px #ccc; */
 }
 
 .subHeading h3,
@@ -85,7 +91,7 @@
   margin-right: 10px;
   color: #db5b34;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.5s ease;
 }
 
 .links a:hover {

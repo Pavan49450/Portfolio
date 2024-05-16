@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import style from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import CustomImage from "../../UI/Image/Image";
+import URL from "../../constants/url";
 
 const Logo = () => (
   <div className={style.navbar__logo}>
@@ -15,7 +16,7 @@ const Logo = () => (
     >
       <Link to="/" title="Link to home page">
         <CustomImage
-          src={"https://kpk-portfolio-backend.azurewebsites.net/image/logo.png"}
+          src={`${URL.backendUrl}/image/logo.png`}
           alt="logo"
           title="logo"
         />

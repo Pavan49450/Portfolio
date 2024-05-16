@@ -30,13 +30,44 @@ const Projects = () => {
       {isLoading && <AcrobaticLoader />}
       <Container className={style.container}>
         <Title title={"PROJECTS"} />
-        {!isLoading && (
-          <div className={style.projects}>
-            {projectsList.map((project, index) => (
-              <ProjectItem index={index} project={project} key={index} />
-            ))}
-          </div>
-        )}
+        <div className={style.projectClub}>
+          {!isLoading && (
+            <>
+              <div className={style.projects}>
+                <h2 className={style.subHeading}>Projects on Work</h2>
+                {projectsList.map((project, index) => (
+                  <>
+                    {project.projectBackground === "professional" && (
+                      <ProjectItem
+                        index={index}
+                        project={project}
+                        key={index}
+                      />
+                    )}
+                  </>
+                ))}
+              </div>
+            </>
+          )}
+          {!isLoading && (
+            <>
+              <div className={style.projects}>
+                <h2 className={style.subHeading}>Practice Projects</h2>
+                {projectsList.map((project, index) => (
+                  <>
+                    {project.projectBackground === "learning" && (
+                      <ProjectItem
+                        index={index}
+                        project={project}
+                        key={index}
+                      />
+                    )}
+                  </>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </Container>
       <BackgroundIcons />
     </>

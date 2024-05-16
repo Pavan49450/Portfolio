@@ -14,7 +14,9 @@ const Title = ({ title, gitLink, websiteLink }) => {
           <CustomImage
             src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png "
             alt="website"
-            style={{ width: "30px" }}
+            className={style.icons}
+            classForDiv={style.icons}
+            // style={{ width: "30px" }}
           />
         </a>
       )}
@@ -23,7 +25,10 @@ const Title = ({ title, gitLink, websiteLink }) => {
           <CustomImage
             src="https://cdn-icons-png.flaticon.com/128/733/733609.png"
             alt="github"
-            style={{ width: "30px" }}
+            className={style.icons}
+            classForDiv={style.icons}
+
+            // style={{ width: "30px" }}
           />
         </a>
       )}
@@ -31,14 +36,8 @@ const Title = ({ title, gitLink, websiteLink }) => {
   );
 
   return (
-    <div className={style.wrapper}>
-      <h2 className={style.title}>
-        {title}
-        <div className={style.dot1}></div>
-        <div className={style.dot2}></div>
-        <div className={style.dot3}></div>
-        <div className={style.dot4}></div>
-      </h2>
+    <div style={{ position: "relative" }}>
+      <h1 className={style.title}>{title}</h1>
       {Links}
     </div>
   );

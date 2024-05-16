@@ -35,6 +35,7 @@ const AboutMe = () => {
         {!isLoading && (
           <>
             <p className={style.summary}>
+              <h2 style={{ margin: "1rem 0" }}>Overview</h2>
               Results-driven software professional dedicated to leveraging
               technology for enhanced applications. Skilled in Frontend and
               Backend development.

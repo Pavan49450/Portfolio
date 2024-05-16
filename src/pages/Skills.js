@@ -6,6 +6,7 @@ import URL from "../constants/url";
 import AcrobaticLoader from "../animations/AcrobaticLoader";
 import Title from "../UI/Title/Title";
 import Container from "../UI/Container/Container";
+import CustomImage from "../UI/Image/Image";
 
 const Skills = () => {
   const { isLoading, sendRequest, error } = useHttps();
@@ -29,14 +30,19 @@ const Skills = () => {
       {isLoading && <AcrobaticLoader />}
       <Container className={style.container}>
         <Title title={"SKILLS"} />
-        <h3 style={{ margin: "0", marginLeft: "2rem" }}>Technical Skills</h3>
         <ul className={style.skills}>
+          <h3
+            // style={{ margin: "0", marginLeft: "2rem" }}
+            className={style.subHeading}
+          >
+            Technical Skills
+          </h3>
           {!isLoading &&
             skillsList.map((skill, index) => (
               <div className={style.skill} key={index}>
                 <li>{skill.name}</li>
-                <img
-                  src={skill.address}
+                <CustomImage
+                  src={`${URL.backendUrl}/image/${skill.address}`}
                   alt={skill.name}
                   className={style.skillIcons}
                 />

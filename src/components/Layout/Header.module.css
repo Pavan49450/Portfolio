@@ -79,9 +79,9 @@
   padding-left: 2px;
   padding-right: 2px;
   color: var(--blackText);
-  height: 70%;
+  height: 50%;
   position: relative;
-  top: 30%;
+  top: 50%;
   font-weight: bold;
   font-size: 15px;
 }

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import style from "./AboutSectionItem.module.css";
 import CustomImage from "../../UI/Image/Image";
+import URL from "../../constants/url";
 
 function AboutSectionItem({ title, details }) {
   useEffect(() => {
@@ -12,11 +13,19 @@ function AboutSectionItem({ title, details }) {
       <h3>{title}</h3>
       {details.map((detail, index) => (
         <div key={index} className={style.details}>
-          <CustomImage
-            src={detail.logo}
-            alt={detail.logo}
-            className={style.logo}
-          />
+          {title !== "Certifications" ? (
+            <CustomImage
+              src={`${URL.backendUrl}/image/${detail.logo}`}
+              alt={detail.logo}
+              className={style.logo}
+            />
+          ) : (
+            <CustomImage
+              src={`${detail.logo}`}
+              alt={detail.logo}
+              className={style.logo}
+            />
+          )}
           <div style={{ width: "100%" }}>
             <div className={style.subHeading}>
               <p style={{ fontWeight: "bold", color: "black" }}>

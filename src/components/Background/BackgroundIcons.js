@@ -46,7 +46,7 @@ const BackgroundIcons = () => {
             {skillsList.map((image, index) => (
               <img
                 key={index}
-                src={image.address}
+                src={`${URL.backendUrl}/image/${image.address}`}
                 alt={image.name}
                 className={`${style.image} ${
                   style[image.name.toLowerCase().split(" ").join("")]
