@@ -22,7 +22,6 @@ const useHttps = () => {
       const data = await response.json();
       applyData(data);
     } catch (err) {
-      alert("Please give proper breed");
       setError(err.message || "Something went wrong!");
     }
     setIsLoading(false);

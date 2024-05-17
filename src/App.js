@@ -6,6 +6,7 @@ import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
 import AboutMe from "./pages/AboutMe";
+import "./input.css";
 
 import ProjectDetail from "./pages/ProjectDetail";
 

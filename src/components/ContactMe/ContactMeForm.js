@@ -10,7 +10,6 @@ import useHttpsAxios from "../../hooks/use-httpsAxios";
 import URL from "../../constants/url";
 import InputWithInvalidText from "../../UI/Input/InputWithInvalidText";
 import Button from "../../UI/Button/Button";
-import style from "./ContactMe.module.css";
 
 const ContactMeForm = () => {
   //   const [errorMessage, setErrorMessage] = useState("");
@@ -55,25 +54,15 @@ const ContactMeForm = () => {
   const { sendRequest, error, statusCode, responseData, isLoading } =
     useHttpsAxios();
 
-  //   useEffect(() => {
-  //     const Validation = () => {
-  //       if (responseData) {
-  //         if (statusCode === 200 || statusCode === 201) {
-  //           setErrorMessage("");
-  //           nameInput.reset();
-  //           mobileInput.reset();
-  //           descriptionInput.reset();
-  //           emailInput.reset();
-  //           // console.log("data->", responseData);
-  //         } else {
-  //           // console.log("error->", error);
-  //           setErrorMessage(responseData.response.data.statusMessage);
-  //         }
-  //       }
-  //     };
+  useEffect(() => {
+    const Validation = () => {
+      if (responseData) {
+        console.log(responseData);
+      }
+    };
 
-  //     Validation();
-  //   }, [error, responseData]);
+    Validation();
+  }, [error, responseData]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -90,14 +79,14 @@ const ContactMeForm = () => {
       descriptionInput.reset();
 
       const formData = {
-        name: nameInput.value,
+        fullName: nameInput.value,
         email: emailInput.value,
-        phone: mobileInput.value,
-        description: descriptionInput.value,
+        mobileNumber: mobileInput.value,
+        message: descriptionInput.value,
       };
 
       sendRequest({
-        url: `${URL.backendBaseUrl}/vrpi-user/contact-us`,
+        url: `${URL.backendUrl}/contact`,
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -105,20 +94,19 @@ const ContactMeForm = () => {
         body: formData,
       });
     } else {
-      //   setErrorMessage("Please fill out all fields correctly");
-      // console.log("Please fill out all fields correctly");
     }
   };
 
   return (
-    <div className={style.form}>
-      <form onSubmit={handleSubmit} className={style.Form}>
-        {/* <img src={require(`../../../assets/contactUs1.png`)} alt="" /> */}
-        {/* {console.log(nameInput.hasError)} */}
-        <div className={style.line}>
+    <div className={`w-full h-full `}>
+      <form
+        onSubmit={handleSubmit}
+        className={` p-4 mx-4 rounded-md bg-orange-400`}
+      >
+        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-x-4`}>
           <InputWithInvalidText
             ErrorMessage={"Invalid Name"}
-            className={`${style.Input} `}
+            className={``}
             inputFields={{
               placeholder: "Enter your full name",
               value: nameInput.value,
@@ -133,7 +121,6 @@ const ContactMeForm = () => {
           />
           <InputWithInvalidText
             ErrorMessage={"Invalid Email"}
-            className={`${style.Input} `}
             inputFields={{
               placeholder: "Enter email address",
               value: emailInput.value,
@@ -149,7 +136,6 @@ const ContactMeForm = () => {
         </div>
         <InputWithInvalidText
           ErrorMessage={"Invalid Mobile number"}
-          className={`${style.Input} `}
           inputFields={{
             placeholder: "Enter your Mobile Number",
             value: mobileInput.value,
@@ -170,18 +156,15 @@ const ContactMeForm = () => {
           onChange={descriptionInput.valueChangeHandler}
           onBlur={descriptionInput.validateValueHandler}
           onFocus={descriptionInput.focusHandler}
-          className={`${style.description}${
-            descriptionInput.hasError ? ` ${style.descriptionInvalid}` : ""
+          className={` w-full mb-4 min-h-28 border p-2 focus:shadow-none focus:outline-none rounded-md ${
+            descriptionInput.hasError ? ` border-red-600` : " border-orange-400"
           }`}
         />
-        <Button
-          type="submit"
-          className={style.submitBtn}
-          style={{ backgroundColor: !formIsValid && "#ccc" }}
-          disabled={!formIsValid}
-        >
-          {isLoading ? "Loading..." : "Contact Us"}
-        </Button>
+        <div className="flex justify-end w-full">
+          <Button type="submit" disabled={!formIsValid} doNotScrollToTop>
+            {isLoading ? "Loading..." : "Contact Us"}
+          </Button>
+        </div>
       </form>
     </div>
   );

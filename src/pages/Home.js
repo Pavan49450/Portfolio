@@ -14,7 +14,6 @@ const HomePage = () => {
         </div>
         <BackgroundIcons />
       </div>
-      {/* <ContactMe /> */}
     </>
   );
 };

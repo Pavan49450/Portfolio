@@ -9,17 +9,12 @@ const Button = ({
   disabled,
   doNotScrollToTop,
 }) => {
-  const combinedClassName = ` transitions-all ${
-    !disabled
-      ? styles.customButton + " bg-white shadow-lg"
-      : styles.disabledBtn + " bg-zinc-200"
+  const combinedClassName = `${
+    !disabled ? styles.customButton : styles.disabledBtn
   } ${className}`;
 
   const handleClick = () => {
-    if (doNotScrollToTop) {
-      console.log("hey");
-      return;
-    }
+    if (doNotScrollToTop) return;
     window.scrollTo(0, 0); // Scroll to the top of the page
   };
 

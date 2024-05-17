@@ -3,6 +3,7 @@ import Header from "../components/Layout/Header";
 import style from "./Root.module.css";
 import Footer from "../components/Layout/Footer";
 import { Analytics } from "@vercel/analytics/react";
+import ContactMe from "../components/ContactMe/ContactMe";
 
 const RootLayout = () => {
   return (
@@ -12,6 +13,8 @@ const RootLayout = () => {
         <Analytics />
         <Outlet />
       </main>
+      <ContactMe />
+
       <Footer />
     </div>
   );
