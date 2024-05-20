@@ -98,7 +98,7 @@ const ContactMeForm = () => {
   };
 
   return (
-    <div className={`w-full h-full `}>
+    <div className={`w-full h-full max-w-xl mx-auto`}>
       <form
         onSubmit={handleSubmit}
         className={` p-4 mx-4 rounded-md bg-orange-400`}

@@ -46,7 +46,7 @@ const InputWithInvalidText = ({
             checkPassword ? "showPassword.png" : "hidePassword.png"
           }`)}
           alt=""
-          className={style.checkPassword}
+          className={`${style.checkPassword} transition-all`}
           onClick={() => setCheckPassword(!checkPassword)}
         />
       )}
@@ -55,7 +55,7 @@ const InputWithInvalidText = ({
           inputFields.isTouched || inputFields.value !== ""
             ? style.transition
             : style.placeholder
-        }`}
+        } transition-all`}
         onClick={handleLabelClick}
       >
         {inputFields.placeholder}{" "}

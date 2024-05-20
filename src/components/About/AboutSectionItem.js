@@ -14,7 +14,8 @@ function AboutSectionItem({ title, details }) {
         <div key={index} className={style.details}>
           {title !== "Certifications" ? (
             <CustomImage
-              src={`${URL.backendUrl}/image/${detail.logo}`}
+              // src={`${URL.backendUrl}/image/${detail.logo}`}
+              src={require(`../../assets/uploads/${detail.logo}`)}
               alt={detail.logo}
               className={style.logo}
             />

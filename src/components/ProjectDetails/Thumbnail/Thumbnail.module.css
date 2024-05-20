@@ -29,8 +29,8 @@
 }
 
 .expand {
-  width: 30px;
-  height: 30px;
+  /* width: 30px;
+  height: 30px; */
 }
 .expandContainer:hover {
   animation: expandInfinite 0.5s infinite ease;

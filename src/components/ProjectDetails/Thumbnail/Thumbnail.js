@@ -23,7 +23,8 @@ const Thumbnail = ({
 
       <div style={{ position: "relative" }}>
         <img
-          src={`${URL.backendUrl}/image/${project.images[currentImage]}`}
+          // src={`${URL.backendUrl}/image/${project.images[currentImage]}`}
+          src={require(`../../../assets/uploads/${project.images[currentImage]}`)}
           alt={project.title}
           className={style.thumbnail}
           onLoad={handleImageLoaded}

@@ -16,7 +16,8 @@ const Logo = () => (
     >
       <Link to="/" title="Link to home page">
         <CustomImage
-          src={`${URL.backendUrl}/image/Logo.png`}
+          // src={`${URL.backendUrl}/image/Logo.png`}
+          src={require("../../assets/uploads/Logo.png")}
           alt="logo"
           title="logo"
         />
@@ -35,6 +36,7 @@ const Header = () => {
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
+    window.scrollTo(0, 0);
   };
 
   const closeMobileMenu = () => {

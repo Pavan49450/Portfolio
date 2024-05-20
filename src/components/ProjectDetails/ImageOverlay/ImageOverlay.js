@@ -1,5 +1,4 @@
 import CircularLoader from "../../../animations/CircularLoader";
-import URL from "../../../constants/url";
 import { NextButton, PreviousButton } from "../ImageButtons/ImageButtons";
 import style from "./ImageOverlay.module.css";
 
@@ -25,16 +24,15 @@ const ImageOverlay = ({
       <div className={style.modal}>
         {/* {previousButton}
          */}
-        <img
-          src={
-            project && `${URL.backendUrl}/image/${project.images[currentImage]}`
-          }
-          alt={project && project.title}
-          className={style.modalImage}
-          onLoad={handleImageLoaded}
-        />
+        {project && (
+          <img
+            src={require(`../../../assets/uploads/${project.images[currentImage]}`)}
+            alt={project && project.title}
+            className={style.modalImage}
+            onLoad={handleImageLoaded}
+          />
+        )}
         {loading && <CircularLoader />}
-        {/* {nextButton} */}
 
         <img
           src={require("../../../assets/icons/collapse.png")}

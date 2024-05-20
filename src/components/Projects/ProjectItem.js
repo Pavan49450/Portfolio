@@ -11,7 +11,7 @@ export default function ProjectItem({ index, project }) {
       key={index}
       className={style.project}
       onClick={() => {
-        navigate(`/projects/${project._id}`);
+        navigate(`/projects/${project._id.$oid}`);
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}
     >
@@ -19,7 +19,8 @@ export default function ProjectItem({ index, project }) {
       <div className={style.front}>
         {project.images && (
           <CustomImage
-            src={`${URL.backendUrl}/image/${project.images[0]}`}
+            // src={`${URL.backendUrl}/image/${project.images[0]}`}
+            src={require(`../../assets/uploads/${project.images[0]}`)}
             alt="projectImage"
             className={style.image}
             classForDiv={style.wrapper}

@@ -54,8 +54,8 @@
   position: absolute;
   display: flex;
   margin-left: 0.5rem;
-  top: 0;
-  transition: all 0.3s ease;
+  top: 0.2rem;
+  /* transition: all 0.3s ease; */
   font-size: 0.7rem;
 }
 
@@ -65,11 +65,11 @@
   right: 0.5rem;
   padding: 0px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
   top: 0.8rem;
 }
 
 .checkPassword:active {
   opacity: 0.4;
-  transition: opacity 0.1s ease;
+  /* transition: opacity 0.1s ease; */
 }

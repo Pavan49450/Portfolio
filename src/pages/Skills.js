@@ -7,23 +7,15 @@ import AcrobaticLoader from "../animations/AcrobaticLoader";
 import Title from "../UI/Title/Title";
 import Container from "../UI/Container/Container";
 import CustomImage from "../UI/Image/Image";
+import skills from "../data/skills.json";
 
 const Skills = () => {
   const { isLoading, sendRequest, error } = useHttps();
   const [skillsList, setSkillsList] = useState([]);
 
-  const fetchSkillsData = (data) => {
-    setSkillsList(data);
-    // console.log(data);
-  };
-
   useEffect(() => {
-    sendRequest({ url: URL.backendUrl + "/skills" }, fetchSkillsData);
-  }, [sendRequest]);
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+    setSkillsList(skills);
+  }, [skills]);
 
   return (
     <>
@@ -42,7 +34,8 @@ const Skills = () => {
               <div className={style.skill} key={index}>
                 <li>{skill.name}</li>
                 <CustomImage
-                  src={`${URL.backendUrl}/image/${skill.address}`}
+                  // src={`${URL.backendUrl}/image/${skill.address}`}
+                  src={require(`../assets/uploads/${skill.address}`)}
                   alt={skill.name}
                   className={style.skillIcons}
                 />

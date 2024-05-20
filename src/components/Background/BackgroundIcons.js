@@ -4,6 +4,7 @@ import generateRandomKeyframes from "./MoveImageAnimation";
 import useHttps from "../../hooks/use-https";
 import URL from "../../constants/url";
 import AcrobaticLoader from "../../animations/AcrobaticLoader";
+import skills from "../../data/skills.json";
 
 const duration = 20;
 
@@ -12,18 +13,23 @@ const BackgroundIcons = () => {
   const [skillsList, setSkillsList] = useState([]);
   const [imageLoading, setImageLoading] = useState(true);
 
-  const fetchSkillsData = (data) => {
-    setSkillsList(data);
-    // console.log(data);
-  };
+  // const fetchSkillsData = (data) => {
+  //   setSkillsList(data);
+  //   // console.log(data);
+  // };
+
+  // useEffect(() => {
+  //   sendRequest({ url: URL.backendUrl + "/skills" }, fetchSkillsData);
+  // }, [sendRequest]);
+
+  // if (error) {
+  //   return <p>{error}</p>;
+  // }
 
   useEffect(() => {
-    sendRequest({ url: URL.backendUrl + "/skills" }, fetchSkillsData);
-  }, [sendRequest]);
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+    setSkillsList(skills);
+    // console.log(skills);
+  }, [skills]);
 
   const dynamicStyles = Array.from({ length: skillsList.length }, (_, index) =>
     generateRandomKeyframes(index)
@@ -36,33 +42,32 @@ const BackgroundIcons = () => {
 
   return (
     <>
-      {isLoading ? (
+      {/* {isLoading ? (
         <AcrobaticLoader />
-      ) : (
-        <>
-          {imageLoading && <AcrobaticLoader />}
-          <style>{dynamicStyles}</style>
-          <div className={style.imageContainer}>
-            {skillsList.map((image, index) => (
-              <img
-                key={index}
-                src={`${URL.backendUrl}/image/${image.address}`}
-                alt={image.name}
-                className={`${style.image} ${
-                  style[image.name.toLowerCase().split(" ").join("")]
-                }`}
-                style={{
-                  animation: `moveImage${index} ${duration}s ease-in-out infinite`,
-                  visibility: imageLoading && "hidden",
-                }}
-                onLoad={
-                  index === skillsList.length - 1 ? handleImageLoad : null
-                }
-              />
-            ))}
-          </div>
-        </>
-      )}
+      ) : ( */}
+      <>
+        {imageLoading && <AcrobaticLoader />}
+        <style>{dynamicStyles}</style>
+        <div className={style.imageContainer}>
+          {skillsList.map((image, index) => (
+            <img
+              key={index}
+              // src={`${URL.backendUrl}/image/${image.address}`}
+              src={require(`../../assets/uploads/${image.address}`)}
+              alt={image.name}
+              className={`${style.image} ${
+                style[image.name.toLowerCase().split(" ").join("")]
+              }`}
+              style={{
+                animation: `moveImage${index} ${duration}s ease-in-out infinite`,
+                visibility: imageLoading && "hidden",
+              }}
+              onLoad={index === skillsList.length - 1 ? handleImageLoad : null}
+            />
+          ))}
+        </div>
+      </>
+      {/* )} */}
     </>
   );
 };
