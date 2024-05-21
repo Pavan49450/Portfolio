@@ -46,14 +46,16 @@
 }
 
 .closeButton:hover {
-  animation: expandInfinite 0.5s infinite ease;
+  /* animation: expandInfinite 0.5s infinite ease; */
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 
-@keyframes expandInfinite {
+/* @keyframes expandInfinite {
   0% {
     transform: scale(1.25);
   }
   100% {
     transform: scale(1);
   }
-}
+} */

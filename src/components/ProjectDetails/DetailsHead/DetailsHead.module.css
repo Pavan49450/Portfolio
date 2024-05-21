@@ -15,6 +15,7 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
+  margin: 1rem 0;
 }
 
 .detailsHead a {

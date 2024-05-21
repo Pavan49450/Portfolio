@@ -35,7 +35,7 @@ const Thumbnail = ({
           src={require(`../../../assets/icons/expand.png`)}
           alt={`expand icon`}
           className={style.expand}
-          classForDiv={style.expandContainer}
+          classForDiv={`${style.expandContainer} hover:scale-105 transition-all`}
           onClick={() => openOverlay(currentImage)}
         />
       </div>

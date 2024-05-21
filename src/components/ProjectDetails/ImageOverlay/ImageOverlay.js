@@ -38,7 +38,7 @@ const ImageOverlay = ({
           src={require("../../../assets/icons/collapse.png")}
           alt=""
           onClick={closeOverlay}
-          className={style.closeButton}
+          className={`${style.closeButton} hover:scale-105 transition-all`}
         />
       </div>
       <NextButton

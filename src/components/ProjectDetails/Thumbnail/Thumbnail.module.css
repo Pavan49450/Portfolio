@@ -23,24 +23,6 @@
   width: 30px;
   height: 30px;
   background-color: var(--yellow);
-  /* border: 3px solid var(--gold); */
   padding: 0.2rem;
   cursor: pointer;
-}
-
-.expand {
-  /* width: 30px;
-  height: 30px; */
-}
-.expandContainer:hover {
-  animation: expandInfinite 0.5s infinite ease;
-}
-
-@keyframes expandInfinite {
-  0% {
-    transform: scale(1.25);
-  }
-  100% {
-    transform: scale(1);
-  }
 }

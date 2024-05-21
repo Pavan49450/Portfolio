@@ -89,3 +89,9 @@
 .skill:hover .tooltip {
   opacity: 1;
 }
+
+@media (max-width: 400px) {
+  .subHeading {
+    font-size: 0.9rem;
+  }
+}

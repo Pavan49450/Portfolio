@@ -103,6 +103,9 @@ const ContactMeForm = () => {
         onSubmit={handleSubmit}
         className={` p-4 mx-4 rounded-md bg-orange-400`}
       >
+        <h2 className="p-4 pb-6 text-white text-2xl font-bold text-center">
+          Contact Me
+        </h2>
         <div className={`grid grid-cols-1 sm:grid-cols-2 gap-x-4`}>
           <InputWithInvalidText
             ErrorMessage={"Invalid Name"}
@@ -162,7 +165,7 @@ const ContactMeForm = () => {
         />
         <div className="flex justify-end w-full">
           <Button type="submit" disabled={!formIsValid} doNotScrollToTop>
-            {isLoading ? "Loading..." : "Contact Us"}
+            {isLoading ? "Loading..." : "Send"}
           </Button>
         </div>
       </form>
