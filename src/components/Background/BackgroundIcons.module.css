@@ -1,16 +1,19 @@
 .imageContainer {
-  position: absolute;
+  position: fixed;
   top: 65px;
   left: 0;
   width: 100%;
   height: calc(100vh - 65px);
   overflow: hidden;
+  z-index: -10;
 }
 
 .image {
   position: absolute;
   width: 8vw;
   height: auto;
+  max-width: 120px;
+  object-fit: contain;
 }
 
 .c {
@@ -48,7 +51,7 @@
   left: 40%;
 }
 
-.javascript {
+.nextjs {
   top: 80%;
   left: 15%;
 }
@@ -97,9 +100,9 @@
   right: 40%;
 }
 
-.nextjs {
+.javascript {
   left: 35%;
-  top: 10%;
+  top: 5%;
 }
 
 @media (max-width: 768px) {

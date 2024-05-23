@@ -1,5 +1,5 @@
 .container {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
   background-color: #f8f8f8;
   border-radius: 8px;
@@ -13,14 +13,14 @@
   width: 50px;
 }
 
-.summary {
+/* .summary {
   margin: 30px;
   padding: 1rem;
   border-bottom: 1px solid var(--amethyst);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background-color: #fff;
-}
+} */
 
 /* .container h2 {
   color: #333;

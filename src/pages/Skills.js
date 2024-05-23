@@ -22,7 +22,7 @@ const Skills = () => {
       {isLoading && <AcrobaticLoader />}
       <Container className={style.container}>
         <Title title={"SKILLS"} />
-        <ul className={style.skills}>
+        <div className={style.skills}>
           <h3
             // style={{ margin: "0", marginLeft: "2rem" }}
             className={style.subHeading}
@@ -32,19 +32,20 @@ const Skills = () => {
           {!isLoading &&
             skillsList.map((skill, index) => (
               <div className={style.skill} key={index}>
-                <li>{skill.name}</li>
+                <span>{skill.name}</span>
                 <CustomImage
                   // src={`${URL.backendUrl}/image/${skill.address}`}
                   src={require(`../assets/uploads/${skill.address}`)}
                   alt={skill.name}
                   className={style.skillIcons}
+                  classForDiv={style.skillIconsContainer}
                 />
                 <div
                   className={style.tooltip}
                 >{`Skill Level - ${skill.skillLevel}`}</div>
               </div>
             ))}
-        </ul>
+        </div>
       </Container>
       <BackgroundIcons />
     </>

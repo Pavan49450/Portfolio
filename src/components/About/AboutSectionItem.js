@@ -1,6 +1,7 @@
 import style from "./AboutSectionItem.module.css";
 import CustomImage from "../../UI/Image/Image";
 import URL from "../../constants/url";
+import Box from "../../UI/Box/Box";
 
 function AboutSectionItem({ title, details }) {
   // useEffect(() => {
@@ -8,7 +9,7 @@ function AboutSectionItem({ title, details }) {
   // });
 
   return (
-    <div className={style.section}>
+    <Box className={style.section}>
       <h3>{title}</h3>
       {details.map((detail, index) => (
         <div key={index} className={style.details}>
@@ -52,7 +53,7 @@ function AboutSectionItem({ title, details }) {
           </div>
         </div>
       ))}
-    </div>
+    </Box>
   );
 }
 

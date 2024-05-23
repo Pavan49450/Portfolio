@@ -1,11 +1,5 @@
 /* AboutSectionItem.module.css */
 .section {
-  margin: 30px;
-  padding: 1rem;
-  border-bottom: 1px solid var(--amethyst);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  background-color: #fff;
 }
 .section:last-child {
   border-bottom: none;
@@ -50,7 +44,7 @@
 .details {
   display: flex;
   align-items: flex-start;
-  /* width: 100%; */
+  gap: 1rem;
 }
 
 .logo {
