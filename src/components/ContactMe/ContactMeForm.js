@@ -77,6 +77,7 @@ const ContactMeForm = () => {
       nameInput.reset();
       mobileInput.reset();
       descriptionInput.reset();
+      emailInput.reset();
 
       const formData = {
         fullName: nameInput.value,
