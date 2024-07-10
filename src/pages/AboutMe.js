@@ -40,13 +40,6 @@ const AboutMe = () => {
     setCertificates(certificatesSection);
     setEducation(educationSection);
     setAchievements(achievementsSection);
-
-    console.log(
-      experienceSection,
-      achievementsSection,
-      educationSection,
-      certificatesSection
-    );
   }, [aboutMe]);
 
   return (

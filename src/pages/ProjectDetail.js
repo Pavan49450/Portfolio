@@ -43,10 +43,6 @@ const ProjectDetail = () => {
     );
   };
 
-  useEffect(() => {
-    console.log(currentImage);
-  }, [currentImage]);
-
   const [loading, setLoading] = useState(true);
 
   const handleImageLoaded = () => {

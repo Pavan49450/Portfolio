@@ -12,12 +12,11 @@ const Button = ({
   const combinedClassName = ` transitions-all ${
     !disabled
       ? styles.customButton + " bg-white shadow-lg"
-      : styles.disabledBtn + " bg-zinc-200"
+      : styles.disabledBtn + " bg-white shadow-lg opacity-50"
   } ${className}`;
 
   const handleClick = () => {
     if (doNotScrollToTop) {
-      console.log("hey");
       return;
     }
     window.scrollTo(0, 0); // Scroll to the top of the page
