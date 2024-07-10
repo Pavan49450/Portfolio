@@ -9,6 +9,7 @@ import AboutMe from "./pages/AboutMe";
 import "./input.css";
 
 import ProjectDetail from "./pages/ProjectDetail";
+import Services from "./pages/Services";
 
 function App() {
   const router = createBrowserRouter([
@@ -40,6 +41,11 @@ function App() {
         {
           path: "/skills",
           element: <Skills />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "/services",
+          element: <Services />,
           errorElement: <ErrorPage />,
         },
       ],

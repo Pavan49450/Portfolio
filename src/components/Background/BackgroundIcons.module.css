@@ -104,6 +104,10 @@
   left: 35%;
   top: 5%;
 }
+.flutter {
+  right: 10%;
+  bottom: 15%;
+}
 
 @media (max-width: 768px) {
   .image {

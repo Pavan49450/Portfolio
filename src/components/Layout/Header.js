@@ -118,6 +118,16 @@ const Header = () => {
           SKILLS
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="services"
+          title="Link to services page"
+          onClick={handleMobileMenuToggle}
+          className={({ isActive }) => (isActive ? style.active : undefined)}
+        >
+          SERVICES
+        </NavLink>
+      </li>
     </>
   );
 
