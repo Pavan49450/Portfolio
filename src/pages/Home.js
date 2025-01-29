@@ -1,5 +1,4 @@
 import BackgroundIcons from "../components/Background/BackgroundIcons";
-import ContactMe from "../components/ContactMe/ContactMe";
 import style from "./Home.module.css";
 
 const HomePage = () => {

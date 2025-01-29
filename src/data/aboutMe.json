@@ -1,115 +1,125 @@
-[{
-  "_id": {
-    "$oid": "65b5f9a9763ad1485212a09a"
+[
+  {
+    "_id": {
+      "$oid": "65b5f9a9763ad1485212a09a"
+    },
+    "title": "Experience",
+    "details": [
+      {
+        "subHeading": "Software Developer,",
+        "location": "Hyderabd",
+        "period": "Aug 2024 - Current",
+        "content": [
+          "Contributed to developing an innovative solar pile foundation design tool, automating calculations and iterations to optimize solar project foundations.",
+          "Enhanced user experience with features like detailed user dashboard, project management, project review, in-app-notifications and activity log."
+        ],
+        "logo": "structurology.svg"
+      },
+      {
+        "subHeading": "Frontend Developer, VRPI",
+        "period": "Feb 2024 - Jul 2024",
+        "location": "Hyderabad",
+        "content": [
+          "Lead the Charge: Spearheaded front-end development initiatives to craft an innovative Edutech application, democratizing access to quality education through affordable courses tailored for students from diverse backgrounds. ",
+          "Architected Excellence: Developed the official website for VRPI Group of Companies, showcasing the conglomerate's cutting-edge solutions and seamless import-export services to a global audience."
+        ],
+        "logo": "vrpiLogo.png"
+      },
+      {
+        "subHeading": "Full Stack Developer, Pearlthoughts",
+        "location": "Chennai",
+        "period": "Sep 2023 — Jan 2024",
+        "content": [
+          "Spearheaded the development of Schedula, a robust doctor appointment scheduling platform, utilizing React for the frontend, Node.js for the backend, and emphasizing the power of PostgreSQL for a secure and scalable database. ",
+          "Engineered Unistock, an Android E-commerce platform for bulk medicine sales, emphasizing React Native for mobile development and PostgreSQL for a high-performance database. Utilized Azure's cloud capabilities to optimize resource utilization and ensure seamless scalability.",
+          "Developed Zoggy Foods, a dynamic food ordering app, with an emphasis on React Native for Android development and PostgreSQL for a robust and scalable database. Leveraged Azure for cloud services, enhancing the platform's scalability and reliability."
+        ],
+        "logo": "pearlthoughts-logo.jpeg"
+      },
+      {
+        "subHeading": "Assistant System Engineer at Tata Consultancy Services,",
+        "location": "Kolkata",
+        "period": "Jan 2022 — Aug 2023",
+        "content": [
+          "Spearheaded the development of Tata-Pay's payment module with React, integrating UPI and Net banking functionalities for a secure payment process. ",
+          "Achieved a 20% reduction in page load times through performance optimizations in Tata-Pay, enhancing overall user experience and satisfaction.",
+          "Utilized React expertise to optimize form interactions in the CSM project, contributing to a 15% increase in submission rates, and collaborated on strategic decisions resulting in a significant 25% improvement in overall user satisfaction."
+        ],
+        "logo": "TCS-logo.png"
+      }
+    ]
   },
-  "title": "Experience",
-  "details": [
-    {
-      "subHeading": "Full Stack Developer, Pearlthoughts",
-      "location": "Chennai",
-      "period": "Sep 2023 — Jan 2024",
-      "content": [
-        "Spearheaded the development of Schedula, a robust doctor appointment scheduling platform, utilizing React for the frontend, Node.js for the backend, and emphasizing the power of PostgreSQL for a secure and scalable database. ",
-        "Engineered Unistock, an Android E-commerce platform for bulk medicine sales, emphasizing React Native for mobile development and PostgreSQL for a high-performance database. Utilized Azure's cloud capabilities to optimize resource utilization and ensure seamless scalability.",
-        "Developed Zoggy Foods, a dynamic food ordering app, with an emphasis on React Native for Android development and PostgreSQL for a robust and scalable database. Leveraged Azure for cloud services, enhancing the platform's scalability and reliability."
-      ],
-      "logo": "pearlthoughts-logo.jpeg"
+  {
+    "_id": {
+      "$oid": "65b5f9a9763ad1485212a09b"
     },
-    {
-      "subHeading": "Assistant System Engineer at Tata Consultancy Services,",
-      "location": "Kolkata",
-      "period": "Jan 2022 — Aug 2023",
-      "content": [
-        "Spearheaded the development of Tata-Pay's payment module with React, integrating UPI and Net banking functionalities for a secure payment process. ",
-        "Achieved a 20% reduction in page load times through performance optimizations in Tata-Pay, enhancing overall user experience and satisfaction.",
-        "Utilized React expertise to optimize form interactions in the CSM project, contributing to a 15% increase in submission rates, and collaborated on strategic decisions resulting in a significant 25% improvement in overall user satisfaction."
-      ],
-      "logo": "TCS-logo.png"
-    },
-    {
-      "subHeading": "Frontend Developer, VRPI",
-      "period": "Feb 2024 - Current",
-      "location": "Hyderabad",
-      "content": [
-        "Lead the Charge: Spearheaded front-end development initiatives to craft an innovative Edutech application, democratizing access to quality education through affordable courses tailored for students from diverse backgrounds. ",
-        "Architected Excellence: Developed the official website for VRPI Group of Companies, showcasing the conglomerate's cutting-edge solutions and seamless import-export services to a global audience."
-      ],
-      "logo": "vrpiLogo.png"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "65b5f9a9763ad1485212a09b"
+    "title": "Achievements",
+    "details": [
+      {
+        "subHeading": "TCS Training",
+        "location": "Kolkata",
+        "period": "Feb 2022 — Mar 2022",
+        "content": [
+          "Attained the highest score among peers during TCS training, showcasing a strong grasp of concepts and dedication.",
+          "Mentored fellow trainees in understanding React concepts during TCS training."
+        ],
+        "logo": "TCS-logo.png"
+      },
+      {
+        "subHeading": "Pearlthoughts Internship",
+        "location": "Chennai",
+        "period": "Nov 2023 — Dec 2024",
+        "content": [
+          "Led and supervised a cohort of interns at PearlThoughts for a month, cultivating an environment that thrived on collaboration and knowledge exchange.",
+          "Prioritized mentorship, actively engaging interns in insightful discussions and hands-on projects to enhance their professional development.",
+          "Established a positive and inclusive atmosphere, encouraging teamwork and fostering a dynamic learning culture among the interns."
+        ],
+        "logo": "pearlthoughts-logo.jpeg"
+      }
+    ]
   },
-  "title": "Achievements",
-  "details": [
-    {
-      "subHeading": "TCS Training",
-      "location": "Kolkata",
-      "period": "Feb 2022 — Mar 2022",
-      "content": [
-        "Attained the highest score among peers during TCS training, showcasing a strong grasp of concepts and dedication.",
-        "Mentored fellow trainees in understanding React concepts during TCS training."
-      ],
-      "logo": "TCS-logo.png"
+  {
+    "_id": {
+      "$oid": "65b5f9a9763ad1485212a099"
     },
-    {
-      "subHeading": "Pearlthoughts Internship",
-      "location": "Chennai",
-      "period": "Nov 2023 — Dec 2024",
-      "content": [
-        "Led and supervised a cohort of interns at PearlThoughts for a month, cultivating an environment that thrived on collaboration and knowledge exchange.",
-        "Prioritized mentorship, actively engaging interns in insightful discussions and hands-on projects to enhance their professional development.",
-        "Established a positive and inclusive atmosphere, encouraging teamwork and fostering a dynamic learning culture among the interns."
-      ],
-      "logo": "pearlthoughts-logo.jpeg"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "65b5f9a9763ad1485212a099"
+    "title": "Education",
+    "details": [
+      {
+        "subHeading": "B.Tech in Mechanical Engineering, CMRIT,",
+        "location": "Medchal",
+        "period": "Jun 2018 — Sep 2021",
+        "content": ["Graduated with a CGPA of 8.28."],
+        "logo": "CMRIT-logo.jpg"
+      }
+    ]
   },
-  "title": "Education",
-  "details": [
-    {
-      "subHeading": "B.Tech in Mechanical Engineering, CMRIT,",
-      "location": "Medchal",
-      "period": "Jun 2018 — Sep 2021",
-      "content": [
-        "Graduated with a CGPA of 8.28."
-      ],
-      "logo": "CMRIT-logo.jpg"
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "65bb485aa70e81f0cfe5dabf"
-  },
-  "title": "Certifications",
-  "details": [
-    {
-      "subHeading": "React - The Complete Guide (Incl Hooks, React Router, Redux), Udemy",
-      "period": "Dec 2020 – May 2021",
-      "content": [],
-      "logo": "https://logowik.com/content/uploads/images/udemy-new-20212512.jpg",
-      "link": "https://udemy-certificate.s3.amazonaws.com/pdf/UC-719e53f0-c239-4dd3-bfde-44c3a10367d9.pdf"
+  {
+    "_id": {
+      "$oid": "65bb485aa70e81f0cfe5dabf"
     },
-    {
-      "subHeading": "Cutshort Certified React.js – Basic",
-      "period": "JAN 2023 – JAN 2023",
-      "content": [],
-      "logo": "https://cdn.cutshort.io/public/images/og-new-logo-rect.jpg",
-      "link": "https://cutshort.io/certificate/92424"
-    },
-    {
-      "subHeading": "Cutshort Certified HTML/CSS - Basic",
-      "period": "JAN 2023 – JAN 2023",
-      "content": [],
-      "logo": "https://cdn.cutshort.io/public/images/og-new-logo-rect.jpg",
-      "link": "https://cutshort.io/certificate/92607"
-    }
-  ]
-}]
+    "title": "Certifications",
+    "details": [
+      {
+        "subHeading": "React - The Complete Guide (Incl Hooks, React Router, Redux), Udemy",
+        "period": "Dec 2020 – May 2021",
+        "content": [],
+        "logo": "https://logowik.com/content/uploads/images/udemy-new-20212512.jpg",
+        "link": "https://udemy-certificate.s3.amazonaws.com/pdf/UC-719e53f0-c239-4dd3-bfde-44c3a10367d9.pdf"
+      },
+      {
+        "subHeading": "Cutshort Certified React.js – Basic",
+        "period": "JAN 2023 – JAN 2023",
+        "content": [],
+        "logo": "https://cdn.cutshort.io/public/images/og-new-logo-rect.jpg",
+        "link": "https://cutshort.io/certificate/92424"
+      },
+      {
+        "subHeading": "Cutshort Certified HTML/CSS - Basic",
+        "period": "JAN 2023 – JAN 2023",
+        "content": [],
+        "logo": "https://cdn.cutshort.io/public/images/og-new-logo-rect.jpg",
+        "link": "https://cutshort.io/certificate/92607"
+      }
+    ]
+  }
+]

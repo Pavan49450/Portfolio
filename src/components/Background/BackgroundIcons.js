@@ -1,73 +1,86 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import style from "./BackgroundIcons.module.css";
-import generateRandomKeyframes from "./MoveImageAnimation";
-import useHttps from "../../hooks/use-https";
-import URL from "../../constants/url";
 import AcrobaticLoader from "../../animations/AcrobaticLoader";
 import skills from "../../data/skills.json";
-
-const duration = 20;
+import generateRandomKeyframes from "./MoveImageAnimation";
 
 const BackgroundIcons = () => {
-  const { isLoading, sendRequest, error } = useHttps();
   const [skillsList, setSkillsList] = useState([]);
   const [imageLoading, setImageLoading] = useState(true);
-
-  // const fetchSkillsData = (data) => {
-  //   setSkillsList(data);
-  //   // console.log(data);
-  // };
-
-  // useEffect(() => {
-  //   sendRequest({ url: URL.backendUrl + "/skills" }, fetchSkillsData);
-  // }, [sendRequest]);
-
-  // if (error) {
-  //   return <p>{error}</p>;
-  // }
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const iconsRef = useRef([]);
 
   useEffect(() => {
     setSkillsList(skills);
-    // console.log(skills);
-  }, [skills]);
+  }, []);
 
-  const dynamicStyles = Array.from({ length: skillsList.length }, (_, index) =>
-    generateRandomKeyframes(index)
-  ).join("\n");
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const styleSheet = document.styleSheets[0];
+    skillsList.forEach((_, index) => {
+      const keyframes = generateRandomKeyframes(index);
+      styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    });
+  }, [skillsList]);
 
   const handleImageLoad = () => {
-    // console.log("hey");
     setImageLoading(false);
+  };
+
+  const calculateTransform = (image) => {
+    const { x, y } = mousePosition;
+    const imageRect = image.getBoundingClientRect();
+    const imageCenterX = imageRect.left + imageRect.width / 2;
+    const imageCenterY = imageRect.top + imageRect.height / 2;
+
+    const deltaX = imageCenterX - x;
+    const deltaY = imageCenterY - y;
+
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    const maxDistance = 200; // Maximum distance for the icon to move
+    const avoidanceFactor = Math.max(0, (maxDistance - distance) / maxDistance);
+
+    const offsetX = deltaX * avoidanceFactor * 2; // Adjust these values for desired sensitivity
+    const offsetY = deltaY * avoidanceFactor * 2;
+
+    return `translate(${offsetX}px, ${offsetY}px)`;
   };
 
   return (
     <>
-      {/* {isLoading ? (
-        <AcrobaticLoader />
-      ) : ( */}
-      <>
-        {imageLoading && <AcrobaticLoader />}
-        <style>{dynamicStyles}</style>
-        <div className={style.imageContainer}>
-          {skillsList.map((image, index) => (
+      {imageLoading && <AcrobaticLoader />}
+      <div className={style.imageContainer}>
+        {skillsList.map((image, index) => {
+          const ref = iconsRef.current[index];
+          return (
             <img
               key={index}
-              // src={`${URL.backendUrl}/image/${image.address}`}
               src={require(`../../assets/uploads/${image.address}`)}
               alt={image.name}
               className={`${style.image} ${
                 style[image.name.toLowerCase().split(" ").join("")]
               }`}
+              ref={(el) => (iconsRef.current[index] = el)}
               style={{
-                animation: `moveImage${index} ${duration}s ease-in-out infinite`,
+                transform: ref ? calculateTransform(ref) : "", // Ensure ref is defined
                 visibility: imageLoading && "hidden",
+                animation: `moveImage${index} 20s ease-in-out infinite`,
+                transition: "transform 400ms ease",
               }}
               onLoad={index === skillsList.length - 1 ? handleImageLoad : null}
             />
-          ))}
-        </div>
-      </>
-      {/* )} */}
+          );
+        })}
+      </div>
     </>
   );
 };
