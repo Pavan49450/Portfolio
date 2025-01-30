@@ -10,6 +10,9 @@
 
   --gold: #ffa500;
   --yellow: #ffd700;
+  /* --tw-bg-opacity: 1;
+  --gold: rgb(59 130 280 / var(--tw-bg-opacity));
+  --yellow: rgb(29 78 216 / var(--tw-bg-opacity)); */
 
   --indigo: #4b0082;
   --limeGreen: #32cd32;

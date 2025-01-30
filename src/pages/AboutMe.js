@@ -44,7 +44,7 @@ const AboutMe = () => {
 
   return (
     <>
-      <Container className={style.container}>
+      <Container className={`${style.container}`}>
         <Title title={"ABOUT ME"} />
         <div className="flex flex-col gap-4 mt-8">
           {/* {sections.map((section, index) => (

@@ -5,8 +5,9 @@
   border-radius: 8px;
   position: relative;
   z-index: 4;
-  min-height: 80vh;
+  min-height: 100vh;
   margin-bottom: 2rem;
+  margin-top: 65px;
 }
 
 @media (max-width: 1000px) {

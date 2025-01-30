@@ -10,16 +10,16 @@ import CustomImage from "../UI/Image/Image";
 import skills from "../data/skills.json";
 
 const Skills = () => {
-  const { isLoading, sendRequest, error } = useHttps();
-  const [skillsList, setSkillsList] = useState([]);
+  // const { isLoading, sendRequest, error } = useHttps();
+  // const [skillsList, setSkillsList] = useState([]);
 
-  useEffect(() => {
-    setSkillsList(skills);
-  }, [skills]);
+  // useEffect(() => {
+  //   setSkillsList(skills);
+  // }, [skills]);
 
   return (
     <>
-      {isLoading && <AcrobaticLoader />}
+      {/* {isLoading && <AcrobaticLoader />} */}
       <Container className={style.container}>
         <Title title={"SKILLS"} />
         <div className={style.skills}>
@@ -29,22 +29,21 @@ const Skills = () => {
           >
             Technical Skills
           </h3>
-          {!isLoading &&
-            skillsList.map((skill, index) => (
-              <div className={style.skill} key={index}>
-                <span>{skill.name}</span>
-                <CustomImage
-                  // src={`${URL.backendUrl}/image/${skill.address}`}
-                  src={require(`../assets/uploads/${skill.address}`)}
-                  alt={skill.name}
-                  className={style.skillIcons}
-                  classForDiv={style.skillIconsContainer}
-                />
-                <div
-                  className={style.tooltip}
-                >{`Skill Level - ${skill.skillLevel}`}</div>
-              </div>
-            ))}
+          {skills.map((skill, index) => (
+            <div className={style.skill} key={index}>
+              <span>{skill.name}</span>
+              <CustomImage
+                // src={`${URL.backendUrl}/image/${skill.address}`}
+                src={require(`../assets/uploads/${skill.address}`)}
+                alt={skill.name}
+                className={style.skillIcons}
+                classForDiv={style.skillIconsContainer}
+              />
+              <div
+                className={style.tooltip}
+              >{`Skill Level - ${skill.skillLevel}`}</div>
+            </div>
+          ))}
         </div>
       </Container>
       <BackgroundIcons />

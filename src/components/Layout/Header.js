@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import CustomImage from "../../UI/Image/Image";
 
 const Logo = () => (
-  <div className={style.navbar__logo}>
+  <div className={`${style.navbar__logo} active:scale-90 transition-all`}>
     <div
       style={{
         width: "100%",
@@ -75,9 +75,17 @@ const Header = () => {
     };
   }, [width]);
 
+  const navData = [
+    { path: "/", label: "HOME", exact: true },
+    { path: "/about", label: "ABOUT ME", exact: false },
+    { path: "/projects", label: "PROJECTS", exact: false },
+    { path: "/skills", label: "SKILLS", exact: false },
+    { path: "/services", label: "SERVICES", exact: false },
+  ];
+
   const navElements = (
     <>
-      <li>
+      {/* <li>
         <NavLink
           to="/"
           title="Link to home page"
@@ -126,12 +134,32 @@ const Header = () => {
         >
           SERVICES
         </NavLink>
-      </li>
+      </li> */}
+      {navData.map((item, index) => (
+        <li key={index} className="flex justify-center items-center">
+          <NavLink
+            to={item.path}
+            title={`Link to ${item.label} page`}
+            onClick={handleMobileMenuToggle}
+            className={({ isActive }) =>
+              `${
+                isActive
+                  ? `${style.active}  bg-black  text-white`
+                  : `bg-white hover:bg-zinc-200 active:scale-90`
+              } py-2 w-24 text-center rounded-xl text-sm font-bold transition-all shadow-sm`
+            }
+          >
+            {item.label}
+          </NavLink>
+        </li>
+      ))}
     </>
   );
 
   return (
-    <nav className={style.navbar}>
+    <nav
+      className={`${style.navbar} bg-slate-50 border-b-[1px] border-zinc-300`}
+    >
       {width < breakpoint ? (
         <div
           className={style.mobileMenuIcon}
@@ -141,9 +169,16 @@ const Header = () => {
           ☰
         </div>
       ) : (
-        <div className={style.nav}>{navElements}</div>
+        <div className={`${style.nav} gap-2`}>{navElements}</div>
       )}
-      <Logo />
+      <div className="flex justify-center items-center">
+        {/* <div className="">
+          <span className="backdrop-blur-lg w-fit mx-auto px-6 rounded-3xl text-lg text-black">
+            Coding Tomorrow's Possibilities
+          </span>
+        </div> */}
+        <Logo />
+      </div>
       {width < breakpoint && (
         <div
           className={`${style.overlay} ${
@@ -154,10 +189,10 @@ const Header = () => {
           <ul
             className={`${style.sideNavbar} ${
               isMobileMenuOpen ? style.show : undefined
-            }`}
+            } bg-slate-100 `}
             ref={sideNavbarRef}
           >
-            <div className={style.sideNavbar_head}>
+            <div className={`${style.sideNavbar_head} p-2`}>
               <Logo />
               <button
                 className={style.closeBtn}
@@ -167,7 +202,7 @@ const Header = () => {
                 &#x2715;
               </button>
             </div>
-            {navElements}
+            <div className="flex flex-col gap-2 w-full px-4">{navElements}</div>
           </ul>
         </div>
       )}

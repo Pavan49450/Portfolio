@@ -9,7 +9,7 @@ const Button = ({
   disabled,
   doNotScrollToTop,
 }) => {
-  const combinedClassName = ` transitions-all ${
+  const combinedClassName = `active:scale-90 transitions-all ${
     !disabled
       ? styles.customButton + " bg-white shadow-lg"
       : styles.disabledBtn + " bg-white shadow-lg opacity-50"

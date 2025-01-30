@@ -10,6 +10,7 @@
   left: 0;
   width: 100%;
   background: linear-gradient(45deg, var(--yellow), var(--gold));
+  opacity: 0.9;
   z-index: 6;
 }
 
@@ -48,7 +49,7 @@
   left: -250px;
   width: 250px;
   height: 100%;
-  background-color: #fff;
+  /* background-color: #fff; */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: left 0.3s ease;
   z-index: 4;
@@ -66,14 +67,15 @@
   padding: 0px;
   margin: 0;
   align-items: center;
+  margin-left: 20px;
 }
-.nav li {
+/* .nav li {
   width: 100px;
   height: 60px;
   text-align: center;
-}
+} */
 
-.nav li a {
+/* .nav li a {
   text-decoration: none;
   display: inline-block;
   padding-left: 2px;
@@ -88,7 +90,7 @@
 .nav li a:hover {
   opacity: 0.7;
   transition: all 0.2s ease;
-}
+} */
 
 .sideNavbar_head {
   display: flex;
@@ -97,6 +99,7 @@
   width: 100%;
   background: linear-gradient(45deg, var(--gold), var(--yellow));
   border-radius: 2px;
+  margin-bottom: 20px;
 }
 
 .sideNavbar.show {
@@ -104,20 +107,21 @@
 }
 
 .sideNavbar li {
-  border-bottom: 1px solid var(--yellow);
+  /* border-bottom: 1px solid #ccc; */
   width: 100%;
   text-align: center;
-  border-radius: 20px;
+  /* border-radius: 20px; */
 }
 
 .sideNavbar li a {
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-decoration: none;
-  color: var(--whiteText);
+  /* color: var(--whiteText); */
   display: block;
   width: 100%;
-  border-radius: 20px;
+  /* background-color: white; */
+  /* border-radius: 20px; */
 }
 .sideNavbar li:hover {
   background-color: #f1f1f1;
@@ -160,12 +164,12 @@
   left: 0;
 }
 @media (min-width: 600px) {
-  .active {
+  /* .active {
     border-bottom: 3px solid var(--blackText);
     border-image-slice: 1;
 
     transition: all 0.2s ease;
-  }
+  } */
 }
 
 @media (max-width: 600px) {
@@ -178,11 +182,15 @@
     width: 80%;
     left: -100%;
   }
-  .sideNavbar li a {
+  /* .sideNavbar li a {
     color: var(--blackText);
-  }
+  } */
+  /* .sideNavbar .active {
+    background-color: black;
+    color: white;
+  } */
 
-  .active {
+  /* .active {
     background-color: #ffd70087;
-  }
+  } */
 }
