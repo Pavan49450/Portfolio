@@ -74,10 +74,10 @@ const ContactMeForm = () => {
       //   mobileInput.value,
       //   descriptionInput.value
       // );
-      // nameInput.reset();
-      // mobileInput.reset();
-      // descriptionInput.reset();
-      // emailInput.reset();
+      nameInput.reset();
+      mobileInput.reset();
+      descriptionInput.reset();
+      emailInput.reset();
 
       const formData = {
         fullName: nameInput.value,
