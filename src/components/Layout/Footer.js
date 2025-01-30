@@ -13,11 +13,11 @@ const Footer = () => {
       address: "https://www.linkedin.com/in/kattula-pavan-kumar-a2434714b/",
       imageURL: "https://img.icons8.com/color/96/linkedin.png",
     },
-    {
-      name: "Portfolio",
-      address: "https://kattula-pavan-kumar.vercel.app/",
-      imageURL: "https://img.icons8.com/clouds/100/resume.png",
-    },
+    // {
+    //   name: "Portfolio",
+    //   address: "https://kattula-pavan-kumar.vercel.app/",
+    //   imageURL: "https://img.icons8.com/clouds/100/resume.png",
+    // },
     {
       name: "Instagram",
       address: "https://Instagram.com/kattula_pavan",
@@ -26,7 +26,9 @@ const Footer = () => {
   ];
 
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={`${styles.footer} bg-slate-50 border-t-[1px] border-zinc-300`}
+    >
       <div className={styles.footerContent}>
         <div className={styles.socialIcons}>
           {links.map((link, index) => (

@@ -54,15 +54,15 @@ const ContactMeForm = () => {
   const { sendRequest, error, statusCode, responseData, isLoading } =
     useHttpsAxios();
 
-  useEffect(() => {
-    const Validation = () => {
-      if (responseData) {
-        console.log(responseData);
-      }
-    };
+  // useEffect(() => {
+  //   const Validation = () => {
+  //     if (responseData) {
+  //       console.log(responseData);
+  //     }
+  //   };
 
-    Validation();
-  }, [error, responseData]);
+  //   Validation();
+  // }, [error, responseData]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -74,10 +74,10 @@ const ContactMeForm = () => {
       //   mobileInput.value,
       //   descriptionInput.value
       // );
-      nameInput.reset();
-      mobileInput.reset();
-      descriptionInput.reset();
-      emailInput.reset();
+      // nameInput.reset();
+      // mobileInput.reset();
+      // descriptionInput.reset();
+      // emailInput.reset();
 
       const formData = {
         fullName: nameInput.value,
@@ -93,6 +93,7 @@ const ContactMeForm = () => {
           "Content-Type": "application/json",
         },
         body: formData,
+        errorText: "Failed to sent message.",
       });
     } else {
     }

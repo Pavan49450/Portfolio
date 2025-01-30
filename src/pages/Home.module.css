@@ -1,6 +1,7 @@
 .homeContent {
-  height: calc(100vh - 125px);
+  height: calc(100vh);
   width: 100%;
+  position: relative;
 }
 .homeContent .title {
   width: 100%;
@@ -15,6 +16,7 @@
   flex-direction: column;
   animation: expand 0.5s ease;
   justify-content: center;
+  gap: 15px;
 }
 
 .title__main {
@@ -25,6 +27,10 @@
   font-size: 100px;
   text-shadow: 4px 4px 4px #000;
 }
+
+/* .commas {
+  transform: rotate(180deg);
+} */
 
 @keyframes expand {
   0% {

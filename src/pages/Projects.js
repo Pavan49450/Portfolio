@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from "./Projects.module.css";
 import ProjectItem from "../components/Projects/ProjectItem";
 import BackgroundIcons from "../components/Background/BackgroundIcons";
@@ -7,11 +7,11 @@ import Container from "../UI/Container/Container";
 import projects from "../data/projects.json";
 
 const Projects = () => {
-  const [projectsList, setProjectList] = useState([]);
+  // const [projectsList, setProjectList] = useState([]);
 
-  useEffect(() => {
-    setProjectList(projects);
-  }, [projects]);
+  // useEffect(() => {
+  //   setProjectList(projects);
+  // }, [projects]);
 
   return (
     <>
@@ -20,7 +20,7 @@ const Projects = () => {
         <div className={style.projectClub}>
           <div className={style.projects}>
             <h2 className={style.subHeading}>Projects on Work</h2>
-            {projectsList.map((project, index) => (
+            {projects.map((project, index) => (
               <>
                 {project.projectBackground === "professional" && (
                   <ProjectItem index={index} project={project} key={index} />
@@ -31,7 +31,7 @@ const Projects = () => {
 
           <div className={style.projects}>
             <h2 className={style.subHeading}>Practice Projects</h2>
-            {projectsList.map((project, index) => (
+            {projects.map((project, index) => (
               <>
                 {project.projectBackground === "learning" && (
                   <ProjectItem index={index} project={project} key={index} />
