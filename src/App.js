@@ -10,6 +10,8 @@ import "./input.css";
 
 import ProjectDetail from "./pages/ProjectDetail";
 import Services from "./pages/Services";
+import ThreeDText from "./components/3dElements/ThreeDWord";
+import ImageTo3D from "./components/3dElements/ThreeDImage";
 
 function App() {
   const router = createBrowserRouter([
@@ -52,7 +54,19 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  // return <RouterProvider router={router} />;
+  return (
+    <div className="p-5">
+      {/* <ThreeDTextScene text={"pavan"} /> */}
+      {/* <ThreeDText word={"I am Software developer"} />
+      <ThreeDText word={"Kattula"} />
+      <ThreeDText word={"Pavan"} />
+      <ThreeDText word={"Kumar"} /> */}
+      <ImageTo3D
+        imageUrl={"E:/Pavan/projects/portfolio/src/assets/uploads/html5.png"}
+      />
+    </div>
+  );
 }
 
 export default App;

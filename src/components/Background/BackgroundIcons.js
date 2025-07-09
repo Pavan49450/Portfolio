@@ -3,15 +3,25 @@ import style from "./BackgroundIcons.module.css";
 import AcrobaticLoader from "../../animations/AcrobaticLoader";
 import skills from "../../data/skills.json";
 import generateRandomKeyframes from "./MoveImageAnimation";
+import Cookies from "js-cookie";
 
 const BackgroundIcons = () => {
   const [skillsList, setSkillsList] = useState([]);
   const [imageLoading, setImageLoading] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [iconPositions, setIconPositions] = useState({});
   const iconsRef = useRef([]);
 
   useEffect(() => {
     setSkillsList(skills);
+  }, []);
+
+  // Load positions from session cookies when the component mounts
+  useEffect(() => {
+    const savedPositions = Cookies.get("iconPositions");
+    if (savedPositions) {
+      setIconPositions(JSON.parse(savedPositions));
+    }
   }, []);
 
   useEffect(() => {
@@ -36,7 +46,7 @@ const BackgroundIcons = () => {
     setImageLoading(false);
   };
 
-  const calculateTransform = (image) => {
+  const calculateTransform = (image, index) => {
     const { x, y } = mousePosition;
     const imageRect = image.getBoundingClientRect();
     const imageCenterX = imageRect.left + imageRect.width / 2;
@@ -46,13 +56,22 @@ const BackgroundIcons = () => {
     const deltaY = imageCenterY - y;
 
     const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    const maxDistance = 200; // Maximum distance for the icon to move
+    const maxDistance = 2000;
     const avoidanceFactor = Math.max(0, (maxDistance - distance) / maxDistance);
 
-    const offsetX = deltaX * avoidanceFactor * 2; // Adjust these values for desired sensitivity
-    const offsetY = deltaY * avoidanceFactor * 2;
+    const offsetX = deltaX * avoidanceFactor * 200;
+    const offsetY = deltaY * avoidanceFactor * 200;
 
-    return `translate(${offsetX}px, ${offsetY}px)`;
+    const newPosition = { x: offsetX, y: offsetY };
+
+    // Store positions in state
+    setIconPositions((prev) => {
+      const updatedPositions = { ...prev, [index]: newPosition };
+      Cookies.set("iconPositions", JSON.stringify(updatedPositions)); // Store in cookies
+      return updatedPositions;
+    });
+
+    return `translate(${newPosition.x}px, ${newPosition.y}px)`;
   };
 
   return (
@@ -71,10 +90,14 @@ const BackgroundIcons = () => {
               }`}
               ref={(el) => (iconsRef.current[index] = el)}
               style={{
-                transform: ref ? calculateTransform(ref) : "", // Ensure ref is defined
+                transform: iconPositions[index]
+                  ? `translate(${iconPositions[index].x}px, ${iconPositions[index].y}px)`
+                  : ref
+                  ? calculateTransform(ref, index)
+                  : "",
                 visibility: imageLoading && "hidden",
                 animation: `moveImage${index} 20s ease-in-out infinite`,
-                transition: "transform 400ms ease",
+                transition: "transform 40ms ease",
               }}
               onLoad={index === skillsList.length - 1 ? handleImageLoad : null}
             />
