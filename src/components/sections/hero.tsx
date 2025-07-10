@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "../ui/button";
-import BackgroundIcons from "../ui/Background/BackgroundIcons";
 
 export function Hero() {
   const handleScrollToSection = (sectionId: string) => {

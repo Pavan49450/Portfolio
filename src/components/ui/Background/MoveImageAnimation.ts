@@ -1,4 +1,4 @@
-const generateRandomKeyframes = (index) => {
+const generateRandomKeyframes = (index: number) => {
   const distances = Array.from(
     { length: 4 },
     () => Math.floor(Math.random() * 50) + 25 // Reduce maximum distance to prevent going beyond the screen

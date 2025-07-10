@@ -65,10 +65,16 @@ export function Contact() {
       setFormData({ name: "", email: "", phone: "", message: "" });
     },
     onError: (error: unknown) => {
+      let message = "Failed to send message. Please try again.";
+      if (error instanceof Error) {
+        message = error.message;
+      } else if (typeof error === "string") {
+        message = error;
+      }
+
       toast({
         title: "Error",
-        description:
-          error.message || "Failed to send message. Please try again.",
+        description: message,
         variant: "destructive",
       });
     },
