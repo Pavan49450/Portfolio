@@ -1,0 +1,133 @@
+.imageContainer {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 65px);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.image {
+  position: absolute;
+  width: 10vw;
+  height: auto;
+  max-width: 120px;
+  object-fit: contain;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.c {
+  top: 10%;
+  left: 5%;
+}
+
+.css {
+  top: 15%;
+  left: 20%;
+}
+
+.typescript {
+  top: 30%;
+  left: 40%;
+}
+
+.mongodb {
+  top: 40%;
+  left: 60%;
+}
+
+.html {
+  top: 50%;
+  left: 5%;
+}
+
+.java {
+  top: 60%;
+  left: 15%;
+}
+
+.git {
+  top: 70%;
+  left: 40%;
+}
+
+.nextjs {
+  top: 80%;
+  left: 15%;
+}
+
+.github {
+  top: 70%;
+  left: 70%;
+}
+
+.node {
+  top: 10%;
+  left: 50%;
+}
+
+.python {
+  top: 20%;
+  left: 70%;
+}
+
+.react {
+  top: 25%;
+  left: 3%;
+}
+
+.vscode {
+  top: 40%;
+  left: 25%;
+}
+
+.sql {
+  top: 40%;
+  right: 10%;
+}
+
+.azure {
+  bottom: 10%;
+  right: 40%;
+}
+
+.reactnative {
+  right: 10%;
+  top: 10%;
+}
+
+.tailwind {
+  bottom: 30%;
+  right: 40%;
+}
+
+.javascript {
+  left: 35%;
+  top: 5%;
+}
+
+.flutter {
+  right: 10%;
+  bottom: 15%;
+}
+
+@media (max-width: 768px) {
+  .image {
+    width: 15vw;
+  }
+  .mongodb,
+  .python {
+    left: 60%;
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
