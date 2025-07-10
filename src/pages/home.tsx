@@ -4,7 +4,7 @@ import { Skills } from "../components/sections/skills";
 import { Projects } from "../components/sections/projects";
 import { Services } from "../components/sections/services";
 import { Experience } from "../components/sections/experience";
-import { Testimonials } from "../components/sections/testimonials";
+// import { Testimonials } from "../components/sections/testimonials";
 import { Contact } from "../components/sections/contact";
 import { Footer } from "../components/sections/footer";
 import { BackToTop } from "../components/ui/back-to-top";
