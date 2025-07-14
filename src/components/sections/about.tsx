@@ -28,7 +28,7 @@ export function About() {
 
   return (
     <section id="about" className="py-20 bg-muted/20">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-6 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -36,24 +36,26 @@ export function About() {
           ref={ref}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            About Me
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Passionate developer with a vision to create innovative solutions
             that make a difference
           </p>
         </motion.div>
 
-        <div className="flex gap-16 items-start justify-center">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ width: "100%", maxWidth: "300px" }}
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md"
           >
             <img
               src="images/selfie.jpg"
-              alt="Creative professional in modern office"
-              className="rounded-xl shadow-2xl w-full px] hover-lift object-cover"
+              alt="Creative professional"
+              className="rounded-xl shadow-2xl w-full object-cover"
             />
           </motion.div>
 
@@ -61,9 +63,12 @@ export function About() {
             initial={{ opacity: 0, x: 50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="w-full"
           >
-            <h3 className="text-3xl font-bold mb-6">My Journey</h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
+              My Journey
+            </h3>
+            <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
               As a full-stack developer with a mechanical engineering
               background, I bring a unique problem-solving approach to software
               development. My expertise spans across frontend and backend
@@ -80,16 +85,18 @@ export function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                  className="flex items-center space-x-4"
+                  className="flex items-start gap-4"
                 >
                   <div
-                    className={`w-12 h-12 bg-gradient-to-r ${feature.gradient} rounded-full flex items-center justify-center`}
+                    className={`w-12 h-12 shrink-0 bg-gradient-to-r ${feature.gradient} rounded-full flex items-center justify-center`}
                   >
                     <feature.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg">{feature.title}</h4>
-                    <p className="text-muted-foreground">
+                    <h4 className="font-semibold text-base sm:text-lg">
+                      {feature.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground">
                       {feature.description}
                     </p>
                   </div>

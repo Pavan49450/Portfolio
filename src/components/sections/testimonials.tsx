@@ -34,7 +34,7 @@ export function Testimonials() {
 
   return (
     <section id="testimonials" className="py-20 bg-background">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}

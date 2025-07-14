@@ -54,20 +54,20 @@ export function Navigation() {
         isScrolled ? "glass-effect" : ""
       }`}
     >
-      <div className="container mx-auto px-6 py-1">
+      <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2 py-1">
         <div className="flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="rounded-full bg-secondary w-[65px] h-[65px]  flex justify-center items-center border-primary border-2"
+            className="rounded-full bg-secondary w-[65px] h-[65px] max-[600px]:w-[50px] max-[600px]:h-[50px] flex justify-center items-center border-primary border-2"
           >
             {/* <span className="text-foreground">K</span>
             <span className="gradient-text">PK</span> */}
             <img
               src={`/uploads/Logo.png`}
               alt={"logo"}
-              className={`w-[60px] mb-2 mr-1`}
+              className={`w-[60px] mb-2 mr-1 max-[600px]:mb-1`}
             />
           </motion.div>
 
@@ -160,7 +160,7 @@ export function Navigation() {
                     onClick={() =>
                       setTheme(theme === "light" ? "dark" : "light")
                     }
-                    className="w-9 h-9"
+                    className="w-9 h-9 border "
                   >
                     <AnimatePresence mode="wait" initial={false}>
                       {theme === "light" ? (
@@ -172,7 +172,7 @@ export function Navigation() {
                           transition={{ duration: 0.3 }}
                           className="absolute"
                         >
-                          <Moon className="h-5 w-5" />
+                          <Moon className="h-5 w-5 text-yellow-500" />
                         </motion.div>
                       ) : (
                         <motion.div
@@ -183,10 +183,11 @@ export function Navigation() {
                           transition={{ duration: 0.3 }}
                           className="absolute"
                         >
-                          <Sun className="h-5 w-5" />
+                          <Sun className="h-5 w-5 text-white" />
                         </motion.div>
                       )}
                     </AnimatePresence>
+
                     <span className="sr-only">Toggle theme</span>
                   </Button>
                 </div>

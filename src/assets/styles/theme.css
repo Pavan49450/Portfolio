@@ -68,6 +68,7 @@
   .text-primary {
     color: var(--primary);
   }
+
   .text-muted-foreground {
     color: var(--muted-foreground);
   }

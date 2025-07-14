@@ -17,7 +17,7 @@ export function Footer() {
 
   return (
     <footer className="bg-background py-12 border-t border-border">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

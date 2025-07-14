@@ -56,7 +56,8 @@ export function Experience() {
 
   return (
     <section id="experience" className="py-20 bg-muted/20">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
+        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -64,53 +65,62 @@ export function Experience() {
           ref={ref}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Experience</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Experience
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             My professional journey and key milestones
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-0.5 bg-gradient-to-b from-primary to-purple-600 h-full"></div>
+        {/* Timeline Container */}
+        <div className="max-w-4xl mx-auto relative">
+          {/* Vertical Line */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary to-purple-600 h-full" />
 
-            <div className="space-y-12">
-              {experiences.map((experience, index) => (
-                <motion.div
-                  key={experience.title}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  className={`flex flex-col md:flex-row items-center ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+          <div className="space-y-12">
+            {experiences.map((experience, index) => (
+              <motion.div
+                key={experience.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                className="flex flex-col md:flex-row items-center"
+              >
+                {/* Left side (or right side on even index) */}
+                <div
+                  className={`w-full md:w-1/2 md:px-8 mb-6 md:mb-0 ${
+                    index % 2 === 0 ? "md:order-1" : "md:order-2"
                   }`}
                 >
-                  <div className="md:w-1/2 md:px-8 mb-4 md:mb-0">
-                    <Card className="glass-effect hover-lift">
-                      <CardContent className="p-6">
-                        <h3 className="text-xl font-bold mb-2">
-                          {experience.title}
-                        </h3>
-                        <p className="text-primary mb-2">
-                          {experience.company} • {experience.period}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {experience.description}
-                        </p>
-                      </CardContent>
-                    </Card>
+                  <Card className="glass-effect hover-lift">
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-2">
+                        {experience.title}
+                      </h3>
+                      <p className="text-primary mb-2">
+                        {experience.company} • {experience.period}
+                      </p>
+                      <p className="text-muted-foreground text-sm sm:text-base">
+                        {experience.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Icon & connector */}
+                <div className="relative z-10">
+                  <div
+                    className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${experience.gradient} rounded-full flex items-center justify-center shadow-md`}
+                  >
+                    <experience.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <div className="relative">
-                    <div
-                      className={`w-8 h-8 bg-gradient-to-r ${experience.gradient} rounded-full flex items-center justify-center`}
-                    >
-                      <experience.icon className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  <div className="md:w-1/2 md:px-8"></div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+
+                {/* Right side placeholder for spacing in 2-column layout */}
+                <div className="hidden md:block md:w-1/2 md:px-8" />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

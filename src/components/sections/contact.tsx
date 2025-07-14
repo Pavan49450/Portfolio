@@ -12,11 +12,14 @@ import { Button } from "../ui/button";
 import { apiRequest } from "../../lib/utils";
 import URL from "../../constants/url";
 
+/* -------------------------------------------------------------------------- */
+/*  ✨  Static data                                                            */
+/* -------------------------------------------------------------------------- */
 const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 6301863490",
+    value: "+91 6301863490",
     gradient: "from-primary to-purple-600",
   },
   {
@@ -28,7 +31,7 @@ const contactInfo = [
   {
     icon: Linkedin,
     title: "LinkedIn",
-    value: "View Profile",
+    value: "View Profile",
     link: "https://www.linkedin.com/in/kattula-pavan-kumar-a2434714b",
     gradient: "from-purple-500 to-pink-600",
   },
@@ -44,9 +47,13 @@ const socialLinks = [
   },
 ];
 
+/* -------------------------------------------------------------------------- */
+/*  🚀  Component                                                             */
+/* -------------------------------------------------------------------------- */
 export function Contact() {
   const { ref, isVisible } = useScrollAnimation();
   const { toast } = useToast();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -54,6 +61,7 @@ export function Contact() {
     message: "",
   });
 
+  /* --------------------------- React‑Query mutation ----------------------- */
   const contactMutation = useMutation({
     mutationFn: (data: typeof formData) =>
       apiRequest("POST", `${URL.backendUrl}/contact`, data),
@@ -65,23 +73,21 @@ export function Contact() {
       setFormData({ name: "", email: "", phone: "", message: "" });
     },
     onError: (error: unknown) => {
-      let message = "Failed to send message. Please try again.";
-      if (error instanceof Error) {
-        message = error.message;
-      } else if (typeof error === "string") {
-        message = error;
-      }
-
       toast({
         title: "Error",
-        description: message,
+        description:
+          error instanceof Error
+            ? error.message
+            : "Failed to send message. Please try again.",
         variant: "destructive",
       });
     },
   });
 
+  /* ----------------------------- Handlers --------------------------------- */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    /* simple empty‑field guard */
     if (!formData.name || !formData.email || !formData.phone) {
       toast({
         title: "Error",
@@ -95,40 +101,44 @@ export function Contact() {
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  /* ------------------------------------------------------------------------ */
+  /*  🖼️  JSX                                                                 */
+  /* ------------------------------------------------------------------------ */
   return (
     <section id="contact" className="py-20 bg-muted/20">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
+        {/* Heading */}
         <motion.div
+          ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          ref={ref}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to start your next project? Let's discuss how I can help bring
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Get In Touch
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            Ready to start your next project? Let’s discuss how I can help bring
             your ideas to life.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        {/* Main grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+          {/* ---------- Contact details + socials ---------- */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+
             <div className="space-y-6">
               {contactInfo.map((info) => (
-                <div key={info.title} className="flex items-center space-x-4">
+                <div key={info.title} className="flex items-center gap-4">
                   <div
                     className={`w-12 h-12 bg-gradient-to-r ${info.gradient} rounded-full flex items-center justify-center`}
                   >
@@ -139,6 +149,8 @@ export function Contact() {
                     {info.link ? (
                       <a
                         href={info.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-primary hover:text-primary/80 transition-colors"
                       >
                         {info.value}
@@ -151,13 +163,16 @@ export function Contact() {
               ))}
             </div>
 
-            <div className="mt-8">
+            {/* Social icons */}
+            <div className="mt-10">
               <h4 className="font-semibold mb-4">Follow Me</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
                   <a
-                    key={index}
+                    key={social.href}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-10 h-10 bg-gradient-to-r ${social.gradient} rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform`}
                   >
                     <social.icon className="w-5 h-5" />
@@ -167,16 +182,18 @@ export function Contact() {
             </div>
           </motion.div>
 
+          {/* ------------- Contact form -------------- */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Card className="glass-effect">
-              <CardContent className="p-8">
+              <CardContent className="p-6 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Name */}
                   <div>
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name">Full Name&nbsp;*</Label>
                     <Input
                       id="name"
                       name="name"
@@ -187,8 +204,9 @@ export function Contact() {
                     />
                   </div>
 
+                  {/* Email */}
                   <div>
-                    <Label htmlFor="email">Email Address *</Label>
+                    <Label htmlFor="email">Email Address&nbsp;*</Label>
                     <Input
                       id="email"
                       name="email"
@@ -200,8 +218,9 @@ export function Contact() {
                     />
                   </div>
 
+                  {/* Phone */}
                   <div>
-                    <Label htmlFor="phone">Mobile Number *</Label>
+                    <Label htmlFor="phone">Mobile Number&nbsp;*</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -213,6 +232,7 @@ export function Contact() {
                     />
                   </div>
 
+                  {/* Message */}
                   <div>
                     <Label htmlFor="message">Message</Label>
                     <Textarea
@@ -221,16 +241,17 @@ export function Contact() {
                       rows={4}
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell me about your project..."
+                      placeholder="Tell me about your project…"
                     />
                   </div>
 
+                  {/* Submit */}
                   <Button
                     type="submit"
                     className="w-full bg-gradient-to-r from-primary to-purple-600 hover:scale-105 transition-transform"
                     disabled={contactMutation.isPending}
                   >
-                    {contactMutation.isPending ? "Sending..." : "Send Message"}
+                    {contactMutation.isPending ? "Sending…" : "Send Message"}
                   </Button>
                 </form>
               </CardContent>

@@ -63,7 +63,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-20 bg-muted/20">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -71,17 +71,17 @@ export function Projects() {
           ref={ref}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             A showcase of my recent work and creative solutions
           </p>
         </motion.div>
 
         {/* Featured Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {projects.slice(0, 3).map((project: Project, index: number) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
+          {projects.slice(0, 3).map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
@@ -115,11 +115,11 @@ export function Projects() {
           open={isProjectDetailsOpen}
           onOpenChange={setIsProjectDetailsOpen}
         >
-          <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto scroll-container">
+          <DialogContent className="max-w-6xl w-full max-h-[90vh] overflow-y-auto scroll-container px-4 sm:px-6">
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
                 {selectedProject ? (
-                  <div>
+                  <div className="flex justify-start items-center">
                     <Button
                       variant="ghost"
                       className="text-sm underline text-muted-foreground mr-2"
@@ -133,7 +133,7 @@ export function Projects() {
                   `All Projects (${projects.length})`
                 )}
               </DialogTitle>
-              <DialogDescription className="text-muted-foreground">
+              <DialogDescription className="text-muted-foreground text-start">
                 {selectedProject
                   ? "Detailed project information and showcase"
                   : "Click on any project to view detailed information"}
@@ -227,7 +227,7 @@ export function Projects() {
                   <h4 className="font-semibold mb-3 text-foreground">
                     Technologies Used
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 text-sm sm:text-base">
                     {selectedProject.detailedInfo.technologies.map(
                       (tech: string, index: number) => (
                         <Badge
@@ -253,7 +253,7 @@ export function Projects() {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex gap-4 pt-4">
+                <div className="flex gap-4 pt-4 max-[600px]:flex-col">
                   <Button
                     asChild
                     className="bg-gradient-to-r from-primary to-orange-600 hover:from-primary/90 hover:to-orange-600/90"
@@ -285,8 +285,8 @@ export function Projects() {
               </div>
             ) : (
               // All Projects Grid
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                {projects.map((project: Project, index: number) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                {projects.map((project, index) => (
                   <motion.div
                     key={project.title}
                     initial={{ opacity: 0, y: 20 }}

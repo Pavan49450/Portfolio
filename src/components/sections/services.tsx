@@ -66,7 +66,7 @@ export function Services() {
 
   return (
     <section id="services" className="py-20 bg-background">
-      <div className="container mx-auto px-6">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -74,13 +74,15 @@ export function Services() {
           ref={ref}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Services</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            Services
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Comprehensive development services to bring your ideas to life
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -89,21 +91,26 @@ export function Services() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <Card className="glass-effect hover-lift h-full">
-                <CardContent className="p-8 text-center">
+                <CardContent className="p-6 sm:p-8 text-center">
                   <div
-                    className={`w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-full flex items-center justify-center mx-auto mb-6`}
+                    className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r ${service.gradient} rounded-full flex items-center justify-center mx-auto mb-6`}
                   >
-                    <service.icon className="w-8 h-8 text-white" />
+                    <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-4">
                     {service.description}
                   </p>
-                  <ul className="text-left space-y-2">
+                  <ul className="text-left space-y-2 max-w-sm mx-auto">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center">
-                        <Check className="w-4 h-4 text-emerald-400 mr-2 flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
+                      <li
+                        key={feature}
+                        className="flex items-start text-sm sm:text-base"
+                      >
+                        <Check className="w-4 h-4 text-emerald-400 mt-1 mr-2 flex-shrink-0" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>

@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden max-[600px]:mt-8"
     >
       {/* <BackgroundIcons /> */}
 
@@ -34,7 +34,7 @@ export function Hero() {
         style={{ animationDelay: "2s" }}
       ></div>
 
-      <div className="container mx-auto px-6 text-center relative z-10 ">
+      <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2 text-center relative z-10 ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export function Hero() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-            className="w-32 h-32 mx-auto mb-8 relative"
+            className="w-32 h-32 mx-auto mb-8 relative max-[600px]:hidden"
           >
             <img
               src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200"
@@ -60,7 +60,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-5xl md:text-7xl font-bold mb-6 w-fit px-8 py-4 rounded-4xl"
+            className="text-5xl md:text-7xl font-bold mb-6 max-[600px]:mb-3 max-[600px]:text-4xl w-fit px-8 py-4 max-[600px]:px-2 rounded-4xl"
           >
             <span className="text-foreground">Hi, I'm </span>
             <span className="gradient-text">Kattula Pavan Kumar</span>
@@ -71,7 +71,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 w-fit px-8 py-4 rounded-4xl"
+            className="text-xl md:text-2xl text-muted-foreground mb-8 max-[600px]:mb-3 w-fit px-8 py-4 rounded-4xl"
           >
             <span className="typing-effect">
               Coding Tomorrow's Possibilities
@@ -83,7 +83,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto secondary w-fit px-8 py-4 rounded-4xl"
+            className="text-lg text-muted-foreground mb-8 max-[600px]:mb-3 max-w-2xl mx-auto secondary w-fit px-8 max-[600px]:px-2 py-4 rounded-4xl"
           >
             Full-stack developer with 3+ years of experience building innovative
             applications for healthcare, education, and engineering sectors.
@@ -96,7 +96,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-row gap-4 justify-center"
           >
             <Button
               size="lg"
