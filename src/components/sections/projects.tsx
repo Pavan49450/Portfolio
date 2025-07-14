@@ -24,7 +24,8 @@ import { ProjectCard } from "../ui/project-card";
 import { projects } from "../../data/projects";
 import { Badge } from "../ui/badge";
 import { IoArrowBackSharp } from "react-icons/io5";
-
+import { IoMdClose } from "react-icons/io";
+import { useTheme } from "../ui/theme-provider";
 // ---------------
 // ✅ Project Interface
 // ---------------
@@ -60,7 +61,7 @@ export function Projects() {
     setSelectedProject(project);
     setIsProjectDetailsOpen(true);
   };
-
+  const { theme } = useTheme();
   return (
     <section id="projects" className="py-20 bg-muted/20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
@@ -115,31 +116,55 @@ export function Projects() {
           open={isProjectDetailsOpen}
           onOpenChange={setIsProjectDetailsOpen}
         >
-          <DialogContent className="max-w-6xl w-full max-h-[90vh] overflow-y-auto scroll-container px-4 sm:px-6">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
-                {selectedProject ? (
-                  <div className="flex justify-start items-center">
-                    <Button
-                      variant="ghost"
-                      className="text-sm underline text-muted-foreground mr-2"
-                      onClick={() => setSelectedProject(null)}
-                    >
-                      <IoArrowBackSharp />
-                    </Button>
-                    <span>{selectedProject.title}</span>
-                  </div>
-                ) : (
-                  `All Projects (${projects.length})`
-                )}
-              </DialogTitle>
-              <DialogDescription className="text-muted-foreground text-start">
-                {selectedProject
-                  ? "Detailed project information and showcase"
-                  : "Click on any project to view detailed information"}
-              </DialogDescription>
-            </DialogHeader>
-
+          <DialogContent
+            className="max-w-6xl w-full max-h-[90vh] overflow-y-auto scroll-container px-4 sm:px-6"
+            header={
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
+                  {selectedProject ? (
+                    <div className="flex items-center">
+                      <div className="w-full flex justify-start gap-6 items-center">
+                        <div className="flex justify-start items-center">
+                          <Button
+                            variant="ghost"
+                            className="text-sm underline text-muted-foreground mr-2"
+                            onClick={() => setSelectedProject(null)}
+                          >
+                            <IoArrowBackSharp />
+                          </Button>
+                          <span>{selectedProject.title}</span>
+                        </div>
+                        <Button>All Projects</Button>
+                      </div>
+                      <div
+                        className={`text-foreground ${
+                          theme === "light"
+                            ? "hover:bg-zinc-200"
+                            : "hover:bg-zinc-500"
+                        }  p-2 rounded-full`}
+                        onClick={() => setSelectedProject(null)}
+                      >
+                        <IoMdClose
+                          className={`h-4 w-4`}
+                          style={{
+                            color: theme === "light" ? "black" : "white",
+                          }}
+                        />
+                        <span className="sr-only">Close</span>
+                      </div>
+                    </div>
+                  ) : (
+                    `All Projects (${projects.length})`
+                  )}
+                </DialogTitle>
+                <DialogDescription className="text-muted-foreground text-start">
+                  {selectedProject
+                    ? "Detailed project information and showcase"
+                    : "Click on any project to view detailed information"}
+                </DialogDescription>
+              </DialogHeader>
+            }
+          >
             {selectedProject ? (
               // Project Detail View
               <div className="space-y-6 mt-6">

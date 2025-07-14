@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden max-[600px]:mt-8"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       {/* <BackgroundIcons /> */}
 

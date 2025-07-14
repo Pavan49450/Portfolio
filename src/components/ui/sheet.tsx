@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
-import { X } from "lucide-react";
+// import { X } from "lucide-react";
 import { cn } from "../../lib/utils";
 
 const Sheet = Dialog.Root;
@@ -47,30 +47,37 @@ const sheetVariants = cva(
     },
   }
 );
-
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof Dialog.Content>,
-    VariantProps<typeof sheetVariants> {}
+    VariantProps<typeof sheetVariants> {
+  /** Optional custom header (usually a <SheetHeader>) */
+  header?: React.ReactNode;
+}
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof Dialog.Content>,
   SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
-  <SheetPortal>
-    <SheetOverlay />
-    <Dialog.Content
-      ref={ref}
-      className={cn(sheetVariants({ side }), className)}
-      {...props}
-    >
-      {children}
-      <Dialog.Close className="text-foreground hover:bg-zinc-500 p-2 rounded-full absolute right-4 top-4 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
-        <X className={`h-4 w-4 text-foreground`} />
-        <span className="sr-only">Close</span>
-      </Dialog.Close>
-    </Dialog.Content>
-  </SheetPortal>
-));
+>(
+  (
+    { side = "right", className, children, header, ...props },
+    ref // prettier‑ignore
+  ) => (
+    <SheetPortal>
+      <SheetOverlay />
+      <Dialog.Content
+        ref={ref}
+        className={cn(sheetVariants({ side }), className)}
+        {...props}
+      >
+        {/* ───────────────────  Optional header  ─────────────────── */}
+        {header && <div>{header}</div>}
+
+        {/* Main sheet body */}
+        {children}
+      </Dialog.Content>
+    </SheetPortal>
+  )
+);
 SheetContent.displayName = Dialog.Content.displayName;
 
 const SheetHeader = ({

@@ -14,6 +14,7 @@ import {
   Layers,
   Mail,
 } from "lucide-react";
+import { IoMdClose } from "react-icons/io";
 
 const navItems = [
   { name: "Home", href: "#home", icon: Home },
@@ -134,7 +135,28 @@ export function Navigation() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent
+              side="right"
+              className="w-[300px] sm:w-[400px]"
+              header={
+                <div
+                  className={`text-foreground ${
+                    theme === "light"
+                      ? "hover:bg-zinc-200"
+                      : "hover:bg-zinc-500"
+                  }  p-2 rounded-full`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <IoMdClose
+                    className={`h-4 w-4`}
+                    style={{
+                      color: theme === "light" ? "black" : "white",
+                    }}
+                  />
+                  <span className="sr-only">Close</span>
+                </div>
+              }
+            >
               <div className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => (
                   <a
