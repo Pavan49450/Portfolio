@@ -63,6 +63,7 @@ export function Projects() {
     setIsProjectDetailsOpen(true);
   };
   const { theme } = useTheme();
+  const [showImgae, setShowImage] = useState("");
   return (
     <section id="projects" className="py-20 bg-muted/20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
@@ -178,6 +179,9 @@ export function Projects() {
                         src={`${URL.backendUrl}${image}`}
                         alt={`${selectedProject.title} screenshot ${index + 1}`}
                         className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+                        onClick={() => {
+                          setShowImage(`${URL.backendUrl}${image}`);
+                        }}
                       />
                     )
                   )}
@@ -329,6 +333,16 @@ export function Projects() {
           </DialogContent>
         </Dialog>
       </div>
+
+      <Dialog open={showImgae.length > 0} onOpenChange={() => setShowImage("")}>
+        <DialogContent className="min-w-[90vw]">
+          <img
+            src={`${showImgae}`}
+            alt={` screenshot image`}
+            className="w-full max-h-[90vh] object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+          />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
