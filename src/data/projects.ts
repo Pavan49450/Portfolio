@@ -3,7 +3,7 @@ export const projects = [
     title: "SPile+",
     description:
       "Innovative solar pile foundation design tool that automates calculations and iterations, optimizing foundation designs for efficient solar projects with comprehensive reporting.",
-    image: "/uploads/spile-3.png",
+    image: "/image/spile-3.png",
     tags: ["Engineering", "Automation", "Web Application"],
     liveUrl: "https://spiledev.spileplus.com",
     codeUrl: "#",
@@ -32,10 +32,10 @@ export const projects = [
       challenges:
         "Implementing complex engineering calculations while maintaining performance and accuracy.",
       gallery: [
-        "/uploads/spile-3.png",
-        "/uploads/spile-2.png",
-        "/uploads/spile-4.png",
-        "/uploads/spile-5.png",
+        "/image/spile-3.png",
+        "/image/spile-2.png",
+        "/image/spile-4.png",
+        "/image/spile-5.png",
       ],
     },
   },
@@ -43,7 +43,7 @@ export const projects = [
     title: "Tune-in",
     description:
       "A comprehensive Weather App providing current weather, weekly trends, travel recommendations, historical data, and user-submitted alerts, built with Firebase and Firestore.",
-    image: "/uploads/tune-1.png",
+    image: "/image/tune-1.png",
     tags: ["React", "Firebase", "Weather API"],
     liveUrl: "https://tune-in-five.vercel.app",
     codeUrl: "https://github.com/Pavan49450/tune",
@@ -71,10 +71,10 @@ export const projects = [
       challenges:
         "Integrating multiple APIs and managing real-time user-generated content.",
       gallery: [
-        "/uploads/tune-1.png",
-        "/uploads/tune-2.png",
-        "/uploads/tune-3.png",
-        "/uploads/tune-4.png",
+        "/image/tune-1.png",
+        "/image/tune-2.png",
+        "/image/tune-3.png",
+        "/image/tune-4.png",
       ],
     },
   },
@@ -82,7 +82,7 @@ export const projects = [
     title: "Cash App",
     description:
       "A visually appealing web page with mockups and icons, explaining the features of a cash app.",
-    image: "/uploads/cashApp-1.png",
+    image: "/image/cashApp-1.png",
     tags: ["Design", "HTML", "CSS", "Frontend"],
     liveUrl: "https://figma-cash-app.vercel.app/",
     codeUrl: "https://github.com/Pavan49450/figma-cash-app",
@@ -101,10 +101,10 @@ export const projects = [
       challenges:
         "Translating design mockups into a responsive and interactive web page.",
       gallery: [
-        "/uploads/cashApp-1.png",
-        "/uploads/cashApp-2.png",
-        "/uploads/cashApp-3.png",
-        "/uploads/cashApp-4.png",
+        "/image/cashApp-1.png",
+        "/image/cashApp-2.png",
+        "/image/cashApp-3.png",
+        "/image/cashApp-4.png",
       ],
     },
   },
@@ -112,7 +112,7 @@ export const projects = [
     title: "Select Your Favorite Dog",
     description:
       "A TypeScript project displaying random dog images based on user searches, with a 'favorite dogs' feature.",
-    image: "/uploads/selectYourDog.png",
+    image: "/image/selectYourDog.png",
     tags: ["TypeScript", "API Integration", "Frontend"],
     liveUrl: "https://select-your-favorite-dog.vercel.app/",
     codeUrl: "https://github.com/Pavan49450/select-your-favorite-dog",
@@ -131,14 +131,14 @@ export const projects = [
       role: "Frontend Developer",
       challenges:
         "Handling API responses and implementing local storage for favorite dogs.",
-      gallery: ["/uploads/selectYourDog.png"],
+      gallery: ["/image/selectYourDog.png"],
     },
   },
   {
     title: "Schedula",
     description:
       "A sophisticated web application facilitating seamless appointment scheduling between patients and doctors using Next.js and Nest.js.",
-    image: "/uploads/schedula-1.png",
+    image: "/image/schedula-1.png",
     tags: ["Next.js", "Nest.js", "Healthcare", "Web Application"],
     liveUrl: "https://schedula-web.vercel.app/",
     codeUrl: "https://github.com/Pavan49450/Schedula-Web",
@@ -164,10 +164,10 @@ export const projects = [
       challenges:
         "Managing complex scheduling logic and ensuring real-time data synchronization.",
       gallery: [
-        "/uploads/schedula-1.png",
-        "/uploads/schedula-2.png",
-        "/uploads/schedula-3.png",
-        "/uploads/schedula-4.png",
+        "/image/schedula-1.png",
+        "/image/schedula-2.png",
+        "/image/schedula-3.png",
+        "/image/schedula-4.png",
       ],
     },
   },
@@ -175,7 +175,7 @@ export const projects = [
     title: "Pagination Project",
     description:
       "Developed logic to fetch and display products from an API, with pagination for better user experience.",
-    image: "/uploads/pagination.png",
+    image: "/image/pagination.png",
     tags: ["Frontend", "API Integration", "Pagination"],
     liveUrl: "https://pagination-woad.vercel.app/",
     codeUrl: "https://github.com/Pavan49450/pagination",
@@ -199,14 +199,14 @@ export const projects = [
       role: "Frontend Developer",
       challenges:
         "Optimizing API calls and handling state management for pagination.",
-      gallery: ["/uploads/pagination.png"],
+      gallery: ["/image/pagination.png"],
     },
   },
   {
     title: "Newsletter",
     description:
       "A multi-page application using React Router providing information about a newspaper, including download instructions.",
-    image: "/uploads/newsLetter-1.png",
+    image: "/image/newsLetter-1.png",
     tags: ["React", "React Router", "Frontend"],
     liveUrl: "https://news-letter-mocha.vercel.app",
     codeUrl: "https://github.com/Pavan49450/news-letter/",
@@ -224,14 +224,14 @@ export const projects = [
       role: "Frontend Developer",
       challenges:
         "Setting up efficient routing and structuring content across multiple pages.",
-      gallery: ["/uploads/newsLetter-1.png", "/uploads/newsLetter-2.png"],
+      gallery: ["/image/newsLetter-1.png", "/image/newsLetter-2.png"],
     },
   },
   {
     title: "Online Shopping App",
     description:
       "A full-stack e-commerce application with user authentication and admin functionality, built with Node.js, MongoDB, and Express.js.",
-    image: "/uploads/nodeProject-1.png",
+    image: "/image/nodeProject-1.png",
     tags: ["Node.js", "MongoDB", "Express.js", "Full-Stack", "E-commerce"],
     liveUrl: "#",
     codeUrl: "https://github.com/Pavan49450/OnlineShoppingApp",
@@ -260,9 +260,9 @@ export const projects = [
       challenges:
         "Implementing secure user authentication and complex e-commerce business logic.",
       gallery: [
-        "/uploads/nodeProject-1.png",
-        "/uploads/nodeProject-2.png",
-        "/uploads/nodeProject-3.png",
+        "/image/nodeProject-1.png",
+        "/image/nodeProject-2.png",
+        "/image/nodeProject-3.png",
       ],
     },
   },
@@ -270,7 +270,7 @@ export const projects = [
     title: "Isodhan",
     description:
       "Website showcasing services and events of Isodhan, a non-profit organization introducing ancient Indian warrior skills to the modern world.",
-    image: "/uploads/isodhan_1.png",
+    image: "/image/isodhan_1.png",
     tags: ["Non-Profit", "Web Design", "Community"],
     liveUrl: "https://isodhan.vercel.app",
     codeUrl: "https://github.com/Pavan49450/isodhan.git",
@@ -293,14 +293,14 @@ export const projects = [
       role: "Frontend Developer",
       challenges:
         "Presenting the organization's unique mission effectively through web design.",
-      gallery: ["/uploads/isodhan_1.png", "/uploads/isodhan_2.png"],
+      gallery: ["/image/isodhan_1.png", "/image/isodhan_2.png"],
     },
   },
   {
     title: "Udyogi",
     description:
       "A user-friendly job portal streamlining the job search process for employers and candidates with intuitive search and a clean, responsive UI.",
-    image: "/uploads/udyogi_5.png",
+    image: "/image/udyogi_5.png",
     tags: ["Job Portal", "Frontend", "User Experience"],
     liveUrl: "https://udyogi.vercel.app",
     codeUrl: "https://github.com/Pavan49450/udyogi.git",
@@ -321,11 +321,11 @@ export const projects = [
       challenges:
         "Designing an intuitive search experience and ensuring cross-browser compatibility.",
       gallery: [
-        "/uploads/udyogi_5.png",
-        "/uploads/udyogi_1.png",
-        "/uploads/udyogi_2.png",
-        "/uploads/udyogi_3.png",
-        "/uploads/udyogi_4.png",
+        "/image/udyogi_5.png",
+        "/image/udyogi_1.png",
+        "/image/udyogi_2.png",
+        "/image/udyogi_3.png",
+        "/image/udyogi_4.png",
       ],
     },
   },
@@ -333,7 +333,7 @@ export const projects = [
     title: "Chat App",
     description:
       "A fully functional chat application integrated with Firebase Authentication and Firestore Database, allowing users to join or create chat rooms.",
-    image: "/uploads/chat_app_1.png",
+    image: "/image/chat_app_1.png",
     tags: ["Firebase", "Realtime Chat", "WebSockets"],
     liveUrl: "https://chat-app-virid-sigma.vercel.app",
     codeUrl: "https://github.com/Pavan49450/chat-app",
@@ -358,14 +358,14 @@ export const projects = [
       role: "Frontend Developer",
       challenges:
         "Implementing real-time data synchronization and managing user presence.",
-      gallery: ["/uploads/chat_app_1.png"],
+      gallery: ["/image/chat_app_1.png"],
     },
   },
   {
     title: "Zoggy Foods",
     description:
       "An online food ordering app streamlining the food ordering process, providing a convenient and efficient platform for culinary cravings.",
-    image: "/uploads/zoggyFoods-1.png",
+    image: "/image/zoggyFoods-1.png",
     tags: ["Food Ordering", "E-commerce", "Mobile App (implied)"],
     liveUrl: "#",
     codeUrl: "https://github.com/Pavan49450/zoggy-foods",
@@ -389,11 +389,11 @@ export const projects = [
       role: "Full-Stack Developer",
       challenges: "Managing order fulfillment logistics and real-time updates.",
       gallery: [
-        "/uploads/zoggyFoods-1.png",
-        "/uploads/zoggyFoods-2.png",
-        "/uploads/zoggyFoods-3.png",
-        "/uploads/zoggyFoods-4.png",
-        "/uploads/zoggyFoods-5.png",
+        "/image/zoggyFoods-1.png",
+        "/image/zoggyFoods-2.png",
+        "/image/zoggyFoods-3.png",
+        "/image/zoggyFoods-4.png",
+        "/image/zoggyFoods-5.png",
       ],
     },
   },
@@ -401,7 +401,7 @@ export const projects = [
     title: "Unistock-app",
     description:
       "An Android-based E-Commerce application for the pharmaceutical industry, focusing on login and signup pages, developed using Scrum methodology.",
-    image: "/uploads/unistock-1.png",
+    image: "/image/unistock-1.png",
     tags: ["Android", "E-commerce", "Mobile App", "Scrum"],
     liveUrl: "#",
     codeUrl: "https://github.com/Pavan49450/unistock-app",
@@ -424,14 +424,14 @@ export const projects = [
       role: "Mobile App Developer",
       challenges:
         "Ensuring secure user authentication and integrating with backend systems.",
-      gallery: ["/uploads/unistock-1.png", "/uploads/unistock-2.png"],
+      gallery: ["/image/unistock-1.png", "/image/unistock-2.png"],
     },
   },
   {
     title: "VRPI Group Edutech Platform",
     description:
       "Website showcasing VRPI Group's work and services, integrating a cost-effective learning platform called EduTech.",
-    image: "/uploads/vrpi_1.png",
+    image: "/image/vrpi_1.png",
     tags: ["Education", "Web Design", "Platform"],
     liveUrl: "https://vrpigroup.com",
     codeUrl: "https://github.com/Pavan49450/vrpi.git",
@@ -450,11 +450,11 @@ export const projects = [
       challenges:
         "Integrating the EduTech platform seamlessly and ensuring a consistent user experience.",
       gallery: [
-        "/uploads/vrpi_1.png",
-        "/uploads/vrpi_2.png",
-        "/uploads/vrpi_3.png",
-        "/uploads/vrpi_4.png",
-        "/uploads/vrpi_5.png",
+        "/image/vrpi_1.png",
+        "/image/vrpi_2.png",
+        "/image/vrpi_3.png",
+        "/image/vrpi_4.png",
+        "/image/vrpi_5.png",
       ],
     },
   },

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent } from "./card";
 import { Badge } from "./badge";
+import URL from "../../constants/url";
 
 interface ProjectCardProps {
   title: string;
@@ -27,7 +28,11 @@ export function ProjectCard({
         transition={{ duration: 0.3 }}
         className="relative overflow-hidden"
       >
-        <img src={image} alt={title} className="w-full h-48 object-cover" />
+        <img
+          src={`${URL.backendUrl}${image}`}
+          alt={title}
+          className="w-full h-48 object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
           <a
             href={liveUrl}

@@ -15,6 +15,7 @@ import {
   Mail,
 } from "lucide-react";
 import { IoMdClose } from "react-icons/io";
+import URL from "../../constants/url";
 
 const navItems = [
   { name: "Home", href: "#home", icon: Home },
@@ -66,7 +67,7 @@ export function Navigation() {
             {/* <span className="text-foreground">K</span>
             <span className="gradient-text">PK</span> */}
             <img
-              src={`/uploads/Logo.png`}
+              src={`${URL.backendUrl}/image/Logo.png`}
               alt={"logo"}
               className={`w-[60px] mb-2 mr-1 max-[600px]:mb-1`}
             />
