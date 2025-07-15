@@ -6,7 +6,7 @@ import { TooltipProvider } from "./components/ui/tooltip";
 import { Toaster } from "./components/ui/toaster";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
-
+import { Analytics } from "@vercel/analytics/next";
 function Router() {
   return (
     <Switch>
@@ -21,6 +21,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
         <TooltipProvider>
+          <Analytics />
           <Toaster />
           <Router />
         </TooltipProvider>
