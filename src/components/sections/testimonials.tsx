@@ -4,26 +4,26 @@ import { TestimonialCard } from "../ui/testimonial-card";
 
 const testimonials = [
   {
-    name: "John Doe",
+    name: "Sandeep",
     role: "CEO, Tech Startup",
     content:
-      "Pavan delivered exceptional work on our web application. His attention to detail and technical expertise made the project a huge success.",
+      "Pavan's work on our web application was exceptional. His attention to detail, technical expertise, and proactive approach made the project a major success.",
     rating: 5,
     gradient: "from-primary to-purple-600",
   },
   {
-    name: "Sarah Miller",
+    name: "Anivash Nadh",
     role: "Product Manager",
     content:
-      "Working with Pavan was a pleasure. He understood our requirements perfectly and delivered a solution that exceeded our expectations.",
+      "Collaborating with Pavan was seamless. He quickly understood our requirements and delivered a solution that went beyond expectations.",
     rating: 5,
     gradient: "from-emerald-500 to-teal-600",
   },
   {
-    name: "Mike Johnson",
-    role: "CTO, E-commerce",
+    name: "Tharine Manikanth",
+    role: "Co-worker",
     content:
-      "Pavan's technical skills are outstanding. He helped us scale our platform and implement new features that significantly improved our user experience.",
+      "Pavan stands out as a dependable teammate who approaches every challenge with creativity and precision. His problem-solving mindset has made our team stronger and more effective.",
     rating: 5,
     gradient: "from-purple-500 to-pink-600",
   },
