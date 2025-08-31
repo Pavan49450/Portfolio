@@ -19,19 +19,19 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 6301863490",
+    value: "+91 6301863490",
     gradient: "from-primary to-purple-600",
   },
   {
     icon: Mail,
     title: "Email",
-    value: "pavan49450@gmail.com",
+    value: "pavank.kattula@gmail.com",
     gradient: "from-emerald-500 to-teal-600",
   },
   {
     icon: Linkedin,
     title: "LinkedIn",
-    value: "View Profile",
+    value: "View Profile",
     link: "https://www.linkedin.com/in/kattula-pavan-kumar-a2434714b",
     gradient: "from-purple-500 to-pink-600",
   },

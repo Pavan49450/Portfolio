@@ -9,6 +9,7 @@ import { Contact } from "../components/sections/contact";
 import { Footer } from "../components/sections/footer";
 import { BackToTop } from "../components/ui/back-to-top";
 import { Hero } from "../components/sections/hero";
+import AchievementsSection from "../components/sections/achievements";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Projects />
       <Services />
       <Experience />
+      <AchievementsSection/>
       {/* <Testimonials /> */}
       <Contact />
       <Footer />

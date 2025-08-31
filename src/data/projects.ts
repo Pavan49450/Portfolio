@@ -65,7 +65,7 @@ export const projects = [
         "Firestore Database",
         "Weather API",
       ],
-      duration: "N/A",
+      duration: "duration",
       teamSize: "N/A",
       role: "Frontend Developer",
       challenges:

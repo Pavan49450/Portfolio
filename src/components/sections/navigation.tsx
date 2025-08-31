@@ -13,6 +13,8 @@ import {
   Folder,
   Layers,
   Mail,
+  Award,
+  BriefcaseBusiness,
 } from "lucide-react";
 import { IoMdClose } from "react-icons/io";
 import URL from "../../constants/url";
@@ -23,6 +25,8 @@ const navItems = [
   { name: "Skills", href: "#skills", icon: Star },
   { name: "Projects", href: "#projects", icon: Folder },
   { name: "Services", href: "#services", icon: Layers },
+  { name: "Experience", href: "#experience", icon: BriefcaseBusiness },
+  { name: "Achievements", href: "#achievements", icon: Award },
   { name: "Contact", href: "#contact", icon: Mail },
 ];
 

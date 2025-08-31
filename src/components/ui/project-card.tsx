@@ -42,7 +42,7 @@ export function ProjectCard({
           </a>
           <a
             href={codeUrl}
-            className="p-2 bg-secondary rounded-full text-white hover:bg-secondary/80 transition-colors"
+            className="p-2 bg-secondary rounded-full text-black hover:bg-secondary/80 transition-colors"
           >
             <Github className="w-5 h-5" />
           </a>

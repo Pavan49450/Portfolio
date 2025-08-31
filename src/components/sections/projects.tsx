@@ -4,7 +4,7 @@ import {
   Github,
   Grid3X3,
   Calendar,
-  Users,
+  // Users,
   Code,
   Star,
 } from "lucide-react";
@@ -129,14 +129,17 @@ export function Projects() {
                         <div className="flex justify-start items-center">
                           <Button
                             variant="ghost"
-                            className="text-sm underline text-muted-foreground mr-2"
+                            className="text-sm underline text-muted-foreground mr-2 rounded-full" style={{
+                              width:"40px",
+                              height:"40px"
+                            }}
                             onClick={() => setSelectedProject(null)}
                           >
                             <IoArrowBackSharp />
                           </Button>
                           <span>{selectedProject.title}</span>
                         </div>
-                        <Button>All Projects</Button>
+                        {/* <Button>All Projects</Button> */}
                       </div>
                       <div
                         className={`text-foreground ${
@@ -231,7 +234,7 @@ export function Projects() {
                         {selectedProject.detailedInfo.duration}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    {/* <div className="flex items-center gap-2">
                       <Users className="w-5 h-5 text-primary" />
                       <span className="font-medium text-foreground">
                         Team Size:
@@ -239,7 +242,7 @@ export function Projects() {
                       <span className="text-muted-foreground">
                         {selectedProject.detailedInfo.teamSize}
                       </span>
-                    </div>
+                    </div> */}
                     <div className="flex items-center gap-2">
                       <Star className="w-5 h-5 text-primary" />
                       <span className="font-medium text-foreground">Role:</span>
