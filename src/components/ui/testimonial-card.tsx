@@ -23,7 +23,7 @@ export function TestimonialCard({
 
   return (
     <Card className="glass-effect hover-lift h-full">
-      <CardContent className="p-8">
+      <CardContent className="p-8 h-full flex flex-col">
         <div className="flex items-center mb-4">
           <div
             className={`w-12 h-12 bg-gradient-to-r ${gradient} rounded-full flex items-center justify-center mr-4`}
@@ -35,12 +35,15 @@ export function TestimonialCard({
             <p className="text-muted-foreground text-sm">{role}</p>
           </div>
         </div>
+        <div className="flex flex-col justify-between h-full">
+
         <p className="text-muted-foreground mb-4">{content}</p>
         <div className="flex text-yellow-400">
           {[...Array(rating)].map((_, i) => (
             <Star key={i} className="w-4 h-4 fill-current" />
           ))}
         </div>
+          </div>
       </CardContent>
     </Card>
   );
