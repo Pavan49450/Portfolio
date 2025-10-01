@@ -26,7 +26,7 @@ import { Badge } from "../ui/badge";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { useTheme } from "../ui/theme-provider";
-import URL from "../../constants/url";
+// import URL from "../../constants/url";
 // ---------------
 // ✅ Project Interface
 // ---------------
@@ -179,11 +179,13 @@ export function Projects() {
                     (image: string, index: number) => (
                       <img
                         key={index}
-                        src={`${URL.backendUrl}${image}`}
+                        // src={`${URL.backendUrl}${image}`}
+                        src={`${image}`}
                         alt={`${selectedProject.title} screenshot ${index + 1}`}
                         className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
                         onClick={() => {
-                          setShowImage(`${URL.backendUrl}${image}`);
+                          // setShowImage(`${URL.backendUrl}${image}`);
+                          setShowImage(`${image}`);
                         }}
                       />
                     )

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent } from "./card";
 import { Badge } from "./badge";
-import URL from "../../constants/url";
+// import URL from "../../constants/url";
 
 interface ProjectCardProps {
   title: string;
@@ -29,7 +29,8 @@ export function ProjectCard({
         className="relative overflow-hidden"
       >
         <img
-          src={`${URL.backendUrl}${image}`}
+          // src={`${URL.backendUrl}${image}`}
+          src={`${image}`}
           alt={title}
           className="w-full h-48 object-cover"
         />
