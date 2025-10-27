@@ -129,10 +129,10 @@ function AchievementCard({ a }: { a: Achievement }) {
   return (
     <article
       // className={`relative h-full rounded-2xl border bg-card text-card-foreground p-3 shadow-sm ring-1 ring-border backdrop-blur supports-[backdrop-filter]:bg-card/80 ${shimmer}`}
-      className={`relative h-full rounded-2xl border bg-card text-card-foreground p-3 shadow-sm ring-1 ring-border backdrop-blur supports-[backdrop-filter]:bg-card/80`}
+      className={`relative h-full rounded-xl  bg-card text-card-foreground p-3 shadow-sm glass-effect`}
     >
       <div className="flex items-center gap-2">
-        <div className="flex size-11 items-center justify-center rounded-xl border bg-gradient-to-r from-primary text-primary-foreground to-purple-600 shadow-sm">
+        <div className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-r from-primary text-primary-foreground to-purple-600 shadow-sm">
           <Icon className="size-5" aria-hidden />
         </div>
         <div className="min-w-0 flex-1">

@@ -142,6 +142,7 @@ const experiences = [
     description:
       "Contributed to developing an innovative solar pile foundation design tool, automating calculations and optimizing solar project foundations. Enhanced user experience with project management features.",
     gradient: "from-primary to-orange-600",
+    logo: "/images/structurology.svg",
   },
   {
     icon: Briefcase,
@@ -151,6 +152,7 @@ const experiences = [
     description:
       "Spearheaded front-end development for an innovative Edutech application. Developed the official website for VRPI Group showcasing cutting-edge solutions and import-export services.",
     gradient: "from-emerald-500 to-teal-600",
+    logo: "/images/vrpiLogo.png",
   },
   {
     icon: Briefcase,
@@ -160,6 +162,7 @@ const experiences = [
     description:
       "Developed Schedula (doctor appointment platform), Unistock (E-commerce for medicine), and Zoggy Foods (food ordering app) using React, Node.js, and PostgreSQL with Azure cloud services.",
     gradient: "from-purple-500 to-pink-600",
+    logo: "/images/pearlthoughts-logo.jpeg",
   },
   {
     icon: Briefcase,
@@ -169,6 +172,7 @@ const experiences = [
     description:
       "Spearheaded Tata-Pay's payment module development with React, integrating UPI and Net banking. Achieved 20% reduction in page load times and 25% improvement in user satisfaction.",
     gradient: "from-blue-500 to-cyan-600",
+    logo: "/images/TCS-logo.png",
   },
   {
     icon: GraduationCap,
@@ -178,6 +182,7 @@ const experiences = [
     description:
       "Graduated with CGPA of 8.28 in Mechanical Engineering. Transitioned to software development through self-learning and practical projects.",
     gradient: "from-indigo-500 to-purple-600",
+    logo:"/images/CMRIT-logo.jpg"
   },
 ];
 
@@ -218,9 +223,19 @@ export function Experience() {
                   <div className="md:w-1/2 md:px-4 mb-4 md:mb-0">
                     <Card className="glass-effect hover-lift">
                       <CardContent className="p-4">
-                        <h3 className="text-xl font-bold mb-2">
-                          {experience.title}
-                        </h3>
+                        <div className="flex gap-2 items-center">
+                          <img
+                            title="logo"
+                            src={experience?.logo}
+                            style={{
+                              width: "40px",
+                            }}
+                          />
+
+                          <h3 className="text-xl font-bold mb-2">
+                            {experience.title}
+                          </h3>
+                        </div>
                         <p className="text-primary mb-2">
                           {experience.company} • {experience.period}
                         </p>

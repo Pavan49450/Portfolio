@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Phone, Mail, Linkedin, Twitter, Github } from "lucide-react";
+import { Phone, Mail, Linkedin,  Github } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { useScrollAnimation } from "../../hooks/use-scroll-animation";
 import { useToast } from "../../hooks/use-toast";
@@ -38,8 +38,12 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: Twitter, href: "#", gradient: "from-primary to-purple-600" },
-  { icon: Github, href: "#", gradient: "from-emerald-500 to-teal-600" },
+  // { icon: Twitter, href: "#", gradient: "from-primary to-purple-600" },
+  {
+    icon: Github,
+    href: "https://github.com/pavan49450",
+    gradient: "from-emerald-500 to-teal-600",
+  },
   {
     icon: Linkedin,
     href: "https://www.linkedin.com/in/kattula-pavan-kumar-a2434714b",

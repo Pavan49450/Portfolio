@@ -67,13 +67,15 @@ export function ProjectCard({
             <ExternalLink className="w-4 h-4 mr-1" />
             Live Demo
           </a>
-          <a
-            href={codeUrl}
-            className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center"
-          >
-            <Github className="w-4 h-4 mr-1" />
-            Code
-          </a>
+          {codeUrl && (
+            <a
+              href={codeUrl}
+              className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center"
+            >
+              <Github className="w-4 h-4 mr-1" />
+              Code
+            </a>
+          )}
         </div>
       </CardContent>
     </Card>

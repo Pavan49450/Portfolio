@@ -25,6 +25,10 @@ export const projects = [
         "MongoDB",
         "Chart.js",
         "PDF Generation",
+        "Socket.io",
+        "Stripe",
+        "RAG Model",
+        "Tailwind CSS"
       ],
       duration: "August 2024 — Current",
       teamSize: "N/A",
@@ -36,6 +40,39 @@ export const projects = [
         "/images/spile-2.png",
         "/images/spile-4.png",
         "/images/spile-5.png",
+      ],
+    },
+  },
+  {
+ title: "Image Converter",
+    description:
+      "Effortlessly converts formats, boost quality, and shrink files without compromise - all in one powerful, free online tool.",
+    image: "/images/imageConverter-2.png",
+    tags: [ "Web Application"],
+    liveUrl: "https://image-converter-wine-three.vercel.app/",
+    codeUrl: "#",
+    detailedInfo: {
+      fullDescription:
+        "Effortlessly converts formats, boost quality, and shrink files without compromise - all in one powerful, free online tool.",
+      features: [
+        "Convert image to different image types.",
+        "Increases and decreases image quality",
+      ],
+      technologies: [
+        "React",
+        "Chart.js",
+        "Tailwind CSS"
+      ],
+      duration: "March 2025 — April 2025",
+      teamSize: "N/A",
+      role: "Full-Stack Developer",
+      challenges:
+        "Handling image converter logic",
+      gallery: [
+        "/images/imageConverter-1.png",
+        "/images/imageConverter-2.png",
+        "/images/imageConverter-3.png",
+        "/images/imageConverter-3.png",
       ],
     },
   },
