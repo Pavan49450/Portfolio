@@ -192,7 +192,7 @@ export function Contact() {
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Card className="glass-effect">
+            <Card className="glass-effect middle-layer">
               <CardContent className="p-6 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name */}

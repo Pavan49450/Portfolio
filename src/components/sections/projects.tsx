@@ -24,8 +24,8 @@ import { ProjectCard } from "../ui/project-card";
 import { projects } from "../../data/projects";
 import { Badge } from "../ui/badge";
 import { IoArrowBackSharp } from "react-icons/io5";
-import { IoMdClose } from "react-icons/io";
-import { useTheme } from "../ui/theme-provider";
+// import { IoMdClose } from "react-icons/io";
+// import { useTheme } from "../ui/theme-context";
 // import URL from "../../constants/url";
 // ---------------
 // ✅ Project Interface
@@ -62,7 +62,7 @@ export function Projects() {
     setSelectedProject(project);
     setIsProjectDetailsOpen(true);
   };
-  const { theme } = useTheme();
+  // const { theme } = useTheme();
   const [showImgae, setShowImage] = useState("");
   return (
     <section id="projects" className="py-20 bg-muted/20">
@@ -83,7 +83,7 @@ export function Projects() {
         </motion.div>
 
         {/* Featured Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 middle-layer">
           {projects.slice(0, 3).map((project, index) => (
             <motion.div
               key={project.title}
@@ -119,7 +119,7 @@ export function Projects() {
           onOpenChange={setIsProjectDetailsOpen}
         >
           <DialogContent
-            className="max-w-6xl w-full max-h-[90vh] overflow-y-auto scroll-container px-4 sm:px-6"
+            className="max-w-6xl w-full max-h-[90vh]"
             header={
               <DialogHeader>
                 <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent">
@@ -129,34 +129,33 @@ export function Projects() {
                         <div className="flex justify-start items-center">
                           <Button
                             variant="ghost"
-                            className="text-sm underline text-muted-foreground mr-2 rounded-full" style={{
-                              width:"40px",
-                              height:"40px"
+                            className="text-sm underline text-muted-foreground mr-2 rounded-full"
+                            style={{
+                              width: "40px",
+                              height: "40px",
                             }}
                             onClick={() => setSelectedProject(null)}
                           >
                             <IoArrowBackSharp />
                           </Button>
-                          <span>{selectedProject.title}</span>
+                          <span className="text-primary">
+                            {selectedProject.title}
+                          </span>
                         </div>
                         {/* <Button>All Projects</Button> */}
                       </div>
-                      <div
-                        className={`text-foreground ${
-                          theme === "light"
-                            ? "hover:bg-zinc-200"
-                            : "hover:bg-zinc-500"
-                        }  p-2 rounded-full`}
+
+                      {/* <Button
+                        variant="ghost"
+                        className="text-sm underline text-muted-foreground rounded-full"
+                        style={{
+                          width: "40px",
+                          height: "40px",
+                        }}
                         onClick={() => setSelectedProject(null)}
                       >
-                        <IoMdClose
-                          className={`h-4 w-4`}
-                          style={{
-                            color: theme === "light" ? "black" : "white",
-                          }}
-                        />
-                        <span className="sr-only">Close</span>
-                      </div>
+                        <IoMdClose />
+                      </Button> */}
                     </div>
                   ) : (
                     `All Projects (${projects.length})`
@@ -188,7 +187,7 @@ export function Projects() {
                           setShowImage(`${image}`);
                         }}
                       />
-                    )
+                    ),
                   )}
                 </div>
 
@@ -221,7 +220,7 @@ export function Projects() {
                               {feature}
                             </span>
                           </li>
-                        )
+                        ),
                       )}
                     </ul>
                   </div>
@@ -272,7 +271,7 @@ export function Projects() {
                         >
                           {tech}
                         </Badge>
-                      )
+                      ),
                     )}
                   </div>
                 </div>

@@ -78,7 +78,7 @@ export const skillList = [
     },
     address: "icons8-typescript-480.png",
     name: "Typescript",
-    skillLevel: 3,
+    skillLevel: 4,
   },
   {
     _id: {
@@ -135,7 +135,7 @@ export const skillList = [
     },
     address: "python.png",
     name: "Python",
-    skillLevel: 2,
+    skillLevel: 4,
   },
 
   {

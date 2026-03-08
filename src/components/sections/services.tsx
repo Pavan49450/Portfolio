@@ -65,7 +65,7 @@ export function Services() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -90,7 +90,7 @@ export function Services() {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <Card className="glass-effect hover-lift h-full">
+              <Card className="glass-effect hover-lift h-full middle-layer">
                 <CardContent className="p-6 sm:p-8 text-center">
                   <div
                     className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r ${service.gradient} rounded-full flex items-center justify-center mx-auto mb-6`}

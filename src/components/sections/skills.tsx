@@ -3,55 +3,74 @@ import { Laptop, Database, Gavel } from "lucide-react";
 import { useScrollAnimation } from "../../hooks/use-scroll-animation";
 import { Card, CardContent } from "../ui/card";
 import { SkillBar } from "../ui/skill-bar";
+import { skillList } from "../../data/skills";
 
-const skillCategories = [
+// Map skill names to their categories
+const categoryMap: Record<string, string> = {
+  React: "Frontend",
+  Tailwind: "Frontend",
+  "Next Js": "Frontend",
+  Javascript: "Frontend",
+  CSS: "Frontend",
+  HTMl: "Frontend",
+
+  "React Native": "Backend & Mobile",
+  Flutter: "Backend & Mobile",
+  Node: "Backend & Mobile",
+  Mongodb: "Backend & Mobile",
+  Azure: "Backend & Mobile",
+  SQL: "Backend & Mobile",
+
+  Typescript: "Tools & Languages",
+  Git: "Tools & Languages",
+  Github: "Tools & Languages",
+  Java: "Tools & Languages",
+  Python: "Tools & Languages",
+  "C++": "Tools & Languages",
+  "VS code": "Tools & Languages",
+};
+
+const categoryConfig = [
   {
     title: "Frontend",
     icon: Laptop,
     gradient: "from-primary to-orange-600",
-    skills: [
-      { name: "React", level: 100 },
-      { name: "Next.js", level: 100 },
-      { name: "Javascript", level: 100 },
-      { name: "HTML", level: 100 },
-      { name: "CSS", level: 80 },
-      { name: "Tailwind", level: 80 },
-    ],
   },
   {
     title: "Backend & Mobile",
     icon: Database,
     gradient: "from-emerald-500 to-teal-600",
-    skills: [
-      { name: "Node.js", level: 80 },
-      { name: "MongoDB", level: 80 },
-      { name: "Azure", level: 80 },
-      { name: "SQL", level: 80 },
-      { name: "React Native", level: 80 },
-      { name: "Flutter", level: 80 },
-    ],
   },
   {
     title: "Tools & Languages",
     icon: Gavel,
     gradient: "from-purple-500 to-pink-600",
-    skills: [
-      { name: "TypeScript", level: 60 },
-      { name: "Git", level: 80 },
-      { name: "Github", level: 80 },
-      { name: "VS Code", level: 80 },
-      { name: "Python", level: 40 },
-      { name: "Java", level: 40 },
-      { name: "C++", level: 60 },
-    ],
   },
 ];
+
+// Convert skillLevel (1–5) to percentage
+const levelToPercent = (level: number) => (level / 5) * 100;
+
+// Base URL where your skill images are served from
+const IMAGE_BASE_URL = "/images/skills/"; // 👈 adjust this to your actual public path
 
 export function Skills() {
   const { ref, isVisible } = useScrollAnimation();
 
+  // Group skills by category
+  const categorized = categoryConfig.map((cat) => ({
+    ...cat,
+    skills: skillList
+      .filter((s) => categoryMap[s.name] === cat.title)
+      .map((s) => ({
+        name: s.name,
+        level: levelToPercent(s.skillLevel),
+        icon: `${IMAGE_BASE_URL}${s.address}`,
+      })),
+  }));
+
   return (
-    <section id="skills" className="py-20 bg-background">
+    <section id="skills" className="py-20 ">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -69,15 +88,16 @@ export function Skills() {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
+          {categorized.map((category, index) => (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 50 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <Card className="glass-effect hover-lift h-full">
+              <Card className="glass-effect hover-lift h-full middle-layer">
                 <CardContent className="p-6 sm:p-8">
+                  {/* Category header icon */}
                   <div
                     className={`w-16 h-16 bg-gradient-to-r ${category.gradient} rounded-full flex items-center justify-center mx-auto mb-6`}
                   >
@@ -86,16 +106,26 @@ export function Skills() {
                   <h3 className="text-xl sm:text-2xl font-bold mb-6 text-center">
                     {category.title}
                   </h3>
-                  <div className="space-y-4">
+
+                  <div className="space-y-2">
                     {category.skills.map((skill, skillIndex) => (
-                      <SkillBar
-                        key={skill.name}
-                        name={skill.name}
-                        level={skill.level}
-                        gradient={category.gradient}
-                        delay={skillIndex * 0.1}
-                        isVisible={isVisible}
-                      />
+                      <div key={skill.name} className={`flex items-center gap-3 p-2 rounded-2xl glass-effect`}>
+                        {/* Skill image icon */}
+                        <img
+                          src={skill.icon}
+                          alt={skill.name}
+                          className="w-8 h-8 object-contain shrink-0"
+                        />
+                        <div className="flex-1">
+                          <SkillBar
+                            name={skill.name}
+                            level={skill.level}
+                            gradient={category.gradient}
+                            delay={skillIndex * 0.1}
+                            isVisible={isVisible}
+                          />
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>

@@ -50,7 +50,7 @@ export function About() {
             initial={{ opacity: 0, x: -50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md"
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md middle-layer"
           >
             <img
               src="images/selfie.jpg"

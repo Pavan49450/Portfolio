@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useTheme } from "../ui/theme-provider";
+import { useTheme } from "../ui/theme-context";
 import { Button } from "../ui/button";
 import { SheetContent, SheetTrigger, Sheet } from "../ui/sheet";
 import {
@@ -56,26 +56,25 @@ export function Navigation() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-100 transition-all duration-300 ${
         isScrolled ? "glass-effect" : ""
       }`}
     >
       <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2 py-1">
-        <div className="flex items-center justify-between">
-          <motion.div
+        <div className="flex items-center justify-center min-h-[60px]">
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             className="rounded-full bg-secondary w-[65px] h-[65px] max-[600px]:w-[50px] max-[600px]:h-[50px] flex justify-center items-center border-primary border-2"
           >
-            {/* <span className="text-foreground">K</span>
-            <span className="gradient-text">PK</span> */}
+     
             <img
               src={`/images/Logo.png`}
               alt={"logo"}
               className={`w-[60px] mb-2 mr-1 max-[600px]:mb-1`}
             />
-          </motion.div>
+          </motion.div> */}
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">

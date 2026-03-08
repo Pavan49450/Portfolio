@@ -220,7 +220,7 @@ export function Experience() {
                     index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
                 >
-                  <div className="md:w-1/2 md:px-4 mb-4 md:mb-0">
+                  <div className="md:w-1/2 md:px-4 mb-4 md:mb-0 middle-layer">
                     <Card className="glass-effect hover-lift">
                       <CardContent className="p-4">
                         <div className="flex gap-2 items-center">
