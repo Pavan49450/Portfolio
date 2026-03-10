@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowUpRight, Copy, Check, ChevronDown } from "lucide-react";
 import { useTheme } from "../ui/theme-context";
@@ -172,7 +168,7 @@ export function Hero() {
       /> */}
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative max-w-5xl mx-auto px-6 text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -224,12 +220,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className={`text-lg md:text-xl max-w-xl mx-auto mb-3 leading-relaxed font-light ${tok.subText}`}
+          className={`text-lg md:text-xl max-w-xl mx-auto mb-3 leading-relaxed font-light middle-layer ${tok.subText}`}
           style={{ fontFamily: "'Georgia', serif", fontStyle: "italic" }}
           ref={ref}
         >
-          Full-stack developer crafting digital experiences at the intersection
-          of{" "}
+          <span className="middle-layer inline-block">
+            Full-stack developer crafting digital experiences at the
+            intersection of{" "}
+          </span>
           <span className={`not-italic font-medium ${tok.subHighlight}`}>
             art
           </span>{" "}
@@ -245,7 +243,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ delay: 1.1 }}
-          className="flex flex-wrap justify-center gap-2 mb-12 mt-6"
+          className="flex flex-wrap justify-center gap-2 mb-12 mt-6 middle-layer"
           ref={ref}
         >
           {["React", "Node.js", "MongoDB", "Express.js", "CSS"].map(
@@ -255,7 +253,7 @@ export function Hero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1.2 + i * 0.07 }}
-                className={`px-3 py-1 text-[11px] tracking-widest uppercase font-mono border rounded-full transition-colors duration-300 ${tok.tagText} ${tok.tagBorder}`}
+                className={`px-3 py-1 text-[11px] tracking-widest uppercase font-mono border ${theme === "light" ? "bg-zinc-50": "bg-zinc-900"} rounded-full transition-colors duration-300 ${tok.tagText} ${tok.tagBorder}`}
               >
                 {tag}
               </motion.span>

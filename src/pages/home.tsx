@@ -50,7 +50,7 @@ export default function Home() {
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <SkillsBackground />
 
-      <div className="fixed inset-0 z-100 pointer-events-none overflow-hidden">
+      {/* <div className="fixed inset-0 z-100 pointer-events-none overflow-hidden">
         {orbs.map((orb, i) => (
           <motion.div
             key={i}
@@ -71,7 +71,7 @@ export default function Home() {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Grain on top of orbs, still behind content */}
       <Grain />

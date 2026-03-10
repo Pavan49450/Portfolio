@@ -125,8 +125,11 @@ function FloatingSkillIcon({
         elapsedRef.current += delta * speed;
         const t = elapsedRef.current;
         setPos((prev) => {
-          let nx = prev.x + icon.speedX * Math.sin(t + icon.phase) * icon.amplitude;
-          let ny = prev.y + icon.speedY * Math.cos(t * 0.7 + icon.phase) * icon.amplitude;
+          let nx =
+            prev.x + icon.speedX * Math.sin(t + icon.phase) * icon.amplitude;
+          let ny =
+            prev.y +
+            icon.speedY * Math.cos(t * 0.7 + icon.phase) * icon.amplitude;
           if (nx < 2 || nx > 93) icon.speedX *= -1;
           if (ny < 2 || ny > 93) icon.speedY *= -1;
           nx = Math.max(2, Math.min(93, nx));
@@ -189,7 +192,9 @@ function FloatingSkillIcon({
         willChange: "transform",
       }}
       onClick={() => {
-        document.querySelector("#skills")?.scrollIntoView({ behavior: "smooth" });
+        document
+          .querySelector("#skills")
+          ?.scrollIntoView({ behavior: "smooth" });
       }}
     >
       <motion.div
@@ -239,9 +244,19 @@ function FloatingSkillIcon({
         <img
           src={`${ICON_BASE_PATH}${icon.skill.address}`}
           alt={icon.skill.name}
-          width={icon.size * 0.52}
-          height={icon.size * 0.52}
-          style={{ objectFit: "cover", userSelect: "none" } as React.CSSProperties}
+          // We pass the base size as a CSS variable
+          style={{ "--base-size": `${icon.size}px` } as React.CSSProperties}
+          className={`
+                    object-cover user-select-none
+                    /* Desktop (Default): 52% of base size */
+                    w-[calc(var(--base-size)*0.52)] h-[calc(var(--base-size)*0.52)]
+                    
+                    /* Tablet: 45% of base size */
+                    md:w-[calc(var(--base-size)*0.45)] md:h-[calc(var(--base-size)*0.45)]
+                    
+                    /* Mobile: 35% of base size */
+                    sm:w-[calc(var(--base-size)*0.35)] sm:h-[calc(var(--base-size)*0.35)]
+                  `}
           onError={(e) => {
             (e.target as HTMLImageElement).style.display = "none";
           }}
@@ -299,11 +314,11 @@ function FloatingSkillIcon({
 function ConnectionLines({
   icons,
   isDark,
-  posRef,                                      // ← NEW
+  posRef, // ← NEW
 }: {
   icons: FloatingIcon[];
   isDark: boolean;
-  posRef: React.MutableRefObject<PosMap>;      // ← NEW
+  posRef: React.MutableRefObject<PosMap>; // ← NEW
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
@@ -387,18 +402,27 @@ export default function SkillsBackground() {
   const [scrollY, setScrollY] = useState(0);
 
   // ── Shared position map ──
-  const posRef = useRef<PosMap>({});           // ← NEW
+  const posRef = useRef<PosMap>({}); // ← NEW
 
-  const smoothMouseX = useSpring(useMotionValue(50), { stiffness: 60, damping: 20 });
-  const smoothMouseY = useSpring(useMotionValue(50), { stiffness: 60, damping: 20 });
+  const smoothMouseX = useSpring(useMotionValue(50), {
+    stiffness: 60,
+    damping: 20,
+  });
+  const smoothMouseY = useSpring(useMotionValue(50), {
+    stiffness: 60,
+    damping: 20,
+  });
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const x = (e.clientX / window.innerWidth) * 100;
-    const y = (e.clientY / window.innerHeight) * 100;
-    setMousePos({ x, y });
-    smoothMouseX.set(x);
-    smoothMouseY.set(y);
-  }, [smoothMouseX, smoothMouseY]);
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      setMousePos({ x, y });
+      smoothMouseX.set(x);
+      smoothMouseY.set(y);
+    },
+    [smoothMouseX, smoothMouseY],
+  );
 
   const handleScroll = useCallback(() => setScrollY(window.scrollY), []);
 
@@ -433,7 +457,9 @@ export default function SkillsBackground() {
       />
 
       {/* Pass posRef to both */}
-      <ConnectionLines icons={icons} isDark={isDark} posRef={posRef} />
+      <div className="sm:block hidden">
+        <ConnectionLines icons={icons} isDark={isDark} posRef={posRef} />
+      </div>
 
       {icons.map((icon) => (
         <FloatingSkillIcon
@@ -443,7 +469,7 @@ export default function SkillsBackground() {
           mouseY={mousePos.y}
           scrollY={scrollY}
           isDark={isDark}
-          posRef={posRef}                      // ← NEW
+          posRef={posRef} // ← NEW
         />
       ))}
     </>
