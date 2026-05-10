@@ -215,27 +215,36 @@ export function Hero() {
           </h1>
         </motion.div>
 
-        {/* Sub-headline */}
+        {/* Role Title */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className={`text-lg md:text-xl max-w-xl mx-auto mb-3 leading-relaxed font-light middle-layer ${tok.subText}`}
-          style={{ fontFamily: "'Georgia', serif", fontStyle: "italic" }}
+          className={`text-xl md:text-2xl max-w-2xl mx-auto mb-2 font-semibold tracking-tight middle-layer ${tok.subText}`}
           ref={ref}
         >
-          <span className="middle-layer inline-block">
-            Full-stack developer crafting digital experiences at the
-            intersection of{" "}
-          </span>
-          <span className={`not-italic font-medium ${tok.subHighlight}`}>
-            art
-          </span>{" "}
-          and{" "}
-          <span className={`not-italic font-medium ${tok.subHighlight}`}>
-            logic
-          </span>
-          .
+          Full Stack & AI Integration Engineer
+        </motion.p>
+
+        {/* Tagline */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
+          className={`text-base md:text-lg max-w-2xl mx-auto mb-2 leading-relaxed font-light middle-layer ${tok.subText}`}
+          style={{ fontFamily: "'Georgia', serif", fontStyle: "italic" }}
+        >
+          Building production-grade SaaS platforms, RAG-powered AI agents, and complex payment systems · React · TypeScript · Node.js · LangChain
+        </motion.p>
+
+        {/* Location */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
+          className={`text-sm max-w-xl mx-auto mb-3 font-mono ${tok.emailText}`}
+        >
+          Hyderabad, India · Open to Remote
         </motion.p>
 
         {/* Stack tags */}
@@ -246,7 +255,7 @@ export function Hero() {
           className="flex flex-wrap justify-center gap-2 mb-12 mt-6 middle-layer"
           ref={ref}
         >
-          {["React", "Node.js", "MongoDB", "Express.js", "CSS"].map(
+          {["React", "TypeScript", "Node.js", "LangChain", "Pinecone"].map(
             (tag, i) => (
               <motion.span
                 key={tag}

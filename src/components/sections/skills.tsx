@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Laptop, Database, Gavel } from "lucide-react";
+import { Laptop, Database, Gavel, BrainCircuit } from "lucide-react";
 import { useScrollAnimation } from "../../hooks/use-scroll-animation";
 import { Card, CardContent } from "../ui/card";
 import { SkillBar } from "../ui/skill-bar";
@@ -14,20 +14,30 @@ const categoryMap: Record<string, string> = {
   CSS: "Frontend",
   HTMl: "Frontend",
 
-  "React Native": "Backend & Mobile",
-  Flutter: "Backend & Mobile",
-  Node: "Backend & Mobile",
-  Mongodb: "Backend & Mobile",
-  Azure: "Backend & Mobile",
-  SQL: "Backend & Mobile",
+  "React Native": "Backend",
+  Flutter: "Backend",
+  Node: "Backend",
+  Mongodb: "Backend",
+  Azure: "Backend",
+  SQL: "Backend",
+  NestJS: "Backend",
 
-  Typescript: "Tools & Languages",
-  Git: "Tools & Languages",
-  Github: "Tools & Languages",
-  Java: "Tools & Languages",
-  Python: "Tools & Languages",
-  "C++": "Tools & Languages",
-  "VS code": "Tools & Languages",
+  Typescript: "Tools & DevOps",
+  Git: "Tools & DevOps",
+  Github: "Tools & DevOps",
+  Java: "Tools & DevOps",
+  Python: "Tools & DevOps",
+  "C++": "Tools & DevOps",
+  "VS code": "Tools & DevOps",
+  Docker: "Tools & DevOps",
+  "GitHub Actions": "Tools & DevOps",
+
+  LangChain: "AI / ML",
+  "Pinecone (Vector DB)": "AI / ML",
+  "OpenAI API": "AI / ML",
+  "RAG Pipelines": "AI / ML",
+  "Prompt Engineering": "AI / ML",
+  "Agentic AI Systems": "AI / ML",
 };
 
 const categoryConfig = [
@@ -37,12 +47,17 @@ const categoryConfig = [
     gradient: "from-primary to-orange-600",
   },
   {
-    title: "Backend & Mobile",
+    title: "Backend",
     icon: Database,
     gradient: "from-emerald-500 to-teal-600",
   },
   {
-    title: "Tools & Languages",
+    title: "AI / ML",
+    icon: BrainCircuit,
+    gradient: "from-indigo-500 to-purple-600",
+  },
+  {
+    title: "Tools & DevOps",
     icon: Gavel,
     gradient: "from-purple-500 to-pink-600",
   },
@@ -71,7 +86,7 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-20 ">
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -87,7 +102,7 @@ export function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-4 max-lg:grid-cols-1 max-xl:grid-cols-2 gap-8">
           {categorized.map((category, index) => (
             <motion.div
               key={category.title}
@@ -114,7 +129,10 @@ export function Skills() {
                         <img
                           src={skill.icon}
                           alt={skill.name}
-                          className="w-8 h-8 object-contain shrink-0"
+                          className={`w-8 h-8 object-contain shrink-0 bg-white rounded-full p-1`}
+                          onError={(e) => {
+                            (e.currentTarget as HTMLImageElement).style.display = "none";
+                          }}
                         />
                         <div className="flex-1">
                           <SkillBar

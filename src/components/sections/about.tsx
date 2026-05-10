@@ -1,24 +1,24 @@
 import { motion } from "framer-motion";
-import { Code, Database, Smartphone } from "lucide-react";
+import { Code, Database, BrainCircuit } from "lucide-react";
 import { useScrollAnimation } from "../../hooks/use-scroll-animation";
 
 const features = [
   {
     icon: Code,
-    title: "Frontend Development",
-    description: "React, Next.js, JavaScript, HTML, CSS, Tailwind",
+    title: "Full Stack Engineering",
+    description: "React, TypeScript, Node.js, NestJS, MongoDB, PostgreSQL, Stripe",
     gradient: "from-primary to-orange-600",
   },
   {
     icon: Database,
-    title: "Backend Development",
-    description: "Node.js, MongoDB, Azure, PostgreSQL, Firebase",
+    title: "SaaS & Payments",
+    description: "Multi-tenant architecture, Stripe pipelines, Azure, real-time systems",
     gradient: "from-emerald-500 to-teal-600",
   },
   {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "React Native, Flutter, Cross-platform apps",
+    icon: BrainCircuit,
+    title: "AI & ML Engineering",
+    description: "LangChain, Pinecone, OpenAI API, RAG Pipelines, Prompt Engineering",
     gradient: "from-purple-500 to-pink-600",
   },
 ];
@@ -40,8 +40,7 @@ export function About() {
             About Me
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Passionate developer with a vision to create innovative solutions
-            that make a difference
+            Full Stack & AI Engineer with 3+ years shipping production SaaS across EdTech, FinTech, and renewable energy
           </p>
         </motion.div>
 
@@ -69,13 +68,7 @@ export function About() {
               My Journey
             </h3>
             <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
-              As a full-stack developer with a mechanical engineering
-              background, I bring a unique problem-solving approach to software
-              development. My expertise spans across frontend and backend
-              development, with extensive experience in React, Next.js, Node.js,
-              and modern cloud technologies. I've successfully delivered
-              enterprise-level applications for healthcare, education, and
-              engineering sectors.
+              Full Stack & AI Engineer with 3+ years shipping production SaaS across EdTech, FinTech, and renewable energy. I specialize in multi-tenant platform architecture, RAG-powered AI integrations, and complex payment systems. Recognized by the Indian Air Force for defense-grade software delivery. Ranked #1 of 50+ engineers at TCS.
             </p>
 
             <div className="space-y-4">

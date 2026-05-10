@@ -35,18 +35,20 @@ export function ProjectCard({
           className="w-full h-48 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-          <a
-            href={liveUrl}
-            className="p-2 bg-primary rounded-full text-white hover:bg-primary/80 transition-colors"
-          >
-            <ExternalLink className="w-5 h-5" />
-          </a>
-          <a
-            href={codeUrl}
-            className="p-2 bg-secondary rounded-full text-black hover:bg-secondary/80 transition-colors"
-          >
-            <Github className="w-5 h-5" />
-          </a>
+          {liveUrl && liveUrl !== "#" &&
+            <a
+              href={liveUrl}
+              className="p-2 bg-primary rounded-full text-white hover:bg-primary/80 transition-colors"
+            >
+              <ExternalLink className="w-5 h-5" />
+            </a>}
+          {codeUrl && codeUrl !== "#" &&
+            <a
+              href={codeUrl}
+              className="p-2 bg-secondary rounded-full text-black hover:bg-secondary/80 transition-colors"
+            >
+              <Github className="w-5 h-5" />
+            </a>}
         </div>
       </motion.div>
       <CardContent className="p-6">
@@ -60,14 +62,14 @@ export function ProjectCard({
           ))}
         </div>
         <div className="flex space-x-4">
-          <a
+          {liveUrl && liveUrl !== "#" && <a
             href={liveUrl}
             className="text-primary hover:text-primary/80 transition-colors text-sm flex items-center"
           >
             <ExternalLink className="w-4 h-4 mr-1" />
             Live Demo
-          </a>
-          {codeUrl && (
+          </a>}
+          {codeUrl && codeUrl !== "#" &&
             <a
               href={codeUrl}
               className="text-muted-foreground hover:text-foreground transition-colors text-sm flex items-center"
@@ -75,7 +77,7 @@ export function ProjectCard({
               <Github className="w-4 h-4 mr-1" />
               Code
             </a>
-          )}
+          }
         </div>
       </CardContent>
     </Card>

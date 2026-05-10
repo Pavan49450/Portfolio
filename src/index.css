@@ -54,7 +54,7 @@ h3,
 h4,
 span,
 button,
-p {
+p, a {
   font-family: "Georgia", serif;
   position: relative;
   z-index: 50;

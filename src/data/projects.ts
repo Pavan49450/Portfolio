@@ -1,11 +1,67 @@
-export const projects = [
+export interface Project {
+  title: string;
+  liveUrl: string;
+  codeUrl: string;
+  description: string;
+  image: string;
+  tags: string[];
+  detailedInfo: {
+    gallery: string[];
+    fullDescription: string;
+    features: string[];
+    duration: string;
+    teamSize: string;
+    role: string;
+    technologies: string[];
+    challenges: string;
+  };
+}
+
+export const projects: Project[] = [
+  {
+    title: "AI Helpdesk Agent",
+    description:
+      "Context-aware AI support agent built on a full RAG pipeline — Pinecone vector search for semantic retrieval, LangChain for LLM orchestration, OpenAI for response generation. Reduced manual support queries by 90% in production.",
+    image: "/images/aiChatBot.png",
+    tags: ["RAG", "LangChain", "Pinecone", "OpenAI", "Node.js"],
+    liveUrl: "#",
+    codeUrl: "#",
+    detailedInfo: {
+      fullDescription:
+        "Production-grade AI helpdesk agent built on a full Retrieval-Augmented Generation (RAG) pipeline. The system uses Pinecone for high-performance vector search and semantic document retrieval, LangChain for LLM orchestration and chain management, and OpenAI GPT for response generation. Deployed in production, it reduced manual support queries by 90% by enabling context-aware, document-grounded answers.",
+      features: [
+        "Semantic document retrieval with Pinecone vector search",
+        "LangChain-orchestrated LLM pipeline",
+        "OpenAI GPT response generation",
+        "Context-aware, grounded answers from knowledge base",
+        "90% reduction in manual support queries",
+        "Production-deployed with monitoring",
+      ],
+      technologies: [
+        "LangChain",
+        "Pinecone",
+        "OpenAI API",
+        "Node.js",
+        "TypeScript",
+        "RAG Pipeline",
+      ],
+      duration: "2024 — Current",
+      teamSize: "N/A",
+      role: "Full Stack & AI Engineer",
+      challenges:
+        "Designing an accurate retrieval pipeline that minimizes hallucination and keeps latency low for production use.",
+      gallery: [
+        "/images/aiChatBot.png",
+      ],
+    },
+  },
   {
     title: "SPile+",
     description:
-      "Innovative solar pile foundation design tool that automates calculations and iterations, optimizing foundation designs for efficient solar projects with comprehensive reporting.",
+      "Multi-tenant SaaS platform for solar pile engineering — React/TypeScript UI, automated Excel ingestion, one-click PDF reporting. Eliminated 80% of manual calculation overhead.",
     image: "/images/spile-3.png",
-    tags: ["Engineering", "Automation", "Web Application"],
-    liveUrl: "https://spiledev.spileplus.com",
+    tags: ["React", "TypeScript", "MongoDB", "Node.js", "Multi-tenant SaaS"],
+    liveUrl: "https://www.spileplus.com",
     codeUrl: "#",
     detailedInfo: {
       fullDescription:

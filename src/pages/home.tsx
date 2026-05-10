@@ -48,7 +48,10 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
-      <SkillsBackground />
+      <div className="max-w-[600px]:hidden">
+
+        <SkillsBackground />
+      </div>
 
       {/* <div className="fixed inset-0 z-100 pointer-events-none overflow-hidden">
         {orbs.map((orb, i) => (

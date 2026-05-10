@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import { skillList } from "../../../data/skills";
 import { THEMES } from "../../../data/Themes";
-import { useTheme } from "../theme-context";
+import { useTheme } from "../use-theme";
 // import { useScrollAnimation } from "../../../hooks/use-scroll-animation";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -53,30 +53,36 @@ function buildIcons(skills: Skill[]): FloatingIcon[] {
 
 // ─── Skill level → glow color / shadow ───────────────────────────────────────
 const glowColor = (level: number, isDark: boolean) => {
-  const a = isDark ? 1 : 0.85;
-  if (level >= 5) return `rgba(99,102,241,${0.7 * a})`;
-  if (level >= 4) return `rgba(168,85,247,${0.6 * a})`;
-  if (level >= 3) return `rgba(34,211,238,${0.55 * a})`;
-  return `rgba(148,163,184,${0.4 * a})`;
+  const a = isDark ? 0.9 : 0.85;
+  if (isDark) {
+    if (level >= 5) return `rgba(249,115,22,${0.7 * a})`; // orange-500
+    if (level >= 4) return `rgba(245,158,11,${0.6 * a})`; // amber-500
+    if (level >= 3) return `rgba(252,211,77,${0.55 * a})`; // amber-300
+    return `rgba(212,212,216,${0.4 * a})`; // zinc-300
+  }
+  if (level >= 5) return `rgba(234,88,12,${0.7 * a})`; // orange-600
+  if (level >= 4) return `rgba(217,119,6,${0.6 * a})`; // amber-600
+  if (level >= 3) return `rgba(251,191,36,${0.55 * a})`; // amber-400
+  return `rgba(148,163,184,${0.4 * a})`; // slate-400
 };
 
 const glowShadow = (level: number, isDark: boolean) => {
   if (isDark) {
     if (level >= 5)
-      return "0 0 18px 4px rgba(99,102,241,0.45),  0 0 40px 8px rgba(99,102,241,0.15)";
+      return "0 0 18px 4px rgba(249,115,22,0.45),  0 0 40px 8px rgba(249,115,22,0.15)";
     if (level >= 4)
-      return "0 0 14px 3px rgba(168,85,247,0.40),  0 0 32px 6px rgba(168,85,247,0.12)";
+      return "0 0 14px 3px rgba(245,158,11,0.40),  0 0 32px 6px rgba(245,158,11,0.12)";
     if (level >= 3)
-      return "0 0 12px 2px rgba(34,211,238,0.35),  0 0 28px 5px rgba(34,211,238,0.10)";
-    return "0 0 8px  2px rgba(148,163,184,0.20)";
+      return "0 0 12px 2px rgba(252,211,77,0.35),  0 0 28px 5px rgba(252,211,77,0.10)";
+    return "0 0 8px  2px rgba(212,212,216,0.20)";
   }
   // Light – softer diffuse lift
   if (level >= 5)
-    return "0 6px 28px rgba(99,102,241,0.28),  0 2px 8px rgba(99,102,241,0.18)";
+    return "0 6px 28px rgba(234,88,12,0.28),  0 2px 8px rgba(234,88,12,0.18)";
   if (level >= 4)
-    return "0 6px 24px rgba(168,85,247,0.24),  0 2px 8px rgba(168,85,247,0.14)";
+    return "0 6px 24px rgba(217,119,6,0.24),  0 2px 8px rgba(217,119,6,0.14)";
   if (level >= 3)
-    return "0 5px 20px rgba(34,211,238,0.20),  0 2px 6px rgba(34,211,238,0.12)";
+    return "0 5px 20px rgba(251,191,36,0.20),  0 2px 6px rgba(251,191,36,0.12)";
   return "0 4px 14px rgba(148,163,184,0.18)";
 };
 
@@ -205,9 +211,8 @@ function FloatingSkillIcon({
         }}
         transition={{ duration: 0.25 }}
         style={{
-          width: icon.size,
-          height: icon.size,
-          borderRadius: 16,
+          "--card-size": `${icon.size}px`,
+          borderRadius: 5,
           background: hovered ? tok.cardBgHover : tok.cardBg,
           backdropFilter: "blur(12px) saturate(1.5)",
           WebkitBackdropFilter: "blur(12px) saturate(1.5)",
@@ -223,7 +228,8 @@ function FloatingSkillIcon({
           transition: "background 0.25s, border 0.25s",
           position: "relative",
           overflow: "hidden",
-        }}
+        } as React.CSSProperties}
+        className="w-[calc(var(--card-size)*0.6)] h-[calc(var(--card-size)*0.6)] sm:w-[calc(var(--card-size)*0.8)] sm:h-[calc(var(--card-size)*0.8)] md:w-[var(--card-size)] md:h-[var(--card-size)]"
       >
         {hovered && (
           <motion.div
@@ -247,16 +253,9 @@ function FloatingSkillIcon({
           // We pass the base size as a CSS variable
           style={{ "--base-size": `${icon.size}px` } as React.CSSProperties}
           className={`
-                    object-cover user-select-none
-                    /* Desktop (Default): 52% of base size */
-                    w-[calc(var(--base-size)*0.52)] h-[calc(var(--base-size)*0.52)]
-                    
-                    /* Tablet: 45% of base size */
-                    md:w-[calc(var(--base-size)*0.45)] md:h-[calc(var(--base-size)*0.45)]
-                    
-                    /* Mobile: 35% of base size */
-                    sm:w-[calc(var(--base-size)*0.35)] sm:h-[calc(var(--base-size)*0.35)]
-                  `}
+            object-cover user-select-none
+            w-[50%] h-[50%]
+          `}
           onError={(e) => {
             (e.target as HTMLImageElement).style.display = "none";
           }}
@@ -335,7 +334,7 @@ function ConnectionLines({
     resize();
     window.addEventListener("resize", resize);
 
-    const lineRgb = isDark ? "168,85,247" : "99,102,241";
+    const lineRgb = isDark ? "249,115,22" : "234,88,12";
     const maxAlpha = isDark ? 0.5 : 0.4;
     const threshold = 280;
 
@@ -395,8 +394,7 @@ function ConnectionLines({
 
 // ─── SkillsBackground — create posRef and pass it down ───────────────────────
 export default function SkillsBackground() {
-  const { theme } = useTheme();
-  const isDark = theme !== "light";
+  const { isDark } = useTheme();
   const [icons] = useState<FloatingIcon[]>(() => buildIcons(skillList));
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [scrollY, setScrollY] = useState(0);

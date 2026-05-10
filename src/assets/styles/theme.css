@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@theme {
+  --radius-sm: 5px;
+  --radius-md: 5px;
+  --radius-lg: 5px;
+  --radius-xl: 5px;
+  --radius-2xl: 5px;
+  --radius-3xl: 5px;
+  --radius: 5px;
+}
+
 /* Theme variables */
 :root {
   --background: hsl(0, 0%, 100%);
@@ -21,7 +31,7 @@
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 40%, 98%);
   --ring: hsl(35, 91%, 60%);
-  --radius: 0.5rem;
+  --radius: 5px;
   --gradient-start: hsl(35, 91%, 60%);
   --gradient-end: hsl(25, 91%, 65%);
   --glass-bg: hsla(0, 0%, 100%, 0.8);

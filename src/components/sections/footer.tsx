@@ -30,7 +30,7 @@ export function Footer() {
               <span className="gradient-text"> Pavan Kumar</span>
             </div>
             <p className="text-muted-foreground">
-              Coding Tomorrow's Possibilities
+              Hyderabad, India · pavank.kattula@gmail.com
             </p>
           </motion.div>
 
@@ -62,7 +62,7 @@ export function Footer() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="border-t border-border mt-8 pt-8 text-center text-muted-foreground"
         >
-          <p>&copy; 2024 Kattula Pavan Kumar. All rights reserved.</p>
+          <p>&copy; 2025 Kattula Pavan Kumar. All rights reserved.</p>
         </motion.div>
       </div>
     </footer>
