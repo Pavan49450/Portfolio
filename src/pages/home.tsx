@@ -15,11 +15,11 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
 import SkillsBackground from "../components/ui/Background/SkillsBackground";
 export default function Home() {
-  const orbs = [
-    { size: 320, x: "10%", y: "20%", color: "rgba(99,102,241,0.4)", delay: 0 },
-    { size: 200, x: "75%", y: "60%", color: "rgba(168,85,247,0.3)", delay: 2 },
-    { size: 150, x: "60%", y: "10%", color: "rgba(34,211,238,0.8)", delay: 4 },
-  ];
+  // const orbs = [
+  //   { size: 320, x: "10%", y: "20%", color: "rgba(99,102,241,0.4)", delay: 0 },
+  //   { size: 200, x: "75%", y: "60%", color: "rgba(168,85,247,0.3)", delay: 2 },
+  //   { size: 150, x: "60%", y: "10%", color: "rgba(34,211,238,0.8)", delay: 4 },
+  // ];
 
   function MouseGlow() {
     const mouseX = useMotionValue(0);

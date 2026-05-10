@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Grid3X3, X, ArrowLeft, ArrowRight } from "lucide-react";
+import { Grid3X3, X, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { Modal } from "@mui/material";
 import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
+// import { Badge } from "../ui/badge";
 import { useScrollAnimation } from "../../hooks/use-scroll-animation";
 import { ProjectCard } from "../ui/project-card";
 import { projects, type Project } from "../../data/projects";
@@ -17,67 +17,67 @@ type ModalState =
   | { type: "detail"; project: Project; from: "featured" | "all" };
 
 // ─── Featured Hero Card ────────────────────────────────────────────────────────
-function FeaturedHeroCard({
-  project,
-  onClick,
-}: {
-  project: Project;
-  onClick: () => void;
-}) {
-  return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3 }}
-      onClick={onClick}
-      className="cursor-pointer group relative overflow-hidden rounded-xl border border-border bg-card shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col lg:flex-row mb-8"
-    >
-      {/* Image side */}
-      <div className="relative lg:w-1/2 aspect-video lg:aspect-auto min-h-[220px] overflow-hidden bg-muted">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = "none";
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/40 via-transparent to-transparent pointer-events-none" />
-        {/* Badges on image */}
-        <div className="absolute top-3 left-3 flex gap-2">
-          <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-emerald-500 text-white rounded-full shadow">
-            Production
-          </span>
-          <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary text-white rounded-full shadow">
-            Featured
-          </span>
-        </div>
-      </div>
+// function FeaturedHeroCard({
+//   project,
+//   onClick,
+// }: {
+//   project: Project;
+//   onClick: () => void;
+// }) {
+//   return (
+//     <motion.div
+//       whileHover={{ y: -4 }}
+//       transition={{ duration: 0.3 }}
+//       onClick={onClick}
+//       className="cursor-pointer group relative overflow-hidden rounded-xl border border-border bg-card shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col lg:flex-row mb-8"
+//     >
+//       {/* Image side */}
+//       <div className="relative lg:w-1/2 aspect-video lg:aspect-auto min-h-[220px] overflow-hidden bg-muted">
+//         <img
+//           src={project.image}
+//           alt={project.title}
+//           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+//           onError={(e) => {
+//             (e.currentTarget as HTMLImageElement).style.display = "none";
+//           }}
+//         />
+//         <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-black/40 via-transparent to-transparent pointer-events-none" />
+//         {/* Badges on image */}
+//         <div className="absolute top-3 left-3 flex gap-2">
+//           <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-emerald-500 text-white rounded-full shadow">
+//             Production
+//           </span>
+//           <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest bg-primary text-white rounded-full shadow">
+//             Featured
+//           </span>
+//         </div>
+//       </div>
 
-      {/* Content side */}
-      <div className="lg:w-1/2 p-6 sm:p-8 flex flex-col justify-between">
-        <div>
-          <h3 className="text-2xl sm:text-3xl font-bold mb-3 group-hover:text-primary transition-colors duration-200">
-            {project.title}
-          </h3>
-          <p className="text-muted-foreground leading-relaxed mb-5 text-sm sm:text-base">
-            {project.description}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </div>
-        <div className="mt-6 flex items-center gap-1.5 text-sm font-semibold text-primary">
-          View Project Details
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
+//       {/* Content side */}
+//       <div className="lg:w-1/2 p-6 sm:p-8 flex flex-col justify-between">
+//         <div>
+//           <h3 className="text-2xl sm:text-3xl font-bold mb-3 group-hover:text-primary transition-colors duration-200">
+//             {project.title}
+//           </h3>
+//           <p className="text-muted-foreground leading-relaxed mb-5 text-sm sm:text-base">
+//             {project.description}
+//           </p>
+//           <div className="flex flex-wrap gap-2">
+//             {project.tags.map((tag) => (
+//               <Badge key={tag} variant="secondary" className="text-xs">
+//                 {tag}
+//               </Badge>
+//             ))}
+//           </div>
+//         </div>
+//         <div className="mt-6 flex items-center gap-1.5 text-sm font-semibold text-primary">
+//           View Project Details
+//           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+//         </div>
+//       </div>
+//     </motion.div>
+//   );
+// }
 
 // ─── Projects Section ──────────────────────────────────────────────────────────
 export function Projects() {
@@ -85,7 +85,7 @@ export function Projects() {
   const [modal, setModal] = useState<ModalState>({ type: "closed" });
   const [showImage, setShowImage] = useState("");
 
-  const featuredProject = projects[0];
+  // const featuredProject = projects[0];
   const sideProjects = projects.slice(0, 3);
 
   const closeModal = () => setModal({ type: "closed" });

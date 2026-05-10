@@ -9,7 +9,7 @@ import { cn } from "../../lib/utils";
 // 1. Create a Context to track state for Framer Motion's AnimatePresence
 interface SheetContextType {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: (open: boolean) => void;
 }
 
 const SheetContext = React.createContext<SheetContextType>({
@@ -63,7 +63,7 @@ const SheetOverlay = React.forwardRef<
   React.ElementRef<typeof Dialog.Overlay>,
   React.ComponentPropsWithoutRef<typeof Dialog.Overlay>
 >(({ className, ...props }, ref) => (
-  <Dialog.Overlay asChild forceMount ref={ref}>
+  <Dialog.Overlay asChild forceMount ref={ref} {...props}>
     <motion.div
       initial="hidden"
       animate="visible"
@@ -71,7 +71,6 @@ const SheetOverlay = React.forwardRef<
       variants={overlayVariants}
       transition={{ duration: 0.2 }}
       className={cn("fixed inset-0 z-[100] bg-black/80", className)}
-      {...props}
     />
   </Dialog.Overlay>
 ));
