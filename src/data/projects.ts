@@ -59,7 +59,7 @@ export const projects: Project[] = [
     title: "SPile+",
     description:
       "Multi-tenant SaaS platform for solar pile engineering — React/TypeScript UI, automated Excel ingestion, one-click PDF reporting. Eliminated 80% of manual calculation overhead.",
-    image: "/images/spile-3.png",
+    image: "/images/spile-1.png",
     tags: ["React", "TypeScript", "MongoDB", "Node.js", "Multi-tenant SaaS"],
     liveUrl: "https://www.spileplus.com",
     codeUrl: "#",
@@ -92,8 +92,9 @@ export const projects: Project[] = [
       challenges:
         "Implementing complex engineering calculations while maintaining performance and accuracy.",
       gallery: [
-        "/images/spile-3.png",
+        "/images/spile-1.png",
         "/images/spile-2.png",
+        "/images/spile-3.png",
         "/images/spile-4.png",
         "/images/spile-5.png",
       ],
