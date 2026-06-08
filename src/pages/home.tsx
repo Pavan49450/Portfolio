@@ -82,20 +82,20 @@ export default function Home() {
       <MouseGlow />
 
       {/* ---- All page content sits above background ---- */}
-      {/* <div className="relative z-30"> */}
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Services />
-      <Experience />
-      <AchievementsSection />
-      <Testimonials />
-      <Contact />
-      <Footer />
-      <BackToTop />
-      {/* </div> */}
+      <div className="relative z-30">
+        <Navigation />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Services />
+        <Experience />
+        <AchievementsSection />
+        <Testimonials />
+        <Contact />
+        <Footer />
+        <BackToTop />
+      </div>
     </div>
   );
 }

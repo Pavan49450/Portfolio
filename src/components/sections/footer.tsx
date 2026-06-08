@@ -20,9 +20,9 @@ export function Footer() {
       <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ y: 30 }}
+            whileInView={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 22 }}
             className="mb-4 md:mb-0"
           >
             <div className="text-2xl font-bold mb-2">
@@ -35,9 +35,9 @@ export function Footer() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ y: 30 }}
+            whileInView={{ y: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.12 }}
             className="flex space-x-6"
           >
             {footerLinks.map((link) => (
@@ -57,9 +57,9 @@ export function Footer() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial={{ y: 10 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 22, delay: 0.22 }}
           className="border-t border-border mt-8 pt-8 text-center text-muted-foreground"
         >
           <p>&copy; 2025 Kattula Pavan Kumar. All rights reserved.</p>

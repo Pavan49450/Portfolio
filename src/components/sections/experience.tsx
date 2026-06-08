@@ -63,9 +63,9 @@ export function Experience() {
     <section id="experience" className="py-20 bg-muted/20">
       <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 60 }}
+          animate={isVisible ? { y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 160, damping: 22 }}
           ref={ref}
           className="text-center mb-16"
         >
@@ -77,15 +77,22 @@ export function Experience() {
 
         <div className="max-w-6xl mx-auto">
           <div className="relative">
-            <div className="absolute left-4 max-[768px]:hidden md:left-1/2 transform md:-translate-x-1/2 w-0.5 bg-gradient-to-b from-primary to-purple-600 h-full"></div>
+            <motion.div
+              className="absolute left-4 max-[768px]:hidden md:left-1/2 transform md:-translate-x-1/2 w-0.5 bg-gradient-to-b from-primary to-purple-600 h-full"
+              initial={{ scaleY: 0 }}
+              animate={isVisible ? { scaleY: 1 } : {}}
+              transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+              style={{ transformOrigin: "top" }}
+            />
 
             <div className="space-y-12 max-[768px]:space-y-4">
               {experiences.map((experience, index) => (
                 <motion.div
                   key={experience.title}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  initial={{ x: index % 2 === 0 ? -60 : 60, scale: 0.92 }}
+                  animate={isVisible ? { x: 0, scale: 1 } : {}}
+                  transition={{ type: "spring", stiffness: 140, damping: 20, delay: index * 0.18 }}
+                  whileHover={{ scale: 1.01, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                   className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                     }`}
                 >

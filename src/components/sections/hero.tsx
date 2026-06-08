@@ -82,8 +82,8 @@ function AnimatedWords({
         <motion.span
           key={i}
           className={`inline-block mr-[0.25em] ${iClassName}`}
-          initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-          animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+          initial={{ y: 40, filter: "blur(8px)" }}
+          animate={isVisible ? { y: 0, filter: "blur(0px)" } : {}}
           transition={{
             duration: 0.6,
             delay: delay + i * 0.08,
@@ -114,8 +114,8 @@ function CopyEmail({ tok }: { tok: typeof THEMES.dark | typeof THEMES.light }) {
   return (
     <motion.button
       onClick={copy}
-      initial={{ opacity: 0 }}
-      animate={isVisible ? { opacity: 1 } : {}}
+      initial={{ y: 10 }}
+      animate={isVisible ? { y: 0 } : {}}
       transition={{ delay: 1 }}
       className={`group flex items-center gap-2 text-xs transition-colors duration-300 cursor-pointer ${tok.emailText}`}
       whileHover={{ scale: 1.02 }}
@@ -153,7 +153,7 @@ export function Hero() {
     <section
       ref={heroRef}
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-transparent"
+      className="relative min-h-screen mt-12 flex flex-col items-center justify-center overflow-hidden bg-transparent"
     >
       {/* Subtle grid overlay */}
       {/* <div
@@ -171,9 +171,9 @@ export function Hero() {
       <div className="relative max-w-5xl mx-auto px-6 text-center">
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.25 }}
+          initial={{ scale: 0.5, rotate: -8, y: 10 }}
+          animate={isVisible ? { scale: 1, rotate: 0, y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 380, damping: 18, delay: 0.2 }}
           className={`inline-flex items-center gap-2 mb-10 px-4 py-1.5 rounded-full border backdrop-blur-sm text-xs tracking-widest uppercase ${tok.badgeBorder} ${tok.badgeBg} ${tok.badgeText}`}
           ref={ref}
         >
@@ -217,8 +217,8 @@ export function Hero() {
 
         {/* Role Title */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 20 }}
+          animate={isVisible ? { y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className={`text-xl md:text-2xl max-w-2xl mx-auto mb-2 font-semibold tracking-tight middle-layer ${tok.subText}`}
           ref={ref}
@@ -228,8 +228,8 @@ export function Hero() {
 
         {/* Tagline */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 20 }}
+          animate={isVisible ? { y: 0 } : {}}
           transition={{ duration: 0.7, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
           className={`text-base md:text-lg max-w-2xl mx-auto mb-2 leading-relaxed font-light middle-layer ${tok.subText}`}
           style={{ fontFamily: "'Georgia', serif", fontStyle: "italic" }}
@@ -239,8 +239,8 @@ export function Hero() {
 
         {/* Location */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          initial={{ y: 20 }}
+          animate={isVisible ? { y: 0 } : {}}
           transition={{ duration: 0.7, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
           className={`text-sm max-w-xl mx-auto mb-3 font-mono ${tok.emailText}`}
         >
@@ -249,8 +249,8 @@ export function Hero() {
 
         {/* Stack tags */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isVisible ? { opacity: 1 } : {}}
+          initial={{ y: 10 }}
+          animate={isVisible ? { y: 0 } : {}}
           transition={{ delay: 1.1 }}
           className="flex flex-wrap justify-center gap-2 mb-12 mt-6 middle-layer"
           ref={ref}
@@ -259,9 +259,9 @@ export function Hero() {
             (tag, i) => (
               <motion.span
                 key={tag}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2 + i * 0.07 }}
+                initial={{ scale: 0.6, y: 12 }}
+                animate={{ scale: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 320, damping: 18, delay: 1.15 + i * 0.08 }}
                 className={`px-3 py-1 text-[11px] tracking-widest uppercase font-mono border ${theme === "light" ? "bg-zinc-50": "bg-zinc-900"} rounded-full transition-colors duration-300 ${tok.tagText} ${tok.tagBorder}`}
               >
                 {tag}
@@ -272,9 +272,9 @@ export function Hero() {
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4 }}
+          initial={{ y: 24 }}
+          animate={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 240, damping: 22, delay: 1.4 }}
           className="flex flex-wrap items-center justify-center gap-4 mb-10"
         >
           <Button
@@ -300,8 +300,8 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={{ y: 10 }}
+        animate={{ y: 0 }}
         transition={{ delay: 2.2 }}
         onClick={() => scrollTo("#about")}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer group z-50"

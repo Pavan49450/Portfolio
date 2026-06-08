@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 import { TestimonialCard } from "../ui/testimonial-card";
 import { useRef, useState } from "react";
+import { useScrollAnimation } from "../../hooks/use-scroll-animation";
 
 const testimonials = [
   {
@@ -33,7 +34,7 @@ export function Testimonials() {
   const x = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const isPaused = useRef(false);
-
+  const { ref: headerRef, isVisible } = useScrollAnimation();
   const [isHovered, setIsHovered] = useState(false);
 
   useAnimationFrame((_, delta) => {
@@ -53,19 +54,29 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-20 overflow-hidden">
       <div className="max-w-[1500px] mx-auto px-6 max-[600px]:px-2">
-        <div className="text-center mb-16">
+        <motion.div
+          ref={headerRef}
+          initial={{ y: 50 }}
+          animate={isVisible ? { y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 160, damping: 22 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             What People Say
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Testimonials from clients and colleagues
           </p>
-        </div>
+        </motion.div>
 
         <div
           className={`rounded-xl transition-all duration-300 p-4 ${
             isHovered ? "bg-zinc-50/10 " : ""
           }`}
+          style={{
+            maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          }}
           onMouseEnter={() => {
             isPaused.current = true;
             setIsHovered(true);

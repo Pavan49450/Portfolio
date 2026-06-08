@@ -30,9 +30,9 @@ export function About() {
     <section id="about" className="py-20 bg-muted/20">
       <div className="max-w-[1500px] mx-auto px-6 sm:px-4">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 60 }}
+          animate={isVisible ? { y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 160, damping: 22 }}
           ref={ref}
           className="text-center mb-16"
         >
@@ -46,9 +46,9 @@ export function About() {
 
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ clipPath: "inset(0 100% 0 0)", x: -30 }}
+            animate={isVisible ? { clipPath: "inset(0 0% 0 0)", x: 0 } : {}}
+            transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             className="w-full max-w-xs sm:max-w-sm md:max-w-md middle-layer"
           >
             <img
@@ -59,9 +59,9 @@ export function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ x: 50 }}
+            animate={isVisible ? { x: 0 } : {}}
+            transition={{ type: "spring", stiffness: 140, damping: 20, delay: 0.25 }}
             className="w-full"
           >
             <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
@@ -75,9 +75,9 @@ export function About() {
               {features.map((feature, index) => (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  initial={{ x: 30, scale: 0.95 }}
+                  animate={isVisible ? { x: 0, scale: 1 } : {}}
+                  transition={{ type: "spring", stiffness: 220, damping: 20, delay: 0.4 + index * 0.12 }}
                   className="flex items-start gap-4"
                 >
                   <div

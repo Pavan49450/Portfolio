@@ -116,9 +116,9 @@ export function Contact() {
         {/* Heading */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 60 }}
+          animate={isVisible ? { y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 160, damping: 22 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
@@ -134,20 +134,29 @@ export function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
           {/* ---------- Contact details + socials ---------- */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ x: -50 }}
+            animate={isVisible ? { x: 0 } : {}}
+            transition={{ type: "spring", stiffness: 140, damping: 20, delay: 0.15 }}
           >
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
 
             <div className="space-y-6">
-              {contactInfo.map((info) => (
-                <div key={info.title} className="flex items-center gap-4">
-                  <div
+              {contactInfo.map((info, i) => (
+                <motion.div
+                  key={info.title}
+                  initial={{ x: -30, scale: 0.94 }}
+                  animate={isVisible ? { x: 0, scale: 1 } : {}}
+                  transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 + i * 0.12 }}
+                  className="flex items-center gap-4"
+                >
+                  <motion.div
                     className={`w-12 h-12 bg-gradient-to-r ${info.gradient} rounded-full flex items-center justify-center`}
+                    initial={{ rotate: -90, scale: 0 }}
+                    animate={isVisible ? { rotate: 0, scale: 1 } : {}}
+                    transition={{ type: "spring", stiffness: 220, damping: 16, delay: 0.35 + i * 0.12 }}
                   >
                     <info.icon className="w-6 h-6 text-white" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h4 className="font-semibold">{info.title}</h4>
                     {info.link ? (
@@ -163,7 +172,7 @@ export function Contact() {
                       <p className="text-muted-foreground">{info.value}</p>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -188,75 +197,62 @@ export function Contact() {
 
           {/* ------------- Contact form -------------- */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ x: 50 }}
+            animate={isVisible ? { x: 0 } : {}}
+            transition={{ type: "spring", stiffness: 140, damping: 20, delay: 0.25 }}
           >
             <Card className="glass-effect middle-layer">
               <CardContent className="p-6 sm:p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Name */}
-                  <div>
-                    <Label htmlFor="name">Full Name&nbsp;*</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Enter your full name"
-                      required
-                    />
-                  </div>
+                  {[
+                    { id: "name", label: "Full Name *", type: "text", name: "name", placeholder: "Enter your full name", required: true, component: "input" },
+                    { id: "email", label: "Email Address *", type: "email", name: "email", placeholder: "Enter your email", required: true, component: "input" },
+                    { id: "phone", label: "Mobile Number *", type: "tel", name: "phone", placeholder: "Enter your mobile number", required: true, component: "input" },
+                    { id: "message", label: "Message", type: "text", name: "message", placeholder: "Tell me about your project…", required: false, component: "textarea" },
+                  ].map((field, i) => (
+                    <motion.div
+                      key={field.id}
+                      initial={{ y: 20, x: 10 }}
+                      animate={isVisible ? { y: 0, x: 0 } : {}}
+                      transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.5 + i * 0.1 }}
+                    >
+                      <Label htmlFor={field.id}>{field.label}</Label>
+                      {field.component === "textarea" ? (
+                        <Textarea
+                          id={field.id}
+                          name={field.name}
+                          rows={4}
+                          value={formData[field.name as keyof typeof formData]}
+                          onChange={handleInputChange}
+                          placeholder={field.placeholder}
+                        />
+                      ) : (
+                        <Input
+                          id={field.id}
+                          name={field.name}
+                          type={field.type}
+                          value={formData[field.name as keyof typeof formData]}
+                          onChange={handleInputChange}
+                          placeholder={field.placeholder}
+                          required={field.required}
+                        />
+                      )}
+                    </motion.div>
+                  ))}
 
-                  {/* Email */}
-                  <div>
-                    <Label htmlFor="email">Email Address&nbsp;*</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div>
-                    <Label htmlFor="phone">Mobile Number&nbsp;*</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="Enter your mobile number"
-                      required
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Tell me about your project…"
-                    />
-                  </div>
-
-                  {/* Submit */}
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-purple-600 hover:scale-105 transition-transform"
-                    disabled={contactMutation.isPending}
+                  <motion.div
+                    initial={{ y: 16 }}
+                    animate={isVisible ? { y: 0 } : {}}
+                    transition={{ type: "spring", stiffness: 220, damping: 22, delay: 0.95 }}
                   >
-                    {contactMutation.isPending ? "Sending…" : "Send Message"}
-                  </Button>
+                    <Button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-primary to-purple-600 hover:scale-105 transition-transform"
+                      disabled={contactMutation.isPending}
+                    >
+                      {contactMutation.isPending ? "Sending…" : "Send Message"}
+                    </Button>
+                  </motion.div>
                 </form>
               </CardContent>
             </Card>

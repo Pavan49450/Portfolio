@@ -192,7 +192,7 @@ function FloatingSkillIcon({
         position: "fixed",
         left: finalX,
         top: finalY,
-        zIndex: 10 + icon.layer,
+        zIndex: 2 + icon.layer,
         pointerEvents: "auto",
         cursor: "pointer",
         willChange: "transform",
@@ -384,7 +384,7 @@ function ConnectionLines({
       style={{
         position: "fixed",
         inset: 0,
-        zIndex: 9,
+        zIndex: 1,
         pointerEvents: "none",
         opacity: 1,
       }}

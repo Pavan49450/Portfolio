@@ -68,9 +68,9 @@ export function Services() {
     <section id="services" className="py-20">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 60 }}
+          animate={isVisible ? { y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 160, damping: 22 }}
           ref={ref}
           className="text-center mb-16"
         >
@@ -86,17 +86,21 @@ export function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              initial={{ y: 55, scale: 0.86 }}
+              animate={isVisible ? { y: 0, scale: 1 } : {}}
+              transition={{ type: "spring", stiffness: 180, damping: 18, delay: index * 0.1 }}
+              whileHover={{ y: -7, transition: { type: "spring", stiffness: 320, damping: 20 } }}
             >
               <Card className="glass-effect hover-lift h-full middle-layer">
                 <CardContent className="p-6 sm:p-8 text-center">
-                  <div
+                  <motion.div
                     className={`w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r ${service.gradient} rounded-full flex items-center justify-center mx-auto mb-6`}
+                    initial={{ rotate: -120, scale: 0 }}
+                    animate={isVisible ? { rotate: 0, scale: 1 } : {}}
+                    transition={{ type: "spring", stiffness: 200, damping: 14, delay: index * 0.1 + 0.18 }}
                   >
                     <service.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                  </div>
+                  </motion.div>
                   <h3 className="text-xl sm:text-2xl font-bold mb-4">
                     {service.title}
                   </h3>

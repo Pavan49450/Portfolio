@@ -108,9 +108,9 @@ export function Projects() {
 
         {/* ── Section Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          initial={{ y: 60 }}
+          animate={isVisible ? { y: 0 } : {}}
+          transition={{ type: "spring", stiffness: 160, damping: 22 }}
           ref={ref}
           className="text-center mb-16"
         >
@@ -140,9 +140,10 @@ export function Projects() {
           {sideProjects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + index * 0.15 }}
+              initial={{ y: 50, scale: 0.88 }}
+              animate={isVisible ? { y: 0, scale: 1 } : {}}
+              transition={{ type: "spring", stiffness: 160, damping: 20, delay: 0.1 + index * 0.14 }}
+              whileHover={{ y: -8, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 18 } }}
               className="cursor-pointer"
               onClick={() => openDetail(project, "featured")}
             >

@@ -49,10 +49,16 @@ const iconMap: Record<NonNullable<Achievement["icon"]>, LucideIcon> = {
 };
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { y: 35, scale: 0.88 },
   show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+    y: 0,
+    scale: 1,
+    transition: { type: "spring" as const, stiffness: 240, damping: 20 },
   },
 };
 
@@ -78,9 +84,9 @@ export default function AchievementsSection({
       aria-label={heading}
     >
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
+        initial={{ y: 60 }}
+        animate={isVisible ? { y: 0 } : {}}
+        transition={{ type: "spring", stiffness: 160, damping: 22 }}
         ref={ref}
         className="text-center mb-16"
       >
@@ -116,7 +122,7 @@ function CardsGrid({ achievements }: { achievements: Achievement[] }) {
       className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
     >
       {achievements.map((a) => (
-        <motion.li key={a.id}>
+        <motion.li key={a.id} variants={itemVariants} whileHover={{ y: -5, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 18 } }}>
           <AchievementCard a={a} />
         </motion.li>
       ))}

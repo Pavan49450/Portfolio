@@ -12,8 +12,8 @@ export function AllProjects({ onProjectSelect }: AllProjectsProps) {
       {projects.map((project, index) => (
         <motion.div
           key={project.title}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.4, delay: index * 0.1 }}
           className="cursor-pointer"
           onClick={() => onProjectSelect(project)}
