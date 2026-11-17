@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kattula-pavan-kumar.vercel.app/sitemap.xml

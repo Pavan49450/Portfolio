@@ -84,7 +84,8 @@ export default function Home() {
       {/* ---- All page content sits above background ---- */}
       <div className="relative z-30">
         <Navigation />
-        <Hero />
+        <main>
+          <Hero />
         <About />
         <Skills />
         <Projects />
@@ -93,6 +94,7 @@ export default function Home() {
         <AchievementsSection />
         <Testimonials />
         <Contact />
+        </main>
         <Footer />
         <BackToTop />
       </div>

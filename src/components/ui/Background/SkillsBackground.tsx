@@ -249,7 +249,10 @@ function FloatingSkillIcon({
 
         <img
           src={`${ICON_BASE_PATH}${icon.skill.address}`}
-          alt={icon.skill.name}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          decoding="async"
           // We pass the base size as a CSS variable
           style={{ "--base-size": `${icon.size}px` } as React.CSSProperties}
           className={`

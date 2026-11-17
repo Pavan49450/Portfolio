@@ -6,53 +6,59 @@ import { useScrollAnimation } from "../../hooks/use-scroll-animation";
 const experiences = [
   {
     icon: Briefcase,
-    title: "Full Stack Developer — AI & SaaS",
-    company: "Saanvi Structural Soln",
-    period: "Aug 2024 - Current",
-    description:
-      "Built SPile+, a multi-tenant SaaS platform for solar pile engineering (React/TypeScript, Node.js, MongoDB) — eliminating 80% of manual calculation overhead. Integrated AI Helpdesk Agent using a RAG pipeline (LangChain + Pinecone + OpenAI), reducing support queries by 90%. Automated Stripe invoice pipeline cutting processing time from 3–5 days to under 5 seconds.",
+    title: "Full Stack Developer",
+    company: "Saanvi Structural Solutions",
+    location: "Hyderabad",
+    period: "Aug 2024 - Present",
+    points: [
+      "Engineered SPile+, a solar pile foundation platform, cutting 80% of manual engineering calculation work with multi-mode workflows, automated Excel ingestion, and one-click PDF reports (React, TypeScript, Node.js, MongoDB).",
+      "Designed and shipped Multi-Factor Authentication across SPile+ to protect engineering data and enterprise accounts.",
+      "Built a context-aware AI Helpdesk Agent on a RAG pipeline (Pinecone, LangChain, OpenAI, Node.js/Express), reducing manual support queries by 90%.",
+      "Delivered a real-time project management platform with Socket.IO dashboards, push notifications, and activity tracking, improving team workflow efficiency by 40%.",
+      "Cut invoice processing from 3–5 days to under 5 seconds with an end-to-end Stripe webhook pipeline for subscriptions, receipts, and multi-tenant payment sync.",
+    ],
     gradient: "from-primary to-orange-600",
     logo: "/images/saanvi.png",
   },
   {
     icon: Briefcase,
     title: "Frontend Developer",
-    company: "VRPI",
+    company: "VRPI Group of Companies",
+    location: "Hyderabad",
     period: "Feb 2024 - Jul 2024",
-    description:
-      "Spearheaded front-end development for an innovative Edutech application. Developed the official website for VRPI Group showcasing cutting-edge solutions and import-export services.",
+    points: [
+      "Built an EdTech LMS serving 5,000+ students worldwide, with a modular React/Redux frontend, course delivery APIs, and payment-gated subscriptions.",
+      "Rebuilt the VRPI corporate website with performance-first rendering and semantic, responsive components, increasing organic traffic by 35%.",
+    ],
     gradient: "from-emerald-500 to-teal-600",
     logo: "/images/vrpiLogo.png",
   },
-  // {
-  //   icon: Briefcase,
-  //   title: "Full Stack Developer",
-  //   company: "Pearlthoughts",
-  //   period: "Sep 2023 - Jan 2024",
-  //   description:
-  //     "Developed Schedula (doctor appointment platform), Unistock (E-commerce for medicine), and Zoggy Foods (food ordering app) using React, Node.js, and PostgreSQL with Azure cloud services.",
-  //   gradient: "from-purple-500 to-pink-600",
-  //   logo: "/images/pearlthoughts-logo.jpeg",
-  // },
   {
     icon: Briefcase,
     title: "Assistant System Engineer",
     company: "Tata Consultancy Services",
+    location: "Kolkata",
     period: "Jan 2022 - Aug 2023",
-    description:
-      "Developed Tata-Pay's payment module supporting millions of daily transactions — React frontend for UPI and Net banking flows. Achieved 20% reduction in page load times and 40% improvement in workflow efficiency. Ranked #1 among 50+ engineers during TCS training program.",
+    points: [
+      "Led full-stack development of Tata Pay's core payment module, integrating UPI, Net Banking, and tokenized card flows behind JWT-secured, PCI-compliant APIs.",
+      "Improved Tata Pay page load time by 20% with code-splitting, lazy loading, and API response caching.",
+      "Raised CSM form conversion by 15% and user satisfaction by 25% through A/B-tested UI flows and real-time field validation.",
+    ],
     gradient: "from-blue-500 to-cyan-600",
     logo: "/images/TCS-logo.png",
   },
   {
     icon: GraduationCap,
-    title: "B.Tech Mechanical Engineering",
-    company: "CMRIT",
-    period: "Jun 2018 - Sep 2021",
-    description:
-      "Graduated with CGPA of 8 in Mechanical Engineering. Transitioned to software development through self-learning and practical projects.",
+    title: "Bachelor of Technology",
+    company: "CMR Institute of Technology",
+    location: "Hyderabad",
+    period: "Jun 2017 - Sep 2021",
+    points: [
+      "Graduated with a CGPA of 8.28.",
+      "Moved into software development through self-learning and hands-on projects.",
+    ],
     gradient: "from-indigo-500 to-purple-600",
-    logo: "/images/CMRIT-logo.jpg"
+    logo: "/images/CMRIT-logo.jpg",
   },
 ];
 
@@ -101,7 +107,9 @@ export function Experience() {
                       <CardContent className="p-4">
                         <div className="flex gap-2 items-center">
                           <img
-                            title="logo"
+                            alt={`${experience.company} logo`}
+                            loading="lazy"
+                            decoding="async"
                             src={experience?.logo}
                             style={{
                               width: "40px",
@@ -113,17 +121,13 @@ export function Experience() {
                           </h3>
                         </div>
                         <p className="text-primary mb-2">
-                          {experience.company} • {experience.period}
+                          {experience.company}, {experience.location} | {experience.period}
                         </p>
                         <ul className="text-muted-foreground space-y-1 mt-1">
-                          {experience.description
-                            .split(".")
-                            .map((sentence) => sentence.trim())
-                            .filter(Boolean)
-                            .map((sentence, i) => (
+                          {experience.points.map((point, i) => (
                               <li key={i} className="flex items-start gap-2">
                                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                                <span>{sentence}.</span>
+                                <span>{point}</span>
                               </li>
                             ))}
                         </ul>

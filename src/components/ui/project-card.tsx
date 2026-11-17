@@ -31,7 +31,9 @@ export function ProjectCard({
         <img
           // src={`${URL.backendUrl}${image}`}
           src={`${image}`}
-          alt={title}
+          alt={`${title} project screenshot`}
+          loading="lazy"
+          decoding="async"
           className="w-full h-48 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">

@@ -261,7 +261,7 @@ const defaultAchievements: Achievement[] = [
     title: "Ranked #1 in TCS training",
     subtitle: "Software development cohort of 50+ trainees",
     description:
-      "Helped peers with React modules. scored highest aggregate across practicals and assessments.",
+      "Scored the highest aggregate across practicals and assessments, and helped peers with React modules.",
     metric: "#1 / 50+",
     date: "Aug 2022",
     icon: "trophy",
@@ -269,10 +269,10 @@ const defaultAchievements: Achievement[] = [
   },
   {
     id: "iaf-letter",
-    title: "Appreciation letter from IFA(Indian Air Force)",
-    subtitle: "Built school management app (Tettra)",
+    title: "Appreciation letter from the Indian Air Force",
+    subtitle: "Tettra, a mission-critical school management system",
     description:
-      "Designed and delivered a secure, role-based full stack application with attendance, results, and notifications. received official letter of appreciation.",
+      "Delivered a secure, role-based full stack app with attendance, results, and notifications that met defense-grade reliability requirements.",
     metric: "Recognition",
     date: "Jan 2023",
     icon: "award",
@@ -281,9 +281,9 @@ const defaultAchievements: Achievement[] = [
   {
     id: "stripe-automation",
     title: "Stripe automation: 3-5 days to <5s",
-    subtitle: "Structurology • Payments & Webhooks",
+    subtitle: "Saanvi Structural Solutions, Stripe webhooks",
     description:
-      "Automated invoicing and payment events with webhook orchestration. reduced manual processing time dramatically.",
+      "Built an end-to-end Stripe webhook pipeline for subscription events, automated receipts, and real-time payment sync across tenants.",
     metric: "<5 seconds",
     date: "Oct 2024",
     icon: "zap",
@@ -292,20 +292,30 @@ const defaultAchievements: Achievement[] = [
   {
     id: "spile-80",
     title: "SPile+ cut 80% manual calc",
-    subtitle: "AI-driven solar pile foundation tool",
+    subtitle: "Solar pile foundation platform",
     description:
-      "Shipped TypeScript + React UI with Node API; embedded rules engine to reduce repetitive engineering work.",
+      "Multi-mode workflows, automated Excel ingestion, and one-click PDF reports replaced most manual engineering calculations.",
     metric: "-80% effort",
     date: "Nov 2024",
     icon: "rocket",
-    badge: "AI/Automation",
+    badge: "Automation",
+  },
+  {
+    id: "helpdesk-90",
+    title: "AI Helpdesk cut support queries 90%",
+    subtitle: "RAG agent with Pinecone and LangChain",
+    description:
+      "Context-aware helpdesk agent answering from product documentation, backed by Pinecone vector search and an OpenAI-integrated Node.js backend.",
+    metric: "-90% queries",
+    icon: "zap",
+    badge: "AI",
   },
   {
     id: "mentored-10",
-    title: "Mentored 10+ interns (React)",
+    title: "Mentored 10+ developers and interns",
     subtitle: "PearlThoughts • React/TypeScript",
     description:
-      "Conducted weekly code reviews and live sessions; improved feature delivery speed and code quality across intern projects.",
+      "Ran weekly code reviews and live sessions at PearlThoughts, improving React proficiency and independent delivery.",
     metric: "10+ mentees",
     date: "Jan 2024",
     icon: "star",

@@ -226,4 +226,10 @@ export const skillList = [
     name: "Agentic AI Systems",
     skillLevel: 3,
   },
+  { _id: { $oid: "d0e1f2a3b4c5d6e7f8a9b0c1" }, address: "redux.png", name: "Redux", skillLevel: 4 },
+  { _id: { $oid: "e1f2a3b4c5d6e7f8a9b0c1d2" }, address: "express.png", name: "Express.js", skillLevel: 4 },
+  { _id: { $oid: "f2a3b4c5d6e7f8a9b0c1d2e3" }, address: "socketio.png", name: "Socket.IO", skillLevel: 4 },
+  { _id: { $oid: "a3b4c5d6e7f8a9b0c1d2e3f4" }, address: "sql.png", name: "PostgreSQL", skillLevel: 4 },
+  { _id: { $oid: "b4c5d6e7f8a9b0c1d2e3f4a5" }, address: "claude.png", name: "Claude Code", skillLevel: 4 },
+  { _id: { $oid: "c5d6e7f8a9b0c1d2e3f4a5b6" }, address: "postman.png", name: "Postman", skillLevel: 4 },
 ];

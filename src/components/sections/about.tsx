@@ -6,19 +6,19 @@ const features = [
   {
     icon: Code,
     title: "Full Stack Engineering",
-    description: "React, TypeScript, Node.js, NestJS, MongoDB, PostgreSQL, Stripe",
+    description: "React, React Native, Next.js, Node.js, NestJS, TypeScript, MongoDB, PostgreSQL",
     gradient: "from-primary to-orange-600",
   },
   {
     icon: Database,
     title: "SaaS & Payments",
-    description: "Multi-tenant architecture, Stripe pipelines, Azure, real-time systems",
+    description: "Multi-tenant architecture, Stripe, Razorpay, UPI, MFA, real-time Socket.IO systems",
     gradient: "from-emerald-500 to-teal-600",
   },
   {
     icon: BrainCircuit,
     title: "AI & ML Engineering",
-    description: "LangChain, Pinecone, OpenAI API, RAG Pipelines, Prompt Engineering",
+    description: "LangChain, Pinecone, RAG pipelines, vector databases, prompt engineering, Claude Code",
     gradient: "from-purple-500 to-pink-600",
   },
 ];
@@ -40,7 +40,7 @@ export function About() {
             About Me
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Full Stack & AI Engineer with 3+ years shipping production SaaS across EdTech, FinTech, and renewable energy
+            Full Stack Developer with 4+ years building production web and mobile apps across EdTech, FinTech, and renewable energy
           </p>
         </motion.div>
 
@@ -52,8 +52,8 @@ export function About() {
             className="w-full max-w-xs sm:max-w-sm md:max-w-md middle-layer"
           >
             <img
-              src="images/selfie.jpg"
-              alt="Creative professional"
+              src="/images/selfie.jpg"
+              alt="Kattula Pavan Kumar"
               className="rounded-xl shadow-2xl w-full object-cover"
             />
           </motion.div>
@@ -68,7 +68,7 @@ export function About() {
               My Journey
             </h3>
             <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
-              Full Stack & AI Engineer with 3+ years shipping production SaaS across EdTech, FinTech, and renewable energy. I specialize in multi-tenant platform architecture, RAG-powered AI integrations, and complex payment systems. Recognized by the Indian Air Force for defense-grade software delivery. Ranked #1 of 50+ engineers at TCS.
+              I'm a Full Stack Developer with 4+ years of experience building production web and cross-platform mobile apps across EdTech, FinTech, and renewable energy. I've architected multi-tenant SaaS platforms, RAG-based AI agents, and payment integrations with Stripe, Razorpay, and UPI. The Indian Air Force recognized my work on Tettra, and I ranked #1 among 50+ engineers in TCS training.
             </p>
 
             <div className="space-y-4">

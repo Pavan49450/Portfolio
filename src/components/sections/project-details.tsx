@@ -36,6 +36,8 @@ export function ProjectDetails({ project, setShowImage }: ProjectDetailsProps) {
             <img
               src={image}
               alt={`${project.title} screenshot ${index + 1}`}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 cursor-pointer"
             />
             {/* Overlay */}
