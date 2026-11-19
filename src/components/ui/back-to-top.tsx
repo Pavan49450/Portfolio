@@ -34,7 +34,7 @@ export function BackToTop() {
           <Button
             onClick={scrollToTop}
             size="icon"
-            className="w-12 h-12 bg-gradient-to-r from-primary rounded-full to-purple-600 hover:scale-110 transition-transform shadow-lg"
+            className="w-12 h-12 bg-gradient-to-r from-primary rounded-full to-orange-600 hover:scale-110 transition-transform shadow-lg"
           >
             <ArrowUp style={{width: "calc(var(--spacing) * 6)", height: "calc(var(--spacing) * 6)"}}/>
           </Button>

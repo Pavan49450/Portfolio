@@ -20,34 +20,34 @@ const contactInfo = [
     icon: Phone,
     title: "Phone",
     value: "+91 6301863490",
-    gradient: "from-primary to-purple-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     icon: Mail,
     title: "Email",
     value: "pavank.kattula@gmail.com",
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     icon: Linkedin,
     title: "LinkedIn",
     value: "View Profile",
     link: "https://www.linkedin.com/in/kattula-pavan-kumar-a2434714b",
-    gradient: "from-purple-500 to-pink-600",
+    gradient: "from-primary to-orange-600",
   },
 ];
 
 const socialLinks = [
-  // { icon: Twitter, href: "#", gradient: "from-primary to-purple-600" },
+  // { icon: Twitter, href: "#", gradient: "from-primary to-orange-600" },
   {
     icon: Github,
     href: "https://github.com/pavan49450",
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     icon: Linkedin,
     href: "https://www.linkedin.com/in/kattula-pavan-kumar-a2434714b",
-    gradient: "from-purple-500 to-pink-600",
+    gradient: "from-primary to-orange-600",
   },
 ];
 
@@ -247,7 +247,7 @@ export function Contact() {
                   >
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-primary to-purple-600 hover:scale-105 transition-transform"
+                      className="w-full bg-gradient-to-r from-primary to-orange-600 hover:scale-105 transition-transform"
                       disabled={contactMutation.isPending}
                     >
                       {contactMutation.isPending ? "Sending…" : "Send Message"}

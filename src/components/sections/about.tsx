@@ -13,13 +13,13 @@ const features = [
     icon: Database,
     title: "SaaS & Payments",
     description: "Multi-tenant architecture, Stripe, Razorpay, UPI, MFA, real-time Socket.IO systems",
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     icon: BrainCircuit,
     title: "AI & ML Engineering",
     description: "LangChain, Pinecone, RAG pipelines, vector databases, prompt engineering, Claude Code",
-    gradient: "from-purple-500 to-pink-600",
+    gradient: "from-primary to-orange-600",
   },
 ];
 

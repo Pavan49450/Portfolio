@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import { memo, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { skillList } from "../../../data/skills";
 import { THEMES } from "../../../data/Themes";
 import { useTheme } from "../use-theme";
-// import { useScrollAnimation } from "../../../hooks/use-scroll-animation";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface Skill {
@@ -18,52 +17,73 @@ interface Skill {
 interface FloatingIcon {
   id: string;
   skill: Skill;
-  x: number;
-  y: number;
   size: number;
-  speedX: number;
-  speedY: number;
   phase: number;
   amplitude: number;
-  layer: number;
+  layer: 0 | 1 | 2;
   rotationBase: number;
 }
 
-// ─── Theme tokens ─────────────────────────────────────────────────────────────
+// Mutable per-icon simulation state — lives outside React, mutated every frame.
+interface IconSim {
+  x: number; // vw %
+  y: number; // vh %
+  speedX: number;
+  speedY: number;
+  w: number; // measured px size
+  h: number;
+  cx: number; // current screen center px
+  cy: number;
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const rand = (min: number, max: number) => Math.random() * (max - min) + min;
 const ICON_BASE_PATH = "/images/skills/";
+const SCROLL_FACTOR = [0.003, 0.007, 0.014] as const;
+const LINE_THRESHOLD = 280;
+const LINE_THRESHOLD_SQ = LINE_THRESHOLD * LINE_THRESHOLD;
+const HOVER_SCALE = 1.5;
 
-function buildIcons(skills: Skill[]): FloatingIcon[] {
-  return skills.map((skill) => ({
-    id: skill._id.$oid,
-    skill,
-    x: rand(5, 90),
-    y: rand(5, 90),
-    size: rand(80, 100),
-    speedX: rand(0.012, 0.03) * (Math.random() > 0.5 ? 1 : -1),
-    speedY: rand(0.008, 0.022) * (Math.random() > 0.5 ? 1 : -1),
-    phase: rand(0, Math.PI * 2),
-    amplitude: rand(0.6, 1.8),
-    layer: Math.floor(rand(0, 3)),
-    rotationBase: rand(-15, 15),
-  }));
+function buildIcons(skills: Skill[]): { icons: FloatingIcon[]; sims: IconSim[] } {
+  const icons: FloatingIcon[] = [];
+  const sims: IconSim[] = [];
+  for (const skill of skills) {
+    icons.push({
+      id: skill._id.$oid,
+      skill,
+      size: rand(80, 100),
+      phase: rand(0, Math.PI * 2),
+      amplitude: rand(0.6, 1.8),
+      layer: Math.floor(rand(0, 3)) as 0 | 1 | 2,
+      rotationBase: rand(-15, 15),
+    });
+    sims.push({
+      x: rand(5, 90),
+      y: rand(5, 90),
+      speedX: rand(0.012, 0.03) * (Math.random() > 0.5 ? 1 : -1),
+      speedY: rand(0.008, 0.022) * (Math.random() > 0.5 ? 1 : -1),
+      w: 0,
+      h: 0,
+      cx: -9999,
+      cy: -9999,
+    });
+  }
+  return { icons, sims };
 }
 
 // ─── Skill level → glow color / shadow ───────────────────────────────────────
 const glowColor = (level: number, isDark: boolean) => {
   const a = isDark ? 0.9 : 0.85;
   if (isDark) {
-    if (level >= 5) return `rgba(249,115,22,${0.7 * a})`; // orange-500
-    if (level >= 4) return `rgba(245,158,11,${0.6 * a})`; // amber-500
-    if (level >= 3) return `rgba(252,211,77,${0.55 * a})`; // amber-300
-    return `rgba(212,212,216,${0.4 * a})`; // zinc-300
+    if (level >= 5) return `rgba(249,115,22,${0.7 * a})`;
+    if (level >= 4) return `rgba(245,158,11,${0.6 * a})`;
+    if (level >= 3) return `rgba(252,211,77,${0.55 * a})`;
+    return `rgba(212,212,216,${0.4 * a})`;
   }
-  if (level >= 5) return `rgba(234,88,12,${0.7 * a})`; // orange-600
-  if (level >= 4) return `rgba(217,119,6,${0.6 * a})`; // amber-600
-  if (level >= 3) return `rgba(251,191,36,${0.55 * a})`; // amber-400
-  return `rgba(148,163,184,${0.4 * a})`; // slate-400
+  if (level >= 5) return `rgba(234,88,12,${0.7 * a})`;
+  if (level >= 4) return `rgba(217,119,6,${0.6 * a})`;
+  if (level >= 3) return `rgba(251,191,36,${0.55 * a})`;
+  return `rgba(148,163,184,${0.4 * a})`;
 };
 
 const glowShadow = (level: number, isDark: boolean) => {
@@ -76,7 +96,6 @@ const glowShadow = (level: number, isDark: boolean) => {
       return "0 0 12px 2px rgba(252,211,77,0.35),  0 0 28px 5px rgba(252,211,77,0.10)";
     return "0 0 8px  2px rgba(212,212,216,0.20)";
   }
-  // Light – softer diffuse lift
   if (level >= 5)
     return "0 6px 28px rgba(234,88,12,0.28),  0 2px 8px rgba(234,88,12,0.18)";
   if (level >= 4)
@@ -86,149 +105,70 @@ const glowShadow = (level: number, isDark: boolean) => {
   return "0 4px 14px rgba(148,163,184,0.18)";
 };
 
-// ─── Add this near the top of the file ───────────────────────────────────────
-// Shared mutable ref: iconId → current { x, y } in pixels
-type PosMap = Record<string, { x: number; y: number }>;
-
-// ─── FloatingSkillIcon — add posRef prop and write to it every frame ──────────
-function FloatingSkillIcon({
+// ─── FloatingSkillIcon — pure presentational; position is set imperatively ───
+const FloatingSkillIcon = memo(function FloatingSkillIcon({
   icon,
-  mouseX,
-  mouseY,
-  scrollY,
   isDark,
-  posRef,
+  hovered,
+  registerEl,
 }: {
   icon: FloatingIcon;
-  mouseX: number;
-  mouseY: number;
-  scrollY: number;
   isDark: boolean;
-  posRef: React.MutableRefObject<PosMap>;
+  hovered: boolean;
+  registerEl: (id: string, el: HTMLDivElement | null) => void;
 }) {
   const tok = isDark ? THEMES.dark : THEMES.light;
-  const [hovered, setHovered] = useState(false);
-  const [pos, setPos] = useState({ x: icon.x, y: icon.y });
-
-  const animRef = useRef<number>(0);
-  const hoveredRef = useRef<boolean>(false);
-  const elapsedRef = useRef<number>(0);
-  const divRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    hoveredRef.current = hovered;
-  }, [hovered]);
-
-  useEffect(() => {
-    const speed = 0.001;
-    let lastTimestamp = performance.now();
-
-    const update = (now: number) => {
-      const delta = now - lastTimestamp;
-      lastTimestamp = now;
-
-      if (!hoveredRef.current) {
-        elapsedRef.current += delta * speed;
-        const t = elapsedRef.current;
-        setPos((prev) => {
-          let nx =
-            prev.x + icon.speedX * Math.sin(t + icon.phase) * icon.amplitude;
-          let ny =
-            prev.y +
-            icon.speedY * Math.cos(t * 0.7 + icon.phase) * icon.amplitude;
-          if (nx < 2 || nx > 93) icon.speedX *= -1;
-          if (ny < 2 || ny > 93) icon.speedY *= -1;
-          nx = Math.max(2, Math.min(93, nx));
-          ny = Math.max(2, Math.min(93, ny));
-          return { x: nx, y: ny };
-        });
-      }
-
-      // Write actual screen position to shared posRef
-      if (divRef.current) {
-        const rect = divRef.current.getBoundingClientRect();
-        posRef.current[icon.id] = {
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2,
-        };
-      }
-
-      animRef.current = requestAnimationFrame(update);
-    };
-
-    animRef.current = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(animRef.current);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const layerFactor = [0.008, 0.018, 0.032][icon.layer];
-  const scrollFactor = [0.03, 0.07, 0.14][icon.layer];
-  const mouseOffsetX = (mouseX - 50) * layerFactor;
-  const mouseOffsetY = (mouseY - 50) * layerFactor;
-  const scrollOffset = scrollY * scrollFactor;
-  const finalX = `calc(${pos.x}vw + ${mouseOffsetX}vw)`;
-  const finalY = `calc(${pos.y}vh + ${mouseOffsetY}vh - ${scrollOffset * 0.1}px)`;
-  const baseOpacity = tok.layerOpacity[icon.layer as 0 | 1 | 2];
+  const baseOpacity = tok.layerOpacity[icon.layer];
 
   return (
-    <motion.div
-      ref={(node) => {
-        divRef.current = node; // ← single clean ref, no merging needed
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      animate={{
-        scale: hovered ? 1.5 : 1,
-        rotate: hovered ? 0 : icon.rotationBase,
-        opacity: hovered ? 1 : baseOpacity,
-        filter: hovered ? tok.imgFilterHover : tok.imgFilter,
-      }}
-      transition={{
-        scale: { type: "spring", stiffness: 260, damping: 18 },
-        rotate: { type: "spring", stiffness: 180, damping: 14 },
-        opacity: { duration: 0.3 },
-        filter: { duration: 0.3 },
-      }}
+    <div
+      ref={(el) => registerEl(icon.id, el)}
+      aria-hidden
       style={{
         position: "fixed",
-        left: finalX,
-        top: finalY,
-        zIndex: 2 + icon.layer,
-        pointerEvents: "auto",
-        cursor: "pointer",
+        left: 0,
+        top: 0,
+        zIndex: hovered ? 10 : 2 + icon.layer,
+        pointerEvents: "none",
         willChange: "transform",
-      }}
-      onClick={() => {
-        document
-          .querySelector("#skills")
-          ?.scrollIntoView({ behavior: "smooth" });
+        transform: "translate3d(-9999px,-9999px,0)",
       }}
     >
       <motion.div
+        initial={false}
         animate={{
+          scale: hovered ? HOVER_SCALE : 1,
+          rotate: hovered ? 0 : icon.rotationBase,
+          opacity: hovered ? 1 : baseOpacity,
           boxShadow: hovered
             ? glowShadow(icon.skill.skillLevel, isDark)
             : tok.cardShadow,
         }}
-        transition={{ duration: 0.25 }}
-        style={{
-          "--card-size": `${icon.size}px`,
-          borderRadius: 5,
-          background: hovered ? tok.cardBgHover : tok.cardBg,
-          backdropFilter: "blur(12px) saturate(1.5)",
-          WebkitBackdropFilter: "blur(12px) saturate(1.5)",
-          border: hovered
-            ? `1.5px solid ${glowColor(icon.skill.skillLevel, isDark)}`
-            : `1px solid ${tok.cardBorder}`,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 4,
-          padding: 8,
-          transition: "background 0.25s, border 0.25s",
-          position: "relative",
-          overflow: "hidden",
-        } as React.CSSProperties}
+        transition={{
+          scale: { type: "spring", stiffness: 260, damping: 18 },
+          rotate: { type: "spring", stiffness: 180, damping: 14 },
+          opacity: { duration: 0.3 },
+          boxShadow: { duration: 0.25 },
+        }}
+        style={
+          {
+            "--card-size": `${icon.size}px`,
+            borderRadius: 5,
+            background: hovered ? tok.cardBgHover : tok.cardBg,
+            border: hovered
+              ? `1.5px solid ${glowColor(icon.skill.skillLevel, isDark)}`
+              : `1px solid ${tok.cardBorder}`,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 4,
+            padding: 8,
+            transition: "background 0.25s, border 0.25s",
+            position: "relative",
+            overflow: "hidden",
+          } as React.CSSProperties
+        }
         className="w-[calc(var(--card-size)*0.6)] h-[calc(var(--card-size)*0.6)] sm:w-[calc(var(--card-size)*0.8)] sm:h-[calc(var(--card-size)*0.8)] md:w-[var(--card-size)] md:h-[var(--card-size)]"
       >
         {hovered && (
@@ -253,12 +193,12 @@ function FloatingSkillIcon({
           aria-hidden="true"
           loading="lazy"
           decoding="async"
-          // We pass the base size as a CSS variable
-          style={{ "--base-size": `${icon.size}px` } as React.CSSProperties}
-          className={`
-            object-cover user-select-none
-            w-[50%] h-[50%]
-          `}
+          draggable={false}
+          className="object-contain select-none w-[50%] h-[50%]"
+          style={{
+            filter: hovered ? tok.imgFilterHover : tok.imgFilter,
+            transition: "filter 0.3s",
+          }}
           onError={(e) => {
             (e.target as HTMLImageElement).style.display = "none";
           }}
@@ -300,7 +240,6 @@ function FloatingSkillIcon({
                       di < icon.skill.skillLevel
                         ? glowColor(icon.skill.skillLevel, isDark)
                         : tok.dotEmpty,
-                    transition: "background 0.2s",
                   }}
                 />
               ))}
@@ -308,169 +247,234 @@ function FloatingSkillIcon({
           </>
         )}
       </motion.div>
-    </motion.div>
+    </div>
   );
-}
+});
 
-// ─── ConnectionLines — reads from posRef instead of recalculating ─────────────
-function ConnectionLines({
-  icons,
-  isDark,
-  posRef, // ← NEW
-}: {
-  icons: FloatingIcon[];
-  isDark: boolean;
-  posRef: React.MutableRefObject<PosMap>; // ← NEW
-}) {
+// ─── SkillsBackground — single rAF loop drives everything ────────────────────
+export default function SkillsBackground() {
+  const { isDark } = useTheme();
+  const [{ icons, sims }] = useState(() => buildIcons(skillList));
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const elsRef = useRef<Record<string, HTMLDivElement | null>>({});
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animRef = useRef<number>(0);
+  const gradientRef = useRef<HTMLDivElement>(null);
+  const mouseRef = useRef({ x: -99999, y: -99999, moved: true });
+  const hoveredIdxRef = useRef(-1);
+  const isDarkRef = useRef(isDark);
+  isDarkRef.current = isDark;
+
+  // Stable callback so memoized icons don't re-render.
+  const registerElRef = useRef((id: string, el: HTMLDivElement | null) => {
+    elsRef.current[id] = el;
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas?.getContext("2d") ?? null;
+    const linesMq = window.matchMedia("(min-width: 640px)");
+    let W = window.innerWidth;
+    let H = window.innerHeight;
 
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const measure = () => {
+      W = window.innerWidth;
+      H = window.innerHeight;
+      if (canvas) {
+        canvas.width = W;
+        canvas.height = H;
+      }
+      icons.forEach((ic, i) => {
+        const el = elsRef.current[ic.id];
+        const card = el?.firstElementChild as HTMLElement | null;
+        if (card) {
+          sims[i].w = card.offsetWidth;
+          sims[i].h = card.offsetHeight;
+        }
+      });
     };
-    resize();
-    window.addEventListener("resize", resize);
+    measure();
 
-    const lineRgb = isDark ? "249,115,22" : "234,88,12";
-    const maxAlpha = isDark ? 0.5 : 0.4;
-    const threshold = 280;
+    const onMove = (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") return;
+      mouseRef.current.x = e.clientX;
+      mouseRef.current.y = e.clientY;
+      mouseRef.current.moved = true;
+    };
+    const onLeave = (e: MouseEvent) => {
+      if (!e.relatedTarget) {
+        mouseRef.current.x = -99999;
+        mouseRef.current.y = -99999;
+        mouseRef.current.moved = true;
+      }
+    };
 
-    const draw = () => {
-      const W = canvas.width;
-      const H = canvas.height;
-      ctx.clearRect(0, 0, W, H);
+    window.addEventListener("resize", measure);
+    window.addEventListener("pointermove", onMove, { passive: true });
+    document.addEventListener("mouseout", onLeave);
 
-      // ── Use actual icon positions from the shared ref ──
-      const positions = icons
-        .map((ic) => posRef.current[ic.id])
-        .filter(Boolean); // skip icons not yet measured
+    let raf = 0;
+    let last = performance.now();
+    let elapsed = 0;
 
-      for (let a = 0; a < positions.length; a++) {
-        for (let b = a + 1; b < positions.length; b++) {
-          const pa = positions[a];
-          const pb = positions[b];
-          const dx = pa.x - pb.x;
-          const dy = pa.y - pb.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < threshold) {
-            const alpha = (1 - dist / threshold) * maxAlpha;
-            ctx.beginPath();
-            ctx.moveTo(pa.x, pa.y);
-            ctx.lineTo(pb.x, pb.y);
-            ctx.strokeStyle = `rgba(${lineRgb},${alpha})`;
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
+    const tick = (now: number) => {
+      const delta = Math.min(now - last, 64); // clamp after tab switch
+      last = now;
+      elapsed += delta * 0.001;
+      const t = elapsed;
+      const scrollY = window.scrollY;
+      const hoveredIdx = hoveredIdxRef.current;
+
+      // 1. Move icons (transform only — no layout, no React)
+      for (let i = 0; i < icons.length; i++) {
+        const ic = icons[i];
+        const s = sims[i];
+        if (i !== hoveredIdx) {
+          const nx = s.x + s.speedX * Math.sin(t + ic.phase) * ic.amplitude;
+          const ny = s.y + s.speedY * Math.cos(t * 0.7 + ic.phase) * ic.amplitude;
+          if (nx < 2 || nx > 93) s.speedX *= -1;
+          if (ny < 2 || ny > 93) s.speedY *= -1;
+          s.x = nx < 2 ? 2 : nx > 93 ? 93 : nx;
+          s.y = ny < 2 ? 2 : ny > 93 ? 93 : ny;
+        }
+        const px = (s.x / 100) * W;
+        const py = (s.y / 100) * H - scrollY * SCROLL_FACTOR[ic.layer];
+        s.cx = px + s.w / 2;
+        s.cy = py + s.h / 2;
+        const el = elsRef.current[ic.id];
+        if (el) el.style.transform = `translate3d(${px}px,${py}px,0)`;
+      }
+
+      // 2. Hover hit-test (icons sit under page content, so DOM hover can't reach them)
+      const m = mouseRef.current;
+      let hit = -1;
+      let hitLayer = -1;
+      for (let i = 0; i < icons.length; i++) {
+        const s = sims[i];
+        const k = i === hoveredIdx ? HOVER_SCALE / 2 : 0.5;
+        if (
+          Math.abs(m.x - s.cx) <= s.w * k &&
+          Math.abs(m.y - s.cy) <= s.h * k &&
+          (icons[i].layer > hitLayer || i === hoveredIdx)
+        ) {
+          hit = i;
+          hitLayer = i === hoveredIdx ? 99 : icons[i].layer;
+        }
+      }
+      if (hit !== hoveredIdx) {
+        hoveredIdxRef.current = hit;
+        setHoveredId(hit === -1 ? null : icons[hit].id);
+      }
+
+      // 3. Mouse-follow gradient — only when mouse moved, via CSS vars
+      if (m.moved && gradientRef.current && m.x > -9999) {
+        gradientRef.current.style.setProperty("--mx", `${(m.x / W) * 100}%`);
+        gradientRef.current.style.setProperty("--my", `${(m.y / H) * 100}%`);
+        gradientRef.current.style.setProperty("--imx", `${100 - (m.x / W) * 100}%`);
+        gradientRef.current.style.setProperty("--imy", `${100 - (m.y / H) * 100}%`);
+      }
+      m.moved = false;
+
+      // 4. Connection lines
+      if (ctx && canvas) {
+        ctx.clearRect(0, 0, W, H);
+        if (linesMq.matches) {
+          const lineRgb = isDarkRef.current ? "249,115,22" : "234,88,12";
+          const maxAlpha = isDarkRef.current ? 0.5 : 0.4;
+          ctx.lineWidth = 1.5;
+          for (let a = 0; a < sims.length; a++) {
+            const pa = sims[a];
+            for (let b = a + 1; b < sims.length; b++) {
+              const pb = sims[b];
+              const dx = pa.cx - pb.cx;
+              const dy = pa.cy - pb.cy;
+              const d2 = dx * dx + dy * dy;
+              if (d2 < LINE_THRESHOLD_SQ) {
+                const alpha = (1 - Math.sqrt(d2) / LINE_THRESHOLD) * maxAlpha;
+                ctx.strokeStyle = `rgba(${lineRgb},${alpha.toFixed(3)})`;
+                ctx.beginPath();
+                ctx.moveTo(pa.cx, pa.cy);
+                ctx.lineTo(pb.cx, pb.cy);
+                ctx.stroke();
+              }
+            }
           }
         }
       }
 
-      animRef.current = requestAnimationFrame(draw);
+      raf = requestAnimationFrame(tick);
     };
 
-    animRef.current = requestAnimationFrame(draw);
+    raf = requestAnimationFrame(tick);
     return () => {
-      cancelAnimationFrame(animRef.current);
-      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("pointermove", onMove);
+      document.removeEventListener("mouseout", onLeave);
     };
-  }, [icons, isDark, posRef]);
+  }, [icons, sims]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 1,
-        pointerEvents: "none",
-        opacity: 1,
-      }}
-    />
-  );
-}
-
-// ─── SkillsBackground — create posRef and pass it down ───────────────────────
-export default function SkillsBackground() {
-  const { isDark } = useTheme();
-  const [icons] = useState<FloatingIcon[]>(() => buildIcons(skillList));
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-  const [scrollY, setScrollY] = useState(0);
-
-  // ── Shared position map ──
-  const posRef = useRef<PosMap>({}); // ← NEW
-
-  const smoothMouseX = useSpring(useMotionValue(50), {
-    stiffness: 60,
-    damping: 20,
-  });
-  const smoothMouseY = useSpring(useMotionValue(50), {
-    stiffness: 60,
-    damping: 20,
-  });
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      setMousePos({ x, y });
-      smoothMouseX.set(x);
-      smoothMouseY.set(y);
-    },
-    [smoothMouseX, smoothMouseY],
-  );
-
-  const handleScroll = useCallback(() => setScrollY(window.scrollY), []);
-
+  // Click on a hovered icon (anywhere not interactive) → jump to skills.
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
+    if (!hoveredId) return;
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest("a,button,input,textarea,select,[role=button]")) return;
+      document.querySelector("#skills")?.scrollIntoView({ behavior: "smooth" });
     };
-  }, [handleMouseMove, handleScroll]);
+    document.body.style.cursor = "pointer";
+    document.addEventListener("click", onClick);
+    return () => {
+      document.body.style.cursor = "";
+      document.removeEventListener("click", onClick);
+    };
+  }, [hoveredId]);
 
   const tok = isDark ? THEMES.dark : THEMES.light;
 
   return (
     <>
       <div
+        ref={gradientRef}
+        aria-hidden
+        style={
+          {
+            "--mx": "50%",
+            "--my": "50%",
+            "--imx": "50%",
+            "--imy": "50%",
+            position: "fixed",
+            inset: 0,
+            zIndex: 0,
+            pointerEvents: "none",
+            background: `
+              radial-gradient(ellipse 80vw 80vh at var(--mx) var(--my),
+                ${tok.gradientA} 0%, transparent 65%),
+              radial-gradient(ellipse 60vw 60vh at var(--imx) var(--imy),
+                ${tok.gradientB} 0%, transparent 60%)
+            `,
+          } as React.CSSProperties
+        }
+      />
+
+      <canvas
+        ref={canvasRef}
         aria-hidden
         style={{
           position: "fixed",
           inset: 0,
-          zIndex: 0,
+          zIndex: 1,
           pointerEvents: "none",
-          background: `
-            radial-gradient(ellipse 80vw 80vh at ${mousePos.x}% ${mousePos.y}%,
-              ${tok.gradientA} 0%, transparent 65%),
-            radial-gradient(ellipse 60vw 60vh at ${100 - mousePos.x}% ${100 - mousePos.y}%,
-              ${tok.gradientB} 0%, transparent 60%)
-          `,
-          transition: "background 0.08s linear",
         }}
       />
-
-      {/* Pass posRef to both */}
-      <div className="sm:block hidden">
-        <ConnectionLines icons={icons} isDark={isDark} posRef={posRef} />
-      </div>
 
       {icons.map((icon) => (
         <FloatingSkillIcon
           key={icon.id}
           icon={icon}
-          mouseX={mousePos.x}
-          mouseY={mousePos.y}
-          scrollY={scrollY}
           isDark={isDark}
-          posRef={posRef} // ← NEW
+          hovered={hoveredId === icon.id}
+          registerEl={registerElRef.current}
         />
       ))}
     </>

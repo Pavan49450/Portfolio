@@ -17,7 +17,7 @@ const services = [
     title: "Mobile Development",
     description:
       "I develop high-performance mobile applications using React Native and Flutter, ensuring a consistent and engaging user experience.",
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-primary to-orange-600",
     features: [
       "React Native",
       "Flutter",
@@ -30,7 +30,7 @@ const services = [
     title: "Backend Development",
     description:
       "I design and implement robust APIs and comprehensive database solutions using Node.js, Express.js, PostgreSQL, MongoDB, and Firebase.",
-    gradient: "from-purple-500 to-pink-600",
+    gradient: "from-primary to-orange-600",
     features: ["Node.js", "Express.js", "PostgreSQL", "MongoDB", "Firebase"],
   },
   {
@@ -38,7 +38,7 @@ const services = [
     title: "Full-Stack Development",
     description:
       "I provide end-to-end solutions, handling both frontend and backend development to deliver cohesive and fully functional applications.",
-    gradient: "from-blue-500 to-cyan-600",
+    gradient: "from-primary to-orange-600",
     features: [
       "Full-Stack Solutions",
       "API Integration",
@@ -51,7 +51,7 @@ const services = [
     title: "Consulting & Optimization",
     description:
       "I offer performance audits and technical consulting services to help you choose the right technologies and implement best practices.",
-    gradient: "from-indigo-500 to-purple-600",
+    gradient: "from-primary to-orange-600",
     features: [
       "Performance Optimization",
       "Technical Consulting",

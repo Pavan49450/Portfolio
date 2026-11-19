@@ -10,7 +10,7 @@ const testimonials = [
     content:
       "Pavan built our EdTech platform from the ground up, scaling it to serve 5,000+ students worldwide. His frontend and backend expertise ensured smooth course delivery, while his optimizations drove a 35% increase in engagement and made the system future-ready.",
     rating: 5,
-    gradient: "from-primary to-purple-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     name: "Avinash Nadh",
@@ -18,7 +18,7 @@ const testimonials = [
     content:
       "On our solar foundation project, SPile+, Pavan has single-handedly figured out and implemented the entire payments module with Stripe webhooks, automating invoicing from days to seconds—critical for our product's success.",
     rating: 5,
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     name: "Tharine Manikanth",
@@ -26,7 +26,7 @@ const testimonials = [
     content:
       "I've seen Pavan consistently deliver high-impact systems across domains—whether it was scaling an e-commerce app to 1,000+ daily transactions with 99.9% uptime, or mentoring 10+ interns to improve their React.js proficiency. His mix of problem-solving, mentoring, and hands-on execution makes him a reliable teammate in any project.",
     rating: 5,
-    gradient: "from-purple-500 to-pink-600",
+    gradient: "from-primary to-orange-600",
   },
 ];
 

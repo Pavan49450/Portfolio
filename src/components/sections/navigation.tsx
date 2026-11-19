@@ -70,7 +70,7 @@ export function Navigation() {
           >
      
             <img
-              src={`/images/Logo.png`}
+              src={`/images/Logo.webp`}
               alt={"logo"}
               className={`w-[60px] mb-2 mr-1 max-[600px]:mb-1`}
             />

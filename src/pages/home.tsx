@@ -40,7 +40,7 @@ export default function Home() {
       <motion.div
         className="pointer-events-none absolute inset-0 z-100"
         style={{
-          background: `radial-gradient(600px circle at ${springX}px ${springY}px, rgba(99,102,241,0.12) 0%, transparent 70%)`,
+          background: `radial-gradient(600px circle at ${springX}px ${springY}px, rgba(246,168,60,0.12) 0%, transparent 70%)`,
         }}
       />
     );

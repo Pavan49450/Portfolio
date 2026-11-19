@@ -218,7 +218,7 @@ export function Hero() {
         >
           <Button
             onClick={() => scrollTo("#projects")}
-            className="bg-gradient-to-r from-primary to-purple-600 w-[150px]"
+            className="bg-gradient-to-r from-primary to-orange-600 w-[150px]"
           >
             View My Work <ArrowUpRight className="w-4 h-4" />
           </Button>

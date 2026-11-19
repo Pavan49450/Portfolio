@@ -10,6 +10,12 @@
   --radius: 5px;
 }
 
+/* Expose primary to Tailwind so from-primary / bg-primary/10 etc. are generated */
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+}
+
 /* Theme variables */
 :root {
   --background: hsl(0, 0%, 100%);
@@ -176,9 +182,6 @@
     backdrop-filter: blur(10px);
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-  }
-  .from-primary {
-    background-image: linear-gradient(to right, var(--primary), #9333ea);
   }
 
   /* Custom Class Styles - Resolved for Light and Dark Themes */

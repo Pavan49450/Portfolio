@@ -55,17 +55,17 @@ const categoryConfig = [
   {
     title: "Backend",
     icon: Database,
-    gradient: "from-emerald-500 to-teal-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     title: "AI / ML",
     icon: BrainCircuit,
-    gradient: "from-indigo-500 to-purple-600",
+    gradient: "from-primary to-orange-600",
   },
   {
     title: "Tools & DevOps",
     icon: Gavel,
-    gradient: "from-purple-500 to-pink-600",
+    gradient: "from-primary to-orange-600",
   },
 ];
 

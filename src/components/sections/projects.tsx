@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Grid3X3, X, ArrowLeft } from "lucide-react";
 import { useState } from "react";
-import { Modal } from "@mui/material";
+import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 // import { Badge } from "../ui/badge";
 import { useScrollAnimation } from "../../hooks/use-scroll-animation";
@@ -165,8 +165,13 @@ export function Projects() {
         </div>
 
         {/* ── Main Modal ── */}
-        <Modal open={isModalOpen} onClose={closeModal}>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:w-full max-w-6xl max-h-[90vh] bg-background border border-border rounded-xl shadow-2xl outline-none flex flex-col overflow-hidden text-foreground">
+        <Dialog.Root open={isModalOpen} onOpenChange={(open) => !open && closeModal()}>
+          <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-[999] bg-black/50" />
+          <Dialog.Content
+            aria-describedby={undefined}
+            className="fixed top-1/2 left-1/2 z-[1000] -translate-x-1/2 -translate-y-1/2 w-[95%] sm:w-full max-w-6xl max-h-[90vh] bg-background border border-border rounded-xl shadow-2xl outline-none flex flex-col overflow-hidden text-foreground"
+          >
 
             {/* Modal Header */}
             <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-border shrink-0 gap-3">
@@ -188,23 +193,22 @@ export function Projects() {
                 )}
 
                 {/* Title */}
-                <h2 className="text-base sm:text-lg font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent truncate">
+                <Dialog.Title className="text-base sm:text-lg font-bold bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent truncate">
                   {modal.type === "all"
                     ? `All Projects (${projects.length})`
                     : modal.type === "detail"
                     ? modal.project.title
                     : ""}
-                </h2>
+                </Dialog.Title>
               </div>
 
               {/* Close button */}
-              <button
-                onClick={closeModal}
+              <Dialog.Close
                 className="shrink-0 w-8 h-8 flex items-center justify-center rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />
-              </button>
+              </Dialog.Close>
             </div>
 
             {/* Modal Body */}
@@ -219,22 +223,28 @@ export function Projects() {
                 />
               )}
             </div>
-          </div>
-        </Modal>
+          </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
 
         {/* ── Image Lightbox ── */}
-        <Modal open={showImage.length > 0} onClose={() => setShowImage("")}>
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 outline-none"
-            onClick={() => setShowImage("")}
-          >
-            <img
-              src={showImage}
-              alt="Project screenshot"
-              className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            />
-          </div>
-        </Modal>
+        <Dialog.Root open={showImage.length > 0} onOpenChange={(open) => !open && setShowImage("")}>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 z-[1001] bg-black/70" />
+            <Dialog.Content
+              aria-describedby={undefined}
+              className="fixed top-1/2 left-1/2 z-[1002] -translate-x-1/2 -translate-y-1/2 outline-none"
+              onClick={() => setShowImage("")}
+            >
+              <Dialog.Title className="sr-only">Project screenshot</Dialog.Title>
+              <img
+                src={showImage}
+                alt="Project screenshot, enlarged"
+                className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              />
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
       </div>
     </section>
   );

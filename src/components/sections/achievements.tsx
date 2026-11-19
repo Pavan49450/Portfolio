@@ -138,7 +138,7 @@ function AchievementCard({ a }: { a: Achievement }) {
       className={`middle-layer h-full rounded-xl hover:scale-110 hover:z-[100] transition-all duration-200 cursor-pointer bg-card text-card-foreground p-3 shadow-sm glass-effect`}
     >
       <div className="flex items-center gap-2">
-        <div className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-r from-primary text-primary-foreground to-purple-600 shadow-sm">
+        <div className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-r from-primary text-primary-foreground to-orange-600 shadow-sm">
           <Icon className="size-5" aria-hidden />
         </div>
         <div className="min-w-0 flex-1">
