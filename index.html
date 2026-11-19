@@ -49,6 +49,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!--
+      Hide the static crawler summary for JS-enabled visitors so it doesn't
+      flash before React mounts. No-JS visitors and crawlers still get it.
+    -->
+    <script>document.documentElement.classList.add("js");</script>
+    <style>.js #seo-fallback { display: none; }</style>
+
     <!-- Preload hero/about image -->
     <link rel="preload" as="image" href="/images/selfie.jpg" />
 
@@ -128,7 +135,7 @@
       React replaces this on mount, so keep it in sync with the real content.
     -->
     <div id="root">
-      <main style="max-width:720px;margin:0 auto;padding:48px 16px;font-family:system-ui,sans-serif;line-height:1.6">
+      <main id="seo-fallback" style="max-width:720px;margin:0 auto;padding:48px 16px;font-family:system-ui,sans-serif;line-height:1.6">
         <h1>Kattula Pavan Kumar</h1>
         <p><strong>Full Stack Developer</strong> in Hyderabad, India. React, React Native, Next.js, Node.js, NestJS, TypeScript and AI integrations.</p>
         <p>
