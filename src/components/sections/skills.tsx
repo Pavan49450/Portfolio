@@ -5,7 +5,7 @@ import { Card, CardContent } from "../ui/card";
 import { SkillBar } from "../ui/skill-bar";
 import { skillList } from "../../data/skills";
 
-// Map skill names to their categories
+// Map skill names to their categories.
 const categoryMap: Record<string, string> = {
   React: "Frontend",
   Tailwind: "Frontend",
